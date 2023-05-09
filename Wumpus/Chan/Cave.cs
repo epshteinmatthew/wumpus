@@ -56,15 +56,15 @@ namespace Chan_WumpusTest
             }
             else if (n == 3)
             {
-                CaveFile = "Cave1Connections.txt";
+                CaveFile = "Cave3Connections.txt";
             }
             else if (n == 4)
             {
-                CaveFile = "Cave2Connections.txt";
+                CaveFile = "Cave4Connections.txt";
             }
             else if (n == 5)
             {
-                CaveFile = "Cave1Connections.txt";
+                CaveFile = "Cave5Connections.txt";
             }
 
 
