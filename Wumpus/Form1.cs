@@ -14,7 +14,7 @@ using Wumpus;
 namespace _1095652_Roth_HuntTheWumpus
 {
     public partial class Form1 : Form
-    {        
+    {
         public Form1()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace _1095652_Roth_HuntTheWumpus
         private void Form1_Load(object sender, EventArgs e)
         {
             GraphicsPath hexagon = new GraphicsPath();
-            Point[] points = { new Point(0,50), new Point(25, 10), new Point(75, 10), new Point(100, 50), new Point(100, 50), new Point(75, 90), new Point(25, 90), new Point(0, 50) };
+            Point[] points = { new Point(0, 50), new Point(25, 10), new Point(75, 10), new Point(100, 50), new Point(100, 50), new Point(75, 90), new Point(25, 90), new Point(0, 50) };
             hexagon.AddLines(points);
             button1.Region = new Region(hexagon);
             button2.Region = new Region(hexagon);
@@ -35,70 +35,27 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            buttonMove.Enabled = true;
-            buttonShoot.Enabled = true;
+            MoveButtonClicked();
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            buttonMove.Enabled = true;
-            buttonShoot.Enabled = true;
+            MoveButtonClicked();
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            buttonMove.Enabled = true;
-            buttonShoot.Enabled = true;
-            
+            MoveButtonClicked();
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            buttonMove.Enabled = true;
-            buttonShoot.Enabled = true;
+            MoveButtonClicked();
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            buttonMove.Enabled = true;
-            buttonShoot.Enabled = true;
+            MoveButtonClicked();
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
-            buttonMove.Enabled = true;
-            buttonShoot.Enabled = true;
+            MoveButtonClicked();
         }
         private void buttonShoot_Click(object sender, EventArgs e)
         {
@@ -120,6 +77,17 @@ namespace _1095652_Roth_HuntTheWumpus
             button7.Enabled = true;
             buttonShoot.Enabled = false;
         }
+        private void MoveButtonClicked()
+        {
+            button1.Enabled = false;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            buttonMove.Enabled = true;
+            buttonShoot.Enabled = true;
+        }
         private void buttonPSecret_Click(object sender, EventArgs e)
         {
 
@@ -140,13 +108,20 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             richTextBoxText.Text = text;
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Win()
         {
-
+            this.Hide();
+            Win win = new Win();
+            win.ShowDialog();
+        }
+        private void Die()
+        {
+            this.Hide();
+            Death dead = new Death();
+            dead.ShowDialog();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void buttonMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
             StartMenu menu = new StartMenu();

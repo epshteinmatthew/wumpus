@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chan_WumpusTest;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

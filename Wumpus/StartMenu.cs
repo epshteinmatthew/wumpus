@@ -16,6 +16,8 @@ namespace Wumpus
         public StartMenu()
         {
             InitializeComponent();
+            button1.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.BorderSize = 0;
         }
 
         private void Menu_Load(object sender, EventArgs e)
