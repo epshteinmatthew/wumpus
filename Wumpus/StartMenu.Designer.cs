@@ -1,6 +1,6 @@
 ﻿namespace Wumpus
 {
-    partial class Menu
+    partial class StartMenu
     {
         /// <summary>
         /// Required designer variable.

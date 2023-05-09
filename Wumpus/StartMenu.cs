@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Wumpus
 {
-    public partial class Menu : Form
+    public partial class StartMenu : Form
     {
-        public Menu()
+        public StartMenu()
         {
             InitializeComponent();
         }

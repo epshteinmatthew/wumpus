@@ -32,11 +32,13 @@ namespace Epshtein
         {
             this.ConstructorButton = new System.Windows.Forms.Button();
             this.PlayerConstructorButton = new System.Windows.Forms.Button();
+            this.buttonmovewump = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ConstructorButton
             // 
-            this.ConstructorButton.Location = new System.Drawing.Point(117, 147);
+            this.ConstructorButton.Location = new System.Drawing.Point(229, 12);
             this.ConstructorButton.Name = "ConstructorButton";
             this.ConstructorButton.Size = new System.Drawing.Size(147, 71);
             this.ConstructorButton.TabIndex = 0;
@@ -46,7 +48,7 @@ namespace Epshtein
             // 
             // PlayerConstructorButton
             // 
-            this.PlayerConstructorButton.Location = new System.Drawing.Point(363, 147);
+            this.PlayerConstructorButton.Location = new System.Drawing.Point(382, 12);
             this.PlayerConstructorButton.Name = "PlayerConstructorButton";
             this.PlayerConstructorButton.Size = new System.Drawing.Size(147, 71);
             this.PlayerConstructorButton.TabIndex = 1;
@@ -54,17 +56,39 @@ namespace Epshtein
             this.PlayerConstructorButton.UseVisualStyleBackColor = true;
             this.PlayerConstructorButton.Click += new System.EventHandler(this.PlayerConstructorButton_Click);
             // 
+            // buttonmovewump
+            // 
+            this.buttonmovewump.Location = new System.Drawing.Point(81, 12);
+            this.buttonmovewump.Name = "buttonmovewump";
+            this.buttonmovewump.Size = new System.Drawing.Size(142, 71);
+            this.buttonmovewump.TabIndex = 2;
+            this.buttonmovewump.Text = "move wumpus";
+            this.buttonmovewump.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 80.25F);
+            this.label1.Location = new System.Drawing.Point(78, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(338, 120);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonmovewump);
             this.Controls.Add(this.PlayerConstructorButton);
             this.Controls.Add(this.ConstructorButton);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -72,5 +96,7 @@ namespace Epshtein
 
         private Button ConstructorButton;
         private Button PlayerConstructorButton;
+        private Button buttonmovewump;
+        private Label label1;
     }
 }

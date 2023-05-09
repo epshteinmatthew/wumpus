@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wumpus;
 
 namespace _1095652_Roth_HuntTheWumpus
 {
@@ -148,7 +149,7 @@ namespace _1095652_Roth_HuntTheWumpus
         private void button9_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menu = new Menu();
+            StartMenu menu = new StartMenu();
             menu.ShowDialog();
         }
 
