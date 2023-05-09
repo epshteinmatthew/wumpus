@@ -113,6 +113,16 @@ namespace Wumpus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ECE73321_AABD_4B85_8E38_B376FA17C26E {
+            get {
+                object obj = ResourceManager.GetObject("ECE73321-AABD-4B85-8E38-B376FA17C26E", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images {
             get {
                 object obj = ResourceManager.GetObject("images", resourceCulture);
@@ -156,6 +166,16 @@ namespace Wumpus.Properties {
         internal static System.Drawing.Bitmap IMG_4575 {
             get {
                 object obj = ResourceManager.GetObject("IMG_4575", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_45751 {
+            get {
+                object obj = ResourceManager.GetObject("IMG_45751", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

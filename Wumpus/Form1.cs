@@ -144,5 +144,17 @@ namespace _1095652_Roth_HuntTheWumpus
         {
 
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

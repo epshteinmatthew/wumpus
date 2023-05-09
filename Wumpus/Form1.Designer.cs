@@ -51,6 +51,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label125 = new System.Windows.Forms.Label();
             this.textBoxMoney = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,7 +224,7 @@
             // 
             // textBoxArrows
             // 
-            this.textBoxArrows.Location = new System.Drawing.Point(197, 291);
+            this.textBoxArrows.Location = new System.Drawing.Point(59, 405);
             this.textBoxArrows.Name = "textBoxArrows";
             this.textBoxArrows.Size = new System.Drawing.Size(37, 20);
             this.textBoxArrows.TabIndex = 28;
@@ -230,7 +232,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(149, 294);
+            this.label10.Location = new System.Drawing.Point(11, 408);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 13);
             this.label10.TabIndex = 29;
@@ -238,9 +240,9 @@
             // 
             // richTextBoxText
             // 
-            this.richTextBoxText.Location = new System.Drawing.Point(144, 342);
+            this.richTextBoxText.Location = new System.Drawing.Point(144, 289);
             this.richTextBoxText.Name = "richTextBoxText";
-            this.richTextBoxText.Size = new System.Drawing.Size(128, 64);
+            this.richTextBoxText.Size = new System.Drawing.Size(128, 110);
             this.richTextBoxText.TabIndex = 30;
             this.richTextBoxText.Text = "";
             // 
@@ -295,7 +297,7 @@
             // label125
             // 
             this.label125.AutoSize = true;
-            this.label125.Location = new System.Drawing.Point(149, 320);
+            this.label125.Location = new System.Drawing.Point(11, 434);
             this.label125.Name = "label125";
             this.label125.Size = new System.Drawing.Size(42, 13);
             this.label125.TabIndex = 36;
@@ -303,17 +305,39 @@
             // 
             // textBoxMoney
             // 
-            this.textBoxMoney.Location = new System.Drawing.Point(197, 317);
+            this.textBoxMoney.Location = new System.Drawing.Point(59, 431);
             this.textBoxMoney.Name = "textBoxMoney";
             this.textBoxMoney.Size = new System.Drawing.Size(37, 20);
             this.textBoxMoney.TabIndex = 35;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(160, 405);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(96, 23);
+            this.button9.TabIndex = 40;
+            this.button9.Text = "Menu";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Location = new System.Drawing.Point(160, 431);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(96, 23);
+            this.buttonExit.TabIndex = 39;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(305, 414);
+            this.ClientSize = new System.Drawing.Size(305, 462);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label125);
             this.Controls.Add(this.textBoxMoney);
             this.Controls.Add(this.label6);
@@ -371,6 +395,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label125;
         private System.Windows.Forms.TextBox textBoxMoney;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button buttonExit;
     }
 }
 
