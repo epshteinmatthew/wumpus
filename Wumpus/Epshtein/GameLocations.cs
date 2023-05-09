@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chan_WumpusTest;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ namespace Epshtein
 {
     public class GameLocations
     {
-        int wumpusLocation, playerLocation;
+        public int wumpusLocation, playerLocation;
+        Cave cave = new Cave("1", 1);
         //generate in constructor
         List<int> batLocations = new List<int>(), pitLocations = new List<int>();
         Random generator = new Random();
@@ -69,7 +71,7 @@ namespace Epshtein
         }
         public int[] generateAdjacentRooms(int room)
         {
-            return new int[] { };
+            return cave.GetAdjacentCaves(room);
         }
 
         //shoots an arrow into the target room
@@ -104,6 +106,7 @@ namespace Epshtein
                 int[] options = generateAdjacentRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
                 wumpusLocation = options[0];
             }
+
         }
     }
 }

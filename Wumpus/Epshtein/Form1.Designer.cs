@@ -64,6 +64,7 @@ namespace Epshtein
             this.buttonmovewump.TabIndex = 2;
             this.buttonmovewump.Text = "move wumpus";
             this.buttonmovewump.UseVisualStyleBackColor = true;
+            this.buttonmovewump.Click += new System.EventHandler(this.buttonmovewump_Click);
             // 
             // label1
             // 
@@ -71,9 +72,9 @@ namespace Epshtein
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 80.25F);
             this.label1.Location = new System.Drawing.Point(78, 120);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(338, 120);
+            this.label1.Size = new System.Drawing.Size(0, 120);
             this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
