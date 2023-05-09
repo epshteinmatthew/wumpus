@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wumpus;
 
 namespace _1095652_Roth_HuntTheWumpus
 {
@@ -16,7 +17,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new StartMenu());
         }
     }
 }

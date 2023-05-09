@@ -51,7 +51,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label125 = new System.Windows.Forms.Label();
             this.textBoxMoney = new System.Windows.Forms.TextBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -156,7 +156,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -310,15 +309,15 @@
             this.textBoxMoney.Size = new System.Drawing.Size(37, 20);
             this.textBoxMoney.TabIndex = 35;
             // 
-            // button9
+            // buttonMenu
             // 
-            this.button9.Location = new System.Drawing.Point(160, 405);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(96, 23);
-            this.button9.TabIndex = 40;
-            this.button9.Text = "Menu";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.buttonMenu.Location = new System.Drawing.Point(160, 405);
+            this.buttonMenu.Name = "buttonMenu";
+            this.buttonMenu.Size = new System.Drawing.Size(96, 23);
+            this.buttonMenu.TabIndex = 40;
+            this.buttonMenu.Text = "Menu";
+            this.buttonMenu.UseVisualStyleBackColor = true;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // buttonExit
             // 
@@ -336,7 +335,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(305, 462);
-            this.Controls.Add(this.button9);
+            this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label125);
             this.Controls.Add(this.textBoxMoney);
@@ -395,7 +394,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label125;
         private System.Windows.Forms.TextBox textBoxMoney;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonExit;
     }
 }

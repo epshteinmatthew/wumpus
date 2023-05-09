@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1095652_Roth_HuntTheWumpus;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,9 @@ namespace Wumpus
 
         private void buttonDeath_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            Form1 form = new Form1();
+            form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonDeath = new System.Windows.Forms.Button();
+            this.buttonRetry = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -43,15 +43,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonDeath
+            // buttonRetry
             // 
-            this.buttonDeath.Location = new System.Drawing.Point(153, 106);
-            this.buttonDeath.Name = "buttonDeath";
-            this.buttonDeath.Size = new System.Drawing.Size(75, 21);
-            this.buttonDeath.TabIndex = 5;
-            this.buttonDeath.Text = "Try Again?";
-            this.buttonDeath.UseVisualStyleBackColor = true;
-            this.buttonDeath.Click += new System.EventHandler(this.buttonDeath_Click);
+            this.buttonRetry.Location = new System.Drawing.Point(153, 106);
+            this.buttonRetry.Name = "buttonRetry";
+            this.buttonRetry.Size = new System.Drawing.Size(75, 21);
+            this.buttonRetry.TabIndex = 5;
+            this.buttonRetry.Text = "Try Again?";
+            this.buttonRetry.UseVisualStyleBackColor = true;
+            this.buttonRetry.Click += new System.EventHandler(this.buttonRetry_Click);
             // 
             // label1
             // 
@@ -69,9 +69,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 238);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonDeath);
+            this.Controls.Add(this.buttonRetry);
             this.Controls.Add(this.label1);
             this.Name = "Win";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Win";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -81,7 +82,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonDeath;
+        private System.Windows.Forms.Button buttonRetry;
         private System.Windows.Forms.Label label1;
     }
 }

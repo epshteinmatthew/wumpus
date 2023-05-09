@@ -72,6 +72,7 @@
             this.Controls.Add(this.buttonDeath);
             this.Controls.Add(this.label1);
             this.Name = "Death";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Death";
             this.ResumeLayout(false);
             this.PerformLayout();
