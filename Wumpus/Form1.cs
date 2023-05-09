@@ -119,6 +119,8 @@ namespace _1095652_Roth_HuntTheWumpus
             this.Hide();
             Death dead = new Death();
             dead.ShowDialog();
+
+            this.Close();
         }
 
         private void buttonMenu_Click(object sender, EventArgs e)
@@ -126,6 +128,8 @@ namespace _1095652_Roth_HuntTheWumpus
             this.Hide();
             StartMenu menu = new StartMenu();
             menu.ShowDialog();
+
+            this.Close();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
