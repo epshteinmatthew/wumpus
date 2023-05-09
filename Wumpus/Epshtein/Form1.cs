@@ -26,5 +26,19 @@ namespace Epshtein
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonmovewump_Click(object sender, EventArgs e)
+        {
+            if(gameLocations != null)
+            {
+                gameLocations.moveWumpus(2);
+                label1.Text = gameLocations.wumpusLocation.ToString();
+            }
+        }
     }
 }
