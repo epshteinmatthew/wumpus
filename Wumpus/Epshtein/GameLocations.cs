@@ -91,6 +91,12 @@ namespace Epshtein
             return "";
         }
 
+        public void vdvAirlift()
+        {
+            //comrade! the ICC is near! we must airlift you to a safer location!
+            playerLocation = generator.Next(1, 30);
+        }
+
         //resets the player's location to the entry tile
 	    public void resetPlayer()
         {
