@@ -52,7 +52,7 @@ namespace Epshtein
         public string getWarnings()
         {
             bool wump = false; bool pit = false; bool bat = false;
-            foreach (int room in generateAdjacentRooms(playerLocation))
+            foreach (int room in generateConnectedRooms(playerLocation))
             {
                 if (isWumpusInRoom(room))
                 {
