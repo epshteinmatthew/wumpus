@@ -53,7 +53,7 @@ namespace Cao
         }
         public int WumpusLocation()
         {
-            return wumpusLocation;
+            return Gamelocations.wumpusLocation;
         }
 
     }   
