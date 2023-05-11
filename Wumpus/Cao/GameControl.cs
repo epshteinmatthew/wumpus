@@ -37,6 +37,16 @@ namespace Cao
             //4. if false, decrement arrow from Player Object
             return Gamelocations.shootArrow(ShootTo);
         }
+
+        public void Move(int moveTo)
+        {
+            //1. try to move to moveTo using gameLocation's method
+            //2. send an array of adjacent rooms to the ui form(can be done later)
+            //3. check for hazards in the player's room. methods should also exist to handle each hazard
+            //4. check for wumpus in current player's room. method should exists to handle this as well
+            //5. generate and send(send can be done later) warnings and hints for current room to ui form
+        }
+
         public bool Arrows()
         {
             return Player.arrowsValid();
