@@ -12,6 +12,8 @@ namespace Cao
     public class GameControl
 
     {
+        //implement:
+        //move, this should attempt to move the player to some room, then check for wumpus, harzards, and warning, and handle those events accordingly. this should additionally talk to the form
         public GameLocations Gamelocations { get; set; } = new GameLocations(0,0);
         public Player Player { get; set; } = new Player();
         public int LocationUpdate;
