@@ -38,7 +38,8 @@ namespace Cao
             //4. if false, decrement arrow from Player Object
             if (Player.arrowsValid() == false)
             {
-                return false;
+                //end game (fail)
+                return;
             }
             bool succsess = Gamelocations.shootArrow(ShootTo);
             if(!succsess)
