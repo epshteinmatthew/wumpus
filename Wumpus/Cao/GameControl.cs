@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Cao
 {
@@ -35,6 +36,11 @@ namespace Cao
             //2. call gameLocations's shootarrow method to the target rom and tore the return value in a variable
             //3. if true, kill wumpus and trigger end of game
             //4. if false, decrement arrow from Player Object
+            if (Player.arrowsValid() == false)
+            {
+                return false;
+            }
+            Player.arrows--;
             return Gamelocations.shootArrow(ShootTo);
         }
 
