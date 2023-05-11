@@ -244,5 +244,8 @@
   <ItemGroup>
     <None Include="Resources\ECE73321-AABD-4B85-8E38-B376FA17C26E.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jailed.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
