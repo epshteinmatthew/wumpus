@@ -24,6 +24,9 @@ namespace Wumpus
             Form1 form = new Form1();
             form.ShowDialog();
 
+            this.Close();
+
+            //code to reset variables here:
         }
 
         private void button1_Click(object sender, EventArgs e)

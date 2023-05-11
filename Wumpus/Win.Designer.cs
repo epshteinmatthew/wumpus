@@ -74,6 +74,7 @@
             this.Name = "Win";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Win";
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,15 +18,21 @@ namespace Wumpus
             InitializeComponent();
         }
 
-        private void buttonDeath_Click(object sender, EventArgs e)
+        private void buttonRetry_Click(object sender, EventArgs e)
         {
+            //hides this form and restarts the game
             this.Hide();
             Form1 form = new Form1();
             form.ShowDialog();
+
+            this.Close();
+
+            //code to reset variables here:
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //closes all forms
             Environment.Exit(0);
         }
     }
