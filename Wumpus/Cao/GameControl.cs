@@ -26,9 +26,9 @@ namespace Cao
 
         }
         
-        public int Score()
+        public int Score(bool wumpusDead)
         {
-            return 0;
+            return Player.points(wumpusDead);
         }
         public void Shoot(int ShootTo)
         {
@@ -57,7 +57,13 @@ namespace Cao
             //3. check for hazards in the player's room. methods should also exist to handle each hazard
             //4. check for wumpus in current player's room. method should exists to handle this as well
             //5. generate and send(send can be done later) warnings and hints for current room to ui form
-            Gamelocations.movePlayer(moveTo);
+            if (Gamelocations.movePlayer(moveTo))
+            {
+                Player.turnsTaken++;
+                Player.payGold(1);
+            }
+
+
             //step 2 here
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());

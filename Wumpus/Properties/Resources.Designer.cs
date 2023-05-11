@@ -233,6 +233,16 @@ namespace Wumpus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jailed {
+            get {
+                object obj = ResourceManager.GetObject("jailed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pixel_art {
             get {
                 object obj = ResourceManager.GetObject("pixel_art", resourceCulture);
