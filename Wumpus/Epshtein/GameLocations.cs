@@ -74,9 +74,18 @@ namespace Epshtein
             return cave.GetAdjacentCaves(room);
         }
 
+        public int[] generateConnectedRooms(int room) => cave.GetConnectedCaves(room);
+
         //shoots an arrow into the target room
         public bool shootArrow(int targetRoom)
         {
+            //verify arrows
+
+            if(generateConnectedRooms(playerLocation).Contains(targetRoom) && isWumpusInRoom(targetRoom) ){ 
+                //trigger TOTAL WUMPUS DEATH
+                return true; 
+            }
+            //failed to kill wumpus. send something to the screen
             return false;
         }
 
@@ -95,15 +104,19 @@ namespace Epshtein
         public bool movePlayer(int targetRoom)
         {
             //attempt to move player to room passed in, return false if fails
-            
-            return true;
+            if (generateConnectedRooms(playerLocation).Contains(targetRoom))
+            {
+                playerLocation = targetRoom;
+                return true;
+            }
+            return false;
         }
 
         //move the wumpus a certain number of times. each time = move to 1 adjacent room. 
         public void moveWumpus(int turns)
         {
             for (int i = 0; i < turns; i++){
-                int[] options = generateAdjacentRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
+                int[] options = generateConnectedRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
                 wumpusLocation = options[0];
             }
 
