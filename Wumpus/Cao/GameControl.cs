@@ -51,6 +51,24 @@ namespace Cao
             //3. check for hazards in the player's room. methods should also exist to handle each hazard
             //4. check for wumpus in current player's room. method should exists to handle this as well
             //5. generate and send(send can be done later) warnings and hints for current room to ui form
+            Gamelocations.movePlayer(moveTo);
+            //step 2 here
+            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
+            {
+                //trivia, move wumpus
+
+            }
+            if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
+            {
+                //move to another room
+            }
+            if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
+            {
+                //trivia
+            }
+            string warnings = Gamelocations.getWarnings();
         }
 
         public bool Arrows()
