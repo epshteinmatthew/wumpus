@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Epshtein;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace Cao
 {
+
     public class GameControl
+
     {
+        public GameLocations Gamelocations { get; set; } = new GameLocations(0,0);
+        public Player Player { get; set; } = new Player();
         public int LocationUpdate;
         public int ScoringThings;
         public int TriviaTrigger;
@@ -22,13 +27,17 @@ namespace Cao
         {
             return 0;
         }
-        public int Shoot(int ShootTo)
+        public bool Shoot(int ShootTo)
         {
-            return 0;
+            return Gamelocations.shootArrow(ShootTo);
+        }
+        public bool Arrows()
+        {
+            return Player.arrowsValid();
         }
         public int GameLocation(int MoveTo)
         {
-            return 1;
+            return Gamelocations.getPlayerLocation();
         }
         public int Trivia()
         {
@@ -36,11 +45,11 @@ namespace Cao
         } 
         public int Coin()
         {
-            return 0;
+            return Player.gold;
         }
         public int WumpusLocation()
         {
-            return 0;
+            return wumpusLocation;
         }
 
     }   
