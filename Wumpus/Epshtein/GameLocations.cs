@@ -33,7 +33,7 @@ namespace Epshtein
                 }
             }
             wumpusLocation = generator.Next(1,30);
-
+            playerLocation = 1;
         }
 
         //is the wumpus in the room passed in?
