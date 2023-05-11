@@ -79,13 +79,9 @@ namespace Epshtein
         //shoots an arrow into the target room
         public bool shootArrow(int targetRoom)
         {
-            //verify arrows
-
             if(generateConnectedRooms(playerLocation).Contains(targetRoom) && isWumpusInRoom(targetRoom) ){ 
-                //trigger TOTAL WUMPUS DEATH
                 return true; 
             }
-            //failed to kill wumpus. send something to the screen
             return false;
         }
 
