@@ -30,7 +30,7 @@ namespace Cao
         {
             return 0;
         }
-        public bool Shoot(int ShootTo)
+        public void Shoot(int ShootTo)
         {
             //1. verify that player has enough arrows. Player has a method for this
             //2. call gameLocations's shootarrow method to the target rom and tore the return value in a variable
@@ -38,10 +38,16 @@ namespace Cao
             //4. if false, decrement arrow from Player Object
             if (Player.arrowsValid() == false)
             {
-                return false;
+                //end game (fail)
+                return;
             }
-            Player.arrows--;
-            return Gamelocations.shootArrow(ShootTo);
+            bool succsess = Gamelocations.shootArrow(ShootTo);
+            if(!succsess)
+            {
+                Player.arrows--;
+                return;
+            }
+            //TOTAL WUMPUS DEATH
         }
 
         public void Move(int moveTo)

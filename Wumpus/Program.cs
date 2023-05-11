@@ -17,7 +17,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Epshtein.Form1());
+            Application.Run(new Form1());
         }
     }
 }
