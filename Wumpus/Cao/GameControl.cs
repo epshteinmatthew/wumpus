@@ -68,7 +68,7 @@ namespace Cao
             }
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
-                //move to another room
+                
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
