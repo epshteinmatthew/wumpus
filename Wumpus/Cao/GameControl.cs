@@ -74,7 +74,7 @@ namespace Cao
             }
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
-                
+                Gamelocations.vdvAirlift();
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
