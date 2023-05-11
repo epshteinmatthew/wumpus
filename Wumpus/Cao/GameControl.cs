@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Cao
 {
@@ -29,6 +30,11 @@ namespace Cao
         }
         public bool Shoot(int ShootTo)
         {
+            if (Player.arrowsValid() == false)
+            {
+                return false;
+            }
+            
             //1. verify that player has enough arrows. Player has a method for this
             //2. call gameLocations's shootarrow method to the target rom and tore the return value in a variable
             //3. if true, kill wumpus and trigger end of game
