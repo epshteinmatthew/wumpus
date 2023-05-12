@@ -13,6 +13,7 @@ namespace Cao
 {
     public partial class SubmitAnswerButton : Form
     {
+        string answer;
         Random RandomGenerator = new Random();
         //.OrderBy(_=>generator.Next()).ToArray();
         Dictionary<string, List<string>> questions = new Dictionary<string, List<string>>()
@@ -30,7 +31,15 @@ namespace Cao
             string question = questions.Keys.OrderBy(_ => RandomGenerator.Next()).ToArray()[0];
             string[] answers = questions[question].OrderBy(_ => RandomGenerator.Next()).ToArray();
             //SAVE "ANSWER" SOMEHOW: NEEDS TO BE CHECK AGAINBST
-            string answer = questions[question][0];
+            answer = questions[question][0];
+
+            TriviaQuestion.Text = question;
+            Answer1.Text = answers[0];
+            Answer2.Text = answers[1];
+            Answer3.Text = answers[2];
+            Answer4.Text = answers[3];
+            
+
 
         }
 
@@ -41,12 +50,17 @@ namespace Cao
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void SubmitAnswerButton_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SubmitAnswerButton_Activated(object sender, EventArgs e)
+        {
+            populate();
         }
     }
 }
