@@ -102,7 +102,15 @@ namespace Chan_WumpusTest
 
         public int[] GetConnectedCaves(int room)
         {
-            return connections[room - 1];
+            List<int> connected = new List<int>();
+            for (int i = 0; i < connections[room-1].Length; i++)
+            {
+                if (connections[room - 1][i] == 1)
+                {
+                    connected.Add(GetAdjacentCaves(room)[i]);
+                }
+            }
+            return connected.ToArray();
         }
 
     }

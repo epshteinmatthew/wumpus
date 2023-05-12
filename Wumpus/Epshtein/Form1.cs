@@ -40,5 +40,13 @@ namespace Epshtein
                 label1.Text = gameLocations.wumpusLocation.ToString();
             }
         }
+
+        private void buttonMovePlayer_Click(object sender, EventArgs e)
+        {
+            if (gameLocations != null)
+            {
+                label2.Text =  gameLocations.movePlayer(int.Parse(textBoxtoMove.Text)).ToString();
+            }
+        }
     }
 }

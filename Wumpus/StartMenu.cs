@@ -53,5 +53,10 @@ namespace Wumpus
             timer1.Stop();
             timer1.Start();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -34,6 +34,9 @@ namespace Epshtein
             this.PlayerConstructorButton = new System.Windows.Forms.Button();
             this.buttonmovewump = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonMovePlayer = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxtoMove = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ConstructorButton
@@ -76,11 +79,40 @@ namespace Epshtein
             this.label1.TabIndex = 3;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // buttonMovePlayer
+            // 
+            this.buttonMovePlayer.Location = new System.Drawing.Point(81, 89);
+            this.buttonMovePlayer.Name = "buttonMovePlayer";
+            this.buttonMovePlayer.Size = new System.Drawing.Size(142, 71);
+            this.buttonMovePlayer.TabIndex = 4;
+            this.buttonMovePlayer.Text = "move player";
+            this.buttonMovePlayer.UseVisualStyleBackColor = true;
+            this.buttonMovePlayer.Click += new System.EventHandler(this.buttonMovePlayer_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(248, 118);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "rplayeroom";
+            // 
+            // textBoxtoMove
+            // 
+            this.textBoxtoMove.Location = new System.Drawing.Point(382, 115);
+            this.textBoxtoMove.Name = "textBoxtoMove";
+            this.textBoxtoMove.Size = new System.Drawing.Size(100, 20);
+            this.textBoxtoMove.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.textBoxtoMove);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.buttonMovePlayer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonmovewump);
             this.Controls.Add(this.PlayerConstructorButton);
@@ -99,5 +131,8 @@ namespace Epshtein
         private Button PlayerConstructorButton;
         private Button buttonmovewump;
         private Label label1;
+        private Button buttonMovePlayer;
+        private Label label2;
+        private TextBox textBoxtoMove;
     }
 }
