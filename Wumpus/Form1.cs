@@ -11,15 +11,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wumpus;
 using System.Media;
+using Chan_WumpusTest;
+using System.Diagnostics;
+using Epshtein;
 
 namespace _1095652_Roth_HuntTheWumpus
 {
     public partial class Form1 : Form
     {
+        Epshtein.GameLocations locations;
+
         public Form1()
         {
+            locations = new GameLocations(1, 1);
             InitializeComponent();
-            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,27 +43,76 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button1_Click(object sender, EventArgs e)
         {
+            if (buttonMove.Enabled == true)
+            {
+                Debug.WriteLine(locations.generateAdjacentRooms(1).ToString());
+                button1.Text = "0";
+            }
+            else
+            {
+
+            }
             MoveButtonClicked();
         }
         public void button2_Click(object sender, EventArgs e)
         {
             MoveButtonClicked();
+            if (buttonMove.Enabled)
+            {
+
+            }
+            else
+            {
+
+            }
         }
         public void button3_Click(object sender, EventArgs e)
         {
             MoveButtonClicked();
+            if (buttonMove.Enabled)
+            {
+
+            }
+            else
+            {
+
+            }
         }
         public void button6_Click(object sender, EventArgs e)
         {
             MoveButtonClicked();
+            if (buttonMove.Enabled)
+            {
+
+            }
+            else
+            {
+
+            }
         }
         public void button7_Click(object sender, EventArgs e)
         {
             MoveButtonClicked();
+            if (buttonMove.Enabled)
+            {
+
+            }
+            else
+            {
+
+            }
         }
         public void button4_Click(object sender, EventArgs e)
         {
             MoveButtonClicked();
+            if (buttonMove.Enabled)
+            {
+                
+            }
+            else
+            {
+
+            }
         }
         private void buttonShoot_Click(object sender, EventArgs e)
         {
@@ -73,6 +127,7 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         private void buttonMove_Click(object sender, EventArgs e)
         {
+            button1.Text = ")";
             //enables the hexagon buttons disables the shoot button
             button1.Enabled = true;
             button2.Enabled = true;
@@ -153,6 +208,11 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             //closes all forms
             Environment.Exit(0);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
