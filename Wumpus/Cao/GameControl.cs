@@ -74,6 +74,7 @@ namespace Cao
             }
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
+                //random from 1 to 10 if less than 2: trivia
                 Gamelocations.vdvAirlift();
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))

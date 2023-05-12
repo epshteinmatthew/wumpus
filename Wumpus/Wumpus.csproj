@@ -59,6 +59,12 @@
     <Compile Include="Cao\GameControlMain.Designer.cs">
       <DependentUpon>GameControlMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cao\Trivia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cao\Trivia.Designer.cs">
+      <DependentUpon>Trivia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chan\Cave.cs" />
     <Compile Include="Chan\Form1.cs">
       <SubType>Form</SubType>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cao\GameControlMain.resx">
       <DependentUpon>GameControlMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cao\Trivia.resx">
+      <DependentUpon>Trivia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chan\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

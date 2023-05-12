@@ -88,6 +88,11 @@ namespace Epshtein
         //randomly generate some information about the game locations and return it to the player
         public string getSecret()
         {
+            int roll = generator.Next(1, 20);
+            if(roll < 1)
+            {
+                //
+            }
             return "";
         }
 

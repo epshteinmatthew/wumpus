@@ -112,6 +112,7 @@
             this.Controls.Add(this.TriviaQuestion);
             this.Name = "SubmitAnswerButton";
             this.Text = "Trivia Form";
+            this.Activated += new System.EventHandler(this.SubmitAnswerButton_Activated);
             this.Load += new System.EventHandler(this.SubmitAnswerButton_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
