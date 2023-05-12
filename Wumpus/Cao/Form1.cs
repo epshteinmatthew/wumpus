@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +25,14 @@ namespace Cao
         };
         //commit test
         
+        public void populate()
+        {
+            string question = questions.Keys.OrderBy(_ => RandomGenerator.Next()).ToArray()[0];
+            string[] answers = questions[question].OrderBy(_ => RandomGenerator.Next()).ToArray();
+            //SAVE "ANSWER" SOMEHOW: NEEDS TO BE CHECK AGAINBST
+            string answer = questions[question][0];
+
+        }
 
         public SubmitAnswerButton()
         {
