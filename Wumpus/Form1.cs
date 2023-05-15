@@ -14,23 +14,54 @@ using System.Media;
 using Chan_WumpusTest;
 using System.Diagnostics;
 using Epshtein;
+using Cao;
 
 namespace _1095652_Roth_HuntTheWumpus
 {
     public partial class Form1 : Form
     {
-        Epshtein.GameLocations locations;
+        Cao.GameControl control = new GameControl();
 
         public Form1()
         {
-            locations = new GameLocations(1, 1);
             InitializeComponent();
         }
 
         //TODO: This
         public void updateRooms(int[] adj, int[] con)
         {
-            
+            button1.Text = adj[0].ToString();
+            if (!con.Contains(adj[0]))
+            {
+                button1.Visible = false;
+            }
+            button2.Text = adj[1].ToString();
+            if (!con.Contains(adj[1]))
+            {
+                button2.Visible = false;
+            }
+            button3.Text = adj[2].ToString();
+            if (!con.Contains(adj[2]))
+            {
+                button3.Visible = false;
+
+            }
+            button4.Text = adj[3].ToString();
+            if (!con.Contains(adj[3]))
+            {
+                button4.Visible = false;
+            }
+            button5.Text = adj[4].ToString();
+            if (!con.Contains(adj[4]))
+            {
+                button5.Visible = false;
+            }
+            button6.Text = adj[5].ToString();
+            if (!con.Contains(adj[5]))
+            {
+                button6.Visible = false;
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,8 +82,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(1).ToString());
-                button1.Text = locations.generateAdjacentRooms(1)[1].ToString();
+                control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
 
             }
@@ -70,8 +100,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(2).ToString());
-                button2.Text = "0";
+                control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -88,8 +117,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(3).ToString());
-                button3.Text = "0";
+                control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -106,8 +134,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(4).ToString());
-                button4.Text = "0";
+                control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -124,8 +151,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(5).ToString());
-                button5.Text = "0";
+                control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -142,8 +168,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(6).ToString());
-                button6.Text = "0";
+                control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
