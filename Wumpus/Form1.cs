@@ -27,6 +27,12 @@ namespace _1095652_Roth_HuntTheWumpus
             InitializeComponent();
         }
 
+        //TODO: This
+        public void updateRooms(int[] adj, int[] con)
+        {
+            
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //drawes the hexagon buttons
