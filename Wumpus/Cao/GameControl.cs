@@ -68,6 +68,7 @@ namespace Cao
             {
                 Player.turnsTaken++;
                 Player.payGold(1);
+                
             }
 
 

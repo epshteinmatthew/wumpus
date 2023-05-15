@@ -47,7 +47,6 @@
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonJEFF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -250,23 +249,12 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // buttonJEFF
-            // 
-            this.buttonJEFF.Location = new System.Drawing.Point(0, 7);
-            this.buttonJEFF.Name = "buttonJEFF";
-            this.buttonJEFF.Size = new System.Drawing.Size(75, 23);
-            this.buttonJEFF.TabIndex = 41;
-            this.buttonJEFF.Text = "button7";
-            this.buttonJEFF.UseVisualStyleBackColor = true;
-            
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(292, 462);
-            this.Controls.Add(this.buttonJEFF);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label125);
@@ -316,7 +304,6 @@
         private System.Windows.Forms.TextBox textBoxMoney;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button buttonJEFF;
     }
 }
 
