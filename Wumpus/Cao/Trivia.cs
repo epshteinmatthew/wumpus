@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1095652_Roth_HuntTheWumpus;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,6 +69,14 @@ namespace Cao
                 QuestionNumber++;
                 IncorrectNumber++;
             }
+            if (CorrectNumber == 3)
+            {
+                Form1 form = new Form1();
+                form.ShowDialog();
+
+                this.Close();
+            }
+
         }
 
         private void SubmitAnswerButton_Load(object sender, EventArgs e)
