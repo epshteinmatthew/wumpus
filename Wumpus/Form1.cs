@@ -240,5 +240,10 @@ namespace _1095652_Roth_HuntTheWumpus
         {
 
         }
+
+        private void button1546154765763475237458235_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

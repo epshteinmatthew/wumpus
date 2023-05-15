@@ -47,6 +47,7 @@
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonJEFF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             this.button3.TabIndex = 14;
             this.button3.Text = "0";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button1_Click);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -88,7 +89,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "3";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button3_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button4
             // 
@@ -249,12 +250,23 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // buttonJEFF
+            // 
+            this.buttonJEFF.Location = new System.Drawing.Point(0, 7);
+            this.buttonJEFF.Name = "buttonJEFF";
+            this.buttonJEFF.Size = new System.Drawing.Size(75, 23);
+            this.buttonJEFF.TabIndex = 41;
+            this.buttonJEFF.Text = "button7";
+            this.buttonJEFF.UseVisualStyleBackColor = true;
+            
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(292, 462);
+            this.Controls.Add(this.buttonJEFF);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label125);
@@ -304,6 +316,7 @@
         private System.Windows.Forms.TextBox textBoxMoney;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonJEFF;
     }
 }
 
