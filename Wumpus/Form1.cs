@@ -33,119 +33,134 @@ namespace _1095652_Roth_HuntTheWumpus
             GraphicsPath hexagon = new GraphicsPath();
             Point[] points = { new Point(0, 50), new Point(25, 10), new Point(75, 10), new Point(100, 50), new Point(100, 50), new Point(75, 90), new Point(25, 90), new Point(0, 50) };
             hexagon.AddLines(points);
-            button1.Region = new Region(hexagon);
-            button2.Region = new Region(hexagon);
             button3.Region = new Region(hexagon);
+            button2.Region = new Region(hexagon);
+            button1.Region = new Region(hexagon);
             button4.Region = new Region(hexagon);
-            button5.Region = new Region(hexagon);
+            button123.Region = new Region(hexagon);
             button6.Region = new Region(hexagon);
-            button7.Region = new Region(hexagon);
+            button5.Region = new Region(hexagon);
         }
         public void button1_Click(object sender, EventArgs e)
         {
             if (buttonMove.Enabled == true)
             {
                 Debug.WriteLine(locations.generateAdjacentRooms(1).ToString());
-                button1.Text = "0";
+                button1.Text = locations.generateAdjacentRooms(1)[1].ToString();
+                MoveButtonClicked();
+
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
             }
             else
-            {
-
-            }
-            MoveButtonClicked();
-        }
-        public void button2_Click(object sender, EventArgs e)
-        {
-            MoveButtonClicked();
-            if (buttonMove.Enabled)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-        public void button3_Click(object sender, EventArgs e)
-        {
-            MoveButtonClicked();
-            if (buttonMove.Enabled)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-        public void button6_Click(object sender, EventArgs e)
-        {
-            MoveButtonClicked();
-            if (buttonMove.Enabled)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-        public void button7_Click(object sender, EventArgs e)
-        {
-            MoveButtonClicked();
-            if (buttonMove.Enabled)
-            {
-
-            }
-            else
-            {
-
-            }
-        }
-        public void button4_Click(object sender, EventArgs e)
-        {
-            MoveButtonClicked();
-            if (buttonMove.Enabled)
             {
                 
             }
+            
+        }
+        public void button2_Click(object sender, EventArgs e)
+        {
+            if (buttonMove.Enabled == true)
+            {
+                Debug.WriteLine(locations.generateAdjacentRooms(2).ToString());
+                button2.Text = "0";
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
             else
             {
 
             }
+            
+        }
+        public void button3_Click(object sender, EventArgs e)
+        {
+            if (buttonMove.Enabled == true)
+            {
+                Debug.WriteLine(locations.generateAdjacentRooms(3).ToString());
+                button3.Text = "0";
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+
+            }
+            
+        }
+        public void button4_Click(object sender, EventArgs e)
+        {
+            if (buttonMove.Enabled == true)
+            {
+                Debug.WriteLine(locations.generateAdjacentRooms(4).ToString());
+                button4.Text = "0";
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+
+            }
+            
+        }
+        public void button5_Click(object sender, EventArgs e)
+        {
+            if (buttonMove.Enabled == true)
+            {
+                Debug.WriteLine(locations.generateAdjacentRooms(5).ToString());
+                button5.Text = "0";
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+
+            }
+            
+        }
+        public void button6_Click(object sender, EventArgs e)
+        {
+            if (buttonMove.Enabled == true)
+            {
+                Debug.WriteLine(locations.generateAdjacentRooms(6).ToString());
+                button6.Text = "0";
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+                //leave blank
+            }
+            
         }
         private void buttonShoot_Click(object sender, EventArgs e)
         {
-            //enables the hexagon buttons disables the move button
-            button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
             buttonMove.Enabled = false;
         }
         private void buttonMove_Click(object sender, EventArgs e)
         {
-            button1.Text = ")";
-            //enables the hexagon buttons disables the shoot button
-            button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
+            
             buttonShoot.Enabled = false;
         }
         private void MoveButtonClicked()
         {
-            //disables hexagon buttons and enables the move/shoot buttons
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
             buttonMove.Enabled = true;
             buttonShoot.Enabled = true;
         }
@@ -211,6 +226,11 @@ namespace _1095652_Roth_HuntTheWumpus
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
         {
 
         }

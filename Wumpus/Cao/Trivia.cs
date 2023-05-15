@@ -27,7 +27,7 @@ namespace Wumpus.Cao
 
         };
 
-        public int suddenTrivia();
+        //public int suddenTrivia();
 
            
             public Trivia()
