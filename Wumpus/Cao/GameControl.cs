@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wumpus;
 
 namespace Cao
 {
@@ -41,12 +42,18 @@ namespace Cao
                 //end game (fail)
                 return;
             }
-            bool succsess = Gamelocations.shootArrow(ShootTo);
-            if(!succsess)
+            bool success = Gamelocations.shootArrow(ShootTo);
+            if(!success)
             {
                 Player.arrows--;
                 return;
+                
+
+               
             }
+            Win win = new Win();
+            win.ShowDialog();
+
             //TOTAL WUMPUS DEATH
         }
 
@@ -104,6 +111,7 @@ namespace Cao
         {
             return Gamelocations.wumpusLocation;
         }
+        
 
     }   
 }

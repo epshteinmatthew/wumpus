@@ -33,5 +33,10 @@ namespace Wumpus
         {
             Environment.Exit(0);
         }
+
+        private void Win_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cao\Form1.cs">
+    <Compile Include="Cao\Trivia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cao\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Cao\Trivia.Designer.cs">
+      <DependentUpon>Trivia.cs</DependentUpon>
     </Compile>
     <Compile Include="Cao\GameControl.cs" />
     <Compile Include="Cao\GameControlMain.cs">
@@ -58,12 +58,6 @@
     </Compile>
     <Compile Include="Cao\GameControlMain.Designer.cs">
       <DependentUpon>GameControlMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cao\Trivia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cao\Trivia.Designer.cs">
-      <DependentUpon>Trivia.cs</DependentUpon>
     </Compile>
     <Compile Include="Chan\Cave.cs" />
     <Compile Include="Chan\Form1.cs">
@@ -107,14 +101,11 @@
     <Compile Include="Win.Designer.cs">
       <DependentUpon>Win.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Cao\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Cao\Trivia.resx">
+      <DependentUpon>Trivia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cao\GameControlMain.resx">
       <DependentUpon>GameControlMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cao\Trivia.resx">
-      <DependentUpon>Trivia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chan\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
