@@ -49,9 +49,8 @@ namespace Wumpus
             
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
-            player.Play();
-            timer1.Stop();
-            timer1.Start();
+            player.PlayLooping();
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
