@@ -88,13 +88,13 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button1_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
                 control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
 
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -106,12 +106,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button2_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
                 control.Move(int.Parse(button2.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -123,12 +123,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button3_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
                 control.Move(int.Parse(button3.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -140,12 +140,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button4_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
                 control.Move(int.Parse(button4.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -157,12 +157,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button5_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
                 control.Move(int.Parse(button5.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -174,12 +174,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button6_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
                 control.Move(int.Parse(button6.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
