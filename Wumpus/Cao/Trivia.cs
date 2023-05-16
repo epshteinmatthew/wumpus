@@ -17,7 +17,6 @@ namespace Cao
         string answer;
         int QuestionNumber = 1;
         int CorrectNumber = 0;
-        int IncorrectNumber = 0;
 
         Random RandomGenerator = new Random();
         //.OrderBy(_=>generator.Next()).ToArray();
@@ -67,7 +66,6 @@ namespace Cao
             else
             {
                 QuestionNumber++;
-                IncorrectNumber++;
             }
             if (CorrectNumber == 3)
             {
@@ -83,7 +81,7 @@ namespace Cao
         {
             label4.Text = QuestionNumber.ToString();
             label5.Text = CorrectNumber.ToString();
-            label6.Text = IncorrectNumber.ToString();
+            label6.Text = ( QuestionNumber - CorrectNumber ) .ToString();
         }
 
         private void SubmitAnswerButton_Activated(object sender, EventArgs e)
