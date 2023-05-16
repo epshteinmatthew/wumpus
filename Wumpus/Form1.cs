@@ -255,15 +255,5 @@ namespace _1095652_Roth_HuntTheWumpus
             //closes all forms
             Environment.Exit(0);
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
