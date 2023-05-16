@@ -14,23 +14,62 @@ using System.Media;
 using Chan_WumpusTest;
 using System.Diagnostics;
 using Epshtein;
+using Cao;
 
 namespace _1095652_Roth_HuntTheWumpus
 {
     public partial class Form1 : Form
     {
-        Epshtein.GameLocations locations;
+        Cao.GameControl control;
 
         public Form1()
         {
-            locations = new GameLocations(1, 1);
+            control = new GameControl(this);
             InitializeComponent();
         }
 
         //TODO: This
         public void updateRooms(int[] adj, int[] con)
         {
-            
+            button1.Visible = true;
+            button2.Visible = true;
+            button3.Visible = true;
+            button4.Visible = true;
+            button5.Visible = true;
+            button6.Visible = true;
+            //logic?
+            button1.Text = adj[0].ToString();
+            if (!con.Contains(adj[0]))
+            {
+                button1.Visible = false;
+            }
+            button2.Text = adj[1].ToString();
+            if (!con.Contains(adj[1]))
+            {
+                button2.Visible = false;
+            }
+            button3.Text = adj[2].ToString();
+            if (!con.Contains(adj[2]))
+            {
+                button3.Visible = false;
+
+            }
+            button4.Text = adj[3].ToString();
+            if (!con.Contains(adj[3]))
+            {
+                button4.Visible = false;
+            }
+            button5.Text = adj[4].ToString();
+            if (!con.Contains(adj[4]))
+            {
+                button5.Visible = false;
+            }
+            button6.Text = adj[5].ToString();
+            if (!con.Contains(adj[5]))
+            {
+                button6.Visible = false;
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,14 +88,13 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button1_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(1).ToString());
-                button1.Text = locations.generateAdjacentRooms(1)[1].ToString();
+                control.Move(int.Parse(button1.Text));
                 MoveButtonClicked();
 
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -68,13 +106,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button2_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(2).ToString());
-                button2.Text = "0";
+                control.Move(int.Parse(button2.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -86,13 +123,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button3_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(3).ToString());
-                button3.Text = "0";
+                control.Move(int.Parse(button3.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -104,13 +140,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button4_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(4).ToString());
-                button4.Text = "0";
+                control.Move(int.Parse(button4.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -122,13 +157,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button5_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(5).ToString());
-                button5.Text = "0";
+                control.Move(int.Parse(button5.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -140,13 +174,12 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void button6_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == true)
+            if (buttonShoot.Enabled == false)
             {
-                Debug.WriteLine(locations.generateAdjacentRooms(6).ToString());
-                button6.Text = "0";
+                control.Move(int.Parse(button6.Text));
                 MoveButtonClicked();
             }
-            else if (buttonShoot.Enabled == false)
+            else if (buttonMove.Enabled == false)
             {
                 MoveButtonClicked();
             }
@@ -229,21 +262,6 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             //closes all forms
             Environment.Exit(0);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1546154765763475237458235_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

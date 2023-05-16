@@ -15,16 +15,17 @@ namespace Cao
     {
         //implement:
         //move, this should attempt to move the player to some room, then check for wumpus, harzards, and warning, and handle those events accordingly. this should additionally talk to the form
-        public GameLocations Gamelocations { get; set; } = new GameLocations(0,0);
+        public GameLocations Gamelocations { get; set; } = new GameLocations(3,3);
         public Player Player { get; set; } = new Player();
         public int LocationUpdate;
         public int ScoringThings;
         public int TriviaTrigger;
         public int ShootingThing;
         public int CoinCount;
-        public GameControl()
+        private _1095652_Roth_HuntTheWumpus.Form1 form1;
+        public GameControl(_1095652_Roth_HuntTheWumpus.Form1 form)
         {
-
+            form1 = form;
         }
         
         public int Score(bool wumpusDead)
@@ -67,13 +68,16 @@ namespace Cao
             if (Gamelocations.movePlayer(moveTo))
             {
                 Player.turnsTaken++;
-                Player.payGold(1);
+                Player.gold++;
+                
             }
 
 
             //step 2 here
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
+            string warnings = "";
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
                 //trivia, move wumpus
@@ -82,13 +86,16 @@ namespace Cao
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
                 //random from 1 to 10 if less than 2: trivia
+                warnings += "Comrade! the ICC is near! we must airlift you to a safer location! \n";
                 Gamelocations.vdvAirlift();
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
                 //trivia
             }
-            string warnings = Gamelocations.getWarnings();
+            warnings += Gamelocations.getWarnings();
+            form1.SetText(warnings);
+            form1.SetMoney(Player.gold);
         }
 
         public bool Arrows()

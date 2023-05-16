@@ -71,7 +71,6 @@ namespace Cao
             else
             {
                 QuestionNumber++;
-                IncorrectNumber++;
             }
             populate();
             if (CorrectNumber == CorrectThreshold)
@@ -95,7 +94,7 @@ namespace Cao
         {
             label4.Text = QuestionNumber.ToString();
             label5.Text = CorrectNumber.ToString();
-            label6.Text = IncorrectNumber.ToString();
+            label6.Text = ( QuestionNumber - CorrectNumber ) .ToString();
         }
 
         private void SubmitAnswerButton_Activated(object sender, EventArgs e)
