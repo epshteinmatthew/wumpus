@@ -10,127 +10,261 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wumpus;
+using System.Media;
+using Chan_WumpusTest;
+using System.Diagnostics;
+using Epshtein;
+using Cao;
 
 namespace _1095652_Roth_HuntTheWumpus
 {
     public partial class Form1 : Form
     {
+        Cao.GameControl control;
+
         public Form1()
         {
+            control = new GameControl(this);
             InitializeComponent();
+        }
+
+        //TODO: This
+        public void updateRooms(int[] adj, int[] con)
+        {
+            button1.Text = adj[0].ToString();
+            if (!con.Contains(adj[0]))
+            {
+                button1.Visible = false;
+            }
+            button2.Text = adj[1].ToString();
+            if (!con.Contains(adj[1]))
+            {
+                button2.Visible = false;
+            }
+            button3.Text = adj[2].ToString();
+            if (!con.Contains(adj[2]))
+            {
+                button3.Visible = false;
+
+            }
+            button4.Text = adj[3].ToString();
+            if (!con.Contains(adj[3]))
+            {
+                button4.Visible = false;
+            }
+            button5.Text = adj[4].ToString();
+            if (!con.Contains(adj[4]))
+            {
+                button5.Visible = false;
+            }
+            button6.Text = adj[5].ToString();
+            if (!con.Contains(adj[5]))
+            {
+                button6.Visible = false;
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //drawes the hexagon buttons
             GraphicsPath hexagon = new GraphicsPath();
             Point[] points = { new Point(0, 50), new Point(25, 10), new Point(75, 10), new Point(100, 50), new Point(100, 50), new Point(75, 90), new Point(25, 90), new Point(0, 50) };
             hexagon.AddLines(points);
-            button1.Region = new Region(hexagon);
-            button2.Region = new Region(hexagon);
             button3.Region = new Region(hexagon);
+            button2.Region = new Region(hexagon);
+            button1.Region = new Region(hexagon);
             button4.Region = new Region(hexagon);
-            button5.Region = new Region(hexagon);
+            button123.Region = new Region(hexagon);
             button6.Region = new Region(hexagon);
-            button7.Region = new Region(hexagon);
+            button5.Region = new Region(hexagon);
         }
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
-            MoveButtonClicked();
+            if (buttonMove.Enabled == true)
+            {
+                control.Move(int.Parse(button1.Text));
+                MoveButtonClicked();
+
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+                
+            }
+            
         }
-        private void button2_Click(object sender, EventArgs e)
+        public void button2_Click(object sender, EventArgs e)
         {
-            MoveButtonClicked();
+            if (buttonMove.Enabled == true)
+            {
+                control.Move(int.Parse(button1.Text));
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+
+            }
+            
         }
-        private void button3_Click(object sender, EventArgs e)
+        public void button3_Click(object sender, EventArgs e)
         {
-            MoveButtonClicked();
+            if (buttonMove.Enabled == true)
+            {
+                control.Move(int.Parse(button1.Text));
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+
+            }
+            
         }
-        private void button6_Click(object sender, EventArgs e)
+        public void button4_Click(object sender, EventArgs e)
         {
-            MoveButtonClicked();
+            if (buttonMove.Enabled == true)
+            {
+                control.Move(int.Parse(button1.Text));
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+
+            }
+            
         }
-        private void button7_Click(object sender, EventArgs e)
+        public void button5_Click(object sender, EventArgs e)
         {
-            MoveButtonClicked();
+            if (buttonMove.Enabled == true)
+            {
+                control.Move(int.Parse(button1.Text));
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+
+            }
+            
         }
-        private void button4_Click(object sender, EventArgs e)
+        public void button6_Click(object sender, EventArgs e)
         {
-            MoveButtonClicked();
+            if (buttonMove.Enabled == true)
+            {
+                control.Move(int.Parse(button1.Text));
+                MoveButtonClicked();
+            }
+            else if (buttonShoot.Enabled == false)
+            {
+                MoveButtonClicked();
+            }
+            else
+            {
+                //leave blank
+            }
+            
         }
         private void buttonShoot_Click(object sender, EventArgs e)
         {
-            button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
             buttonMove.Enabled = false;
         }
         private void buttonMove_Click(object sender, EventArgs e)
         {
-            button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
+            
             buttonShoot.Enabled = false;
         }
         private void MoveButtonClicked()
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            button6.Enabled = false;
-            button7.Enabled = false;
             buttonMove.Enabled = true;
             buttonShoot.Enabled = true;
         }
-        private void buttonPSecret_Click(object sender, EventArgs e)
+        public void buttonPSecret_Click(object sender, EventArgs e)
         {
+            //answer questions for a secret
 
         }
-        private void buttonPArrow_Click(object sender, EventArgs e)
+        public void buttonPArrow_Click(object sender, EventArgs e)
         {
+            //answer questions for an arrow
 
         }
-        private void SetArrows(int arrows)
+        public void SetArrows(int arrows)
         {
+            //sets the total arrows displayed to the variable "arrows"
             textBoxArrows.Text = arrows.ToString();
         }
-        private void SetMoney(int money)
+        public void SetMoney(int money)
         {
+            //sets the total money displayed to the variable "money"
             textBoxMoney.Text = money.ToString();
         }
-        private void SetText(string text)
+        public void SetText(string text)
         {
+            //writes out the text required in the rich textbox through the variable "text"
             richTextBoxText.Text = text;
         }
-        private void Win()
+        public void Win()
         {
+            //hides this form and opens the winning form
             this.Hide();
             Win win = new Win();
             win.ShowDialog();
+
+            this.Close();
         }
-        private void Die()
+        public void Die()
         {
+            //hides this form and opens the death/lose form
             this.Hide();
             Death dead = new Death();
             dead.ShowDialog();
-        }
 
+            this.Close();
+        }
         private void buttonMenu_Click(object sender, EventArgs e)
         {
+            //hides this form and reopens the menu form
             this.Hide();
             StartMenu menu = new StartMenu();
             menu.ShowDialog();
+
+            this.Close();
+
+            //code to reset variables here:
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            //closes all forms
             Environment.Exit(0);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

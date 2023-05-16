@@ -33,7 +33,7 @@ namespace Epshtein
                 }
             }
             wumpusLocation = generator.Next(1,30);
-
+            playerLocation = 1;
         }
 
         //is the wumpus in the room passed in?
@@ -52,7 +52,7 @@ namespace Epshtein
         public string getWarnings()
         {
             bool wump = false; bool pit = false; bool bat = false;
-            foreach (int room in generateAdjacentRooms(playerLocation))
+            foreach (int room in generateConnectedRooms(playerLocation))
             {
                 if (isWumpusInRoom(room))
                 {
@@ -74,16 +74,32 @@ namespace Epshtein
             return cave.GetAdjacentCaves(room);
         }
 
+        public int[] generateConnectedRooms(int room) => cave.GetConnectedCaves(room);
+
         //shoots an arrow into the target room
         public bool shootArrow(int targetRoom)
         {
+            if(generateConnectedRooms(playerLocation).Contains(targetRoom) && isWumpusInRoom(targetRoom) ){ 
+                return true; 
+            }
             return false;
         }
 
         //randomly generate some information about the game locations and return it to the player
         public string getSecret()
         {
+            int roll = generator.Next(1, 20);
+            if(roll < 1)
+            {
+                //
+            }
             return "";
+        }
+
+        public void vdvAirlift()
+        {
+            //comrade! the ICC is near! we must airlift you to a safer location!
+            playerLocation = generator.Next(1, 30);
         }
 
         //resets the player's location to the entry tile
@@ -95,15 +111,19 @@ namespace Epshtein
         public bool movePlayer(int targetRoom)
         {
             //attempt to move player to room passed in, return false if fails
-            
-            return true;
+            if (generateConnectedRooms(playerLocation).Contains(targetRoom))
+            {
+                playerLocation = targetRoom;
+                return true;
+            }
+            return false;
         }
 
         //move the wumpus a certain number of times. each time = move to 1 adjacent room. 
         public void moveWumpus(int turns)
         {
             for (int i = 0; i < turns; i++){
-                int[] options = generateAdjacentRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
+                int[] options = generateConnectedRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
                 wumpusLocation = options[0];
             }
 

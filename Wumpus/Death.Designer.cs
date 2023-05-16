@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonDeath = new System.Windows.Forms.Button();
+            this.buttonRetry = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -43,25 +43,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonDeath
+            // buttonRetry
             // 
-            this.buttonDeath.Location = new System.Drawing.Point(148, 105);
-            this.buttonDeath.Name = "buttonDeath";
-            this.buttonDeath.Size = new System.Drawing.Size(75, 21);
-            this.buttonDeath.TabIndex = 8;
-            this.buttonDeath.Text = "Try Again?";
-            this.buttonDeath.UseVisualStyleBackColor = true;
-            this.buttonDeath.Click += new System.EventHandler(this.buttonDeath_Click);
+            this.buttonRetry.Location = new System.Drawing.Point(148, 105);
+            this.buttonRetry.Name = "buttonRetry";
+            this.buttonRetry.Size = new System.Drawing.Size(75, 21);
+            this.buttonRetry.TabIndex = 8;
+            this.buttonRetry.Text = "Try Again?";
+            this.buttonRetry.UseVisualStyleBackColor = true;
+            this.buttonRetry.Click += new System.EventHandler(this.buttonRetry_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(107, 65);
+            this.label1.Location = new System.Drawing.Point(110, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 37);
+            this.label1.Size = new System.Drawing.Size(162, 37);
             this.label1.TabIndex = 7;
-            this.label1.Text = "You Win!";
+            this.label1.Text = "You Lose!";
             // 
             // Death
             // 
@@ -69,7 +69,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 238);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonDeath);
+            this.Controls.Add(this.buttonRetry);
             this.Controls.Add(this.label1);
             this.Name = "Death";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -82,7 +82,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonDeath;
+        private System.Windows.Forms.Button buttonRetry;
         private System.Windows.Forms.Label label1;
     }
 }
