@@ -35,7 +35,6 @@
             this.button123 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonMove = new System.Windows.Forms.Button();
             this.buttonShoot = new System.Windows.Forms.Button();
             this.buttonPArrow = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@
             this.textBoxMoney = new System.Windows.Forms.TextBox();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,18 +144,7 @@
             this.button5.TabIndex = 20;
             this.button5.Text = "6";
             this.button5.UseVisualStyleBackColor = false;
-            
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox1.Image = global::Wumpus.Properties.Resources.IMG_4575;
-            this.pictureBox1.Location = new System.Drawing.Point(121, 128);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // buttonMove
             // 
@@ -256,6 +245,17 @@
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox1.Image = global::Wumpus.Properties.Resources.IMG_4575;
+            this.pictureBox1.Location = new System.Drawing.Point(121, 128);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
