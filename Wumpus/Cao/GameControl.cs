@@ -22,9 +22,10 @@ namespace Cao
         public int TriviaTrigger;
         public int ShootingThing;
         public int CoinCount;
-        public GameControl()
+        private _1095652_Roth_HuntTheWumpus.Form1 form1;
+        public GameControl(_1095652_Roth_HuntTheWumpus.Form1 form)
         {
-
+            form1 = form;
         }
         
         public int Score(bool wumpusDead)
@@ -75,6 +76,7 @@ namespace Cao
             //step 2 here
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
                 //trivia, move wumpus
