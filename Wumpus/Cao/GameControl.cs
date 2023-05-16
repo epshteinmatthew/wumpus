@@ -22,9 +22,10 @@ namespace Cao
         public int TriviaTrigger;
         public int ShootingThing;
         public int CoinCount;
-        public GameControl()
+        private _1095652_Roth_HuntTheWumpus.Form1 form1;
+        public GameControl(_1095652_Roth_HuntTheWumpus.Form1 form)
         {
-
+            form1 = form;
         }
         
         public int Score(bool wumpusDead)

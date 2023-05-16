@@ -20,10 +20,11 @@ namespace _1095652_Roth_HuntTheWumpus
 {
     public partial class Form1 : Form
     {
-        Cao.GameControl control = new GameControl();
+        Cao.GameControl control;
 
         public Form1()
         {
+            control = new GameControl(this);
             InitializeComponent();
         }
 
