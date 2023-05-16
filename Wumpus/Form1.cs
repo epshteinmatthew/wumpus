@@ -31,6 +31,13 @@ namespace _1095652_Roth_HuntTheWumpus
         //TODO: This
         public void updateRooms(int[] adj, int[] con)
         {
+            button1.Visible = true;
+            button2.Visible = true;
+            button3.Visible = true;
+            button4.Visible = true;
+            button5.Visible = true;
+            button6.Visible = true;
+            //logic?
             button1.Text = adj[0].ToString();
             if (!con.Contains(adj[0]))
             {
@@ -101,7 +108,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                control.Move(int.Parse(button1.Text));
+                control.Move(int.Parse(button2.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -118,7 +125,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                control.Move(int.Parse(button1.Text));
+                control.Move(int.Parse(button3.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -135,7 +142,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                control.Move(int.Parse(button1.Text));
+                control.Move(int.Parse(button4.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -152,7 +159,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                control.Move(int.Parse(button1.Text));
+                control.Move(int.Parse(button5.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
@@ -169,7 +176,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             if (buttonMove.Enabled == true)
             {
-                control.Move(int.Parse(button1.Text));
+                control.Move(int.Parse(button6.Text));
                 MoveButtonClicked();
             }
             else if (buttonShoot.Enabled == false)
