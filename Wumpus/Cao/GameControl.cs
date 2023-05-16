@@ -76,6 +76,7 @@ namespace Cao
             //step 2 here
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
                 //trivia, move wumpus
