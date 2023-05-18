@@ -57,5 +57,14 @@ namespace Wumpus
         {
 
         }
+
+        private void buttonCredits_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Credits credit = new Credits();
+            credit.ShowDialog();
+
+            this.Close();
+        }
     }
 }

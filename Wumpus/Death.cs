@@ -22,8 +22,8 @@ namespace Wumpus
         {
             //hides this form and restarts the game
             this.Hide();
-            Form1 form = new Form1();
-            form.ShowDialog();
+            StartMenu menu = new StartMenu();
+            menu.ShowDialog();
 
             this.Close();
 
