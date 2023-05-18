@@ -32,6 +32,20 @@ namespace Cao
         {
             return Player.points(wumpusDead);
         }
+        
+        public void purchaseArrow()
+        {
+            SubmitAnswerButton ask3 = new SubmitAnswerButton();
+            ask3.askNumber = 3;
+            ask3.ShowDialog();
+
+            if (ask3.CorrectNumber >= 2)
+            {
+                Player.arrows++;
+                form1.SetArrows(Player.arrows);
+            }
+        }
+
         public void Shoot(int ShootTo)
         {
             //1. verify that player has enough arrows. Player has a method for this
@@ -40,16 +54,18 @@ namespace Cao
             //4. if false, decrement arrow from Player Object
             if (Player.arrowsValid() == false)
             {
-                //end game (fail)
+                Death death = new Death();
+                form1.Close();
+                death.ShowDialog();
                 return;
             }
             bool success = Gamelocations.shootArrow(ShootTo);
+            form1.SetText((ShootTo == Gamelocations.wumpusLocation).ToString());
             if(!success)
             {
                 Player.arrows--;
+                form1.SetArrows(Player.arrows);
                 return;
-                
-
                
             }
             Win win = new Win();
@@ -75,9 +91,6 @@ namespace Cao
 
 
             //step 2 here
-            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
-            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
-            form1.updateRooms(AdjacentRooms, ConnectedRooms);
             string warnings = "";
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
@@ -109,7 +122,7 @@ namespace Cao
                 ask3.ShowDialog();
                 if (ask3.CorrectNumber >= 2)
                 {
-                    Gamelocations.moveWumpus(ask3.CorrectNumber);
+                    Gamelocations.resetPlayer();
                 }
                 else
                 {
@@ -119,7 +132,12 @@ namespace Cao
                     death.ShowDialog();
                 }
             }
+
+            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
             warnings += Gamelocations.getWarnings();
+            warnings += Gamelocations.playerLocation.ToString();
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
         }
