@@ -54,6 +54,7 @@ namespace Cao
             }
             Win win = new Win();
             win.ShowDialog();
+            form1.Close();
 
             //TOTAL WUMPUS DEATH
         }
@@ -80,7 +81,19 @@ namespace Cao
             string warnings = "";
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
-                //trivia, move wumpus
+                SubmitAnswerButton ask3 = new SubmitAnswerButton();
+                ask3.askNumber = 5;
+                ask3.ShowDialog();
+                if(ask3.CorrectNumber >= 3)
+                {
+                    Gamelocations.moveWumpus(ask3.CorrectNumber);
+                }
+                else
+                {
+                    Death death = new Death();
+                    form1.Close();
+                    death.ShowDialog();
+                }
 
             }
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
@@ -91,7 +104,20 @@ namespace Cao
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
-                //trivia
+                SubmitAnswerButton ask3 = new SubmitAnswerButton();
+                ask3.askNumber = 3;
+                ask3.ShowDialog();
+                if (ask3.CorrectNumber >= 2)
+                {
+                    Gamelocations.moveWumpus(ask3.CorrectNumber);
+                }
+                else
+                {
+
+                    Death death = new Death();
+                    form1.Close();
+                    death.ShowDialog();
+                }
             }
             warnings += Gamelocations.getWarnings();
             form1.SetText(warnings);
