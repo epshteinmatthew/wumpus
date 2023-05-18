@@ -9,6 +9,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wumpus;
 
 namespace Cao
 {
@@ -17,6 +18,8 @@ namespace Cao
         string answer;
         int QuestionNumber = 1;
         int CorrectNumber = 0;
+        int IncorrectNumber = 0;
+        public int CorrectThreshold;
 
         Random RandomGenerator = new Random();
         //.OrderBy(_=>generator.Next()).ToArray();
@@ -30,6 +33,8 @@ namespace Cao
             {"Which of these countries did not withdraw its signature from the Rome Statute?", new List<string>{"China", "Russia", "USA", "Sudan" } },
             {"How many countries are state parties to the Rome Statute?", new List<string>{"123", "139", "112", "90"} },
             {"What discipline did Putin receive his PhD in?", new List<string>{"Economics", "Finance", "Business", "Mechanical Engineering" } },
+            {"Who is the chief of Wagner Group?", new List<string>{"Yevgeny Prigozhin", "Dimitry Utkin", "Andrei Troshev", "Konstantin Pikalov" } },
+            {"" }
         };
         //commit test
         
@@ -67,13 +72,21 @@ namespace Cao
             {
                 QuestionNumber++;
             }
-            if (CorrectNumber == 3)
+            populate();
+            if (CorrectNumber == CorrectThreshold)
             {
                 Form1 form = new Form1();
                 form.ShowDialog();
 
                 this.Close();
             }
+            else
+            {
+                Death death = new Death();
+                death.ShowDialog();
+                this.Close();
+            }
+            
 
         }
 
