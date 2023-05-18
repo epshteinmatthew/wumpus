@@ -34,13 +34,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonCredits = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.DimGray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(319, 220);
@@ -54,7 +55,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DimGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(319, 184);
@@ -94,11 +95,26 @@
             this.timer1.Interval = 266000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // buttonCredits
+            // 
+            this.buttonCredits.BackColor = System.Drawing.Color.DimGray;
+            this.buttonCredits.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCredits.ForeColor = System.Drawing.Color.White;
+            this.buttonCredits.Location = new System.Drawing.Point(319, 256);
+            this.buttonCredits.Name = "buttonCredits";
+            this.buttonCredits.Size = new System.Drawing.Size(93, 30);
+            this.buttonCredits.TabIndex = 8;
+            this.buttonCredits.Text = "Credits";
+            this.buttonCredits.UseVisualStyleBackColor = false;
+            this.buttonCredits.Click += new System.EventHandler(this.buttonCredits_Click);
+            // 
             // StartMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 421);
+            this.Controls.Add(this.buttonCredits);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -119,5 +135,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buttonCredits;
     }
 }
