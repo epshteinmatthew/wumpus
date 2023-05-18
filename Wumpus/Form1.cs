@@ -24,8 +24,8 @@ namespace _1095652_Roth_HuntTheWumpus
 
         public Form1()
         {
-            control = new GameControl(this);
             InitializeComponent();
+            control = new GameControl(this);
         }
 
         //TODO: This

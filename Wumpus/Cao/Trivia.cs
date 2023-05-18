@@ -1,4 +1,5 @@
 ﻿using _1095652_Roth_HuntTheWumpus;
+using Epshtein;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace Cao
     {
         string answer;
          int QuestionNumber  = 0;
+        public Player player { get; set; }
         public int askNumber { get; set; } = 0;
         public int CorrectNumber { get; set; } = 0;
 
@@ -63,6 +65,15 @@ namespace Cao
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (player.gold >= 1)
+            {
+                player.payGold(1);
+            }
+            else
+            {
+                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
+                this.Close();
+            }
             if (Answer1.Checked == true && Answer1.Text == answer)
             {
 ;

@@ -26,6 +26,15 @@ namespace Cao
         public GameControl(_1095652_Roth_HuntTheWumpus.Form1 form)
         {
             form1 = form;
+            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
+            string warnings = "";
+            warnings += Gamelocations.getWarnings();
+            warnings += Gamelocations.playerLocation.ToString();
+            form1.SetText(warnings);
+            form1.SetMoney(Player.gold);
+            form1.SetArrows(Player.arrows);
         }
         
         public int Score(bool wumpusDead)
@@ -37,6 +46,7 @@ namespace Cao
         {
             SubmitAnswerButton ask3 = new SubmitAnswerButton();
             ask3.askNumber = 3;
+            ask3.player = Player;
             ask3.ShowDialog();
 
             if (ask3.CorrectNumber >= 2)
@@ -96,6 +106,8 @@ namespace Cao
             {
                 SubmitAnswerButton ask3 = new SubmitAnswerButton();
                 ask3.askNumber = 5;
+                ask3.player = Player;
+                MessageBox.Show("Comrade! The ICC's Cheif Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
                 ask3.ShowDialog();
                 if(ask3.CorrectNumber >= 3)
                 {
@@ -113,12 +125,23 @@ namespace Cao
             {
                 //random from 1 to 10 if less than 2: trivia
                 warnings += "Comrade! the ICC is near! we must airlift you to a safer location! \n";
+                Random rand = new Random();
+                if(rand.NextDouble() <= 0.05)
+                {
+                    MessageBox.Show("Comrade! We have been hit by Ukranian Air Defense! We're going doown!");
+                    Death death = new Death();
+                    form1.Close();
+                    death.ShowDialog();
+                    return;
+                }
                 Gamelocations.vdvAirlift();
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
                 SubmitAnswerButton ask3 = new SubmitAnswerButton();
                 ask3.askNumber = 3;
+                ask3.player = Player;
+                MessageBox.Show("Comrade! You've been captured by the ICC! Answer 2 out of 3 trivia questions correctly to escape!");
                 ask3.ShowDialog();
                 if (ask3.CorrectNumber >= 2)
                 {
