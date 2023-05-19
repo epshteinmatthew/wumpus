@@ -94,7 +94,19 @@ namespace Epshtein
             {
                 return "According to recent intel, the prosecutor is in room " + wumpusLocation;
             }
-            return "";
+            if (roll < 5)
+            {
+                return "There is a VDV helipad in room " + batLocations[0] + ", according to recent intelligence.";
+            }
+            if (roll < 10)
+            {
+                return "There is an ICC detention center in room " + pitLocations[0] + ", according to the FSB.";
+            }
+            if (roll == 11)
+            {
+                return "Intel reports that you are in a room";
+            }
+            return "Room " + generateAdjacentRooms(playerLocation)[0] + " is adjacent to you.";
         }
 
         public void vdvAirlift()

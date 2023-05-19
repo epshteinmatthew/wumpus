@@ -165,6 +165,18 @@ namespace Cao
             form1.SetMoney(Player.gold);
         }
 
+        public void purchaseSecret()
+        {
+            if(Player.gold < 1)
+            {
+                MessageBox.Show("Gazprom had a bad year. You won't be able top afford a hint, comrade!");
+                return;
+            }
+            Player.payGold(1);
+            form1.SetText(Gamelocations.getSecret());
+            form1.SetMoney(Player.gold);
+        }
+
         public bool Arrows()
         {
             return Player.arrowsValid();

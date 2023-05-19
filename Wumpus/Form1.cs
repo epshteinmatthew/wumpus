@@ -187,7 +187,7 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void buttonPSecret_Click(object sender, EventArgs e)
         {
-            //answer questions for a secret
+            control.purchaseSecret();
 
         }
         public void buttonPArrow_Click(object sender, EventArgs e)
