@@ -52,7 +52,6 @@ namespace _1095652_Roth_HuntTheWumpus
             if (!con.Contains(adj[2]))
             {
                 button3.Visible = false;
-
             }
             button4.Text = adj[3].ToString();
             if (!con.Contains(adj[3]))

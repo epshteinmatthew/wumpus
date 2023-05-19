@@ -197,10 +197,6 @@ namespace Cao
         {
             return Gamelocations.getPlayerLocation();
         }
-        public int Trivia()
-        {
-            return 0;
-        } 
         public int Coin()
         {
             return Player.gold;
