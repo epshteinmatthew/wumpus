@@ -35,7 +35,9 @@ namespace Cao
             {"How many countries are state parties to the Rome Statute?", new List<string>{"123", "139", "112", "90"} },
             {"What discipline did Putin receive his PhD in?", new List<string>{"Economics", "Finance", "Business", "Mechanical Engineering" } },
             {"Who is the chief of Wagner Group?", new List<string>{"Yevgeny Prigozhin", "Dimitry Utkin", "Andrei Troshev", "Konstantin Pikalov" } },
-            {"How many HIMARS launchers are delivered?", new List<string>{"" } }
+            {"How many Kinzhal missiles did Ukraine claim to have shot down?", new List<string>{"7", "6", "5", "0" } },
+            {"Which airport did Russia attack in the opening days of the invasion?", new List<string>{"Antonov Airport", "Odessa Airport", "Mikolayev Airport", "Mariupol Airport"} },
+            { }
         };
         //commit test
         
