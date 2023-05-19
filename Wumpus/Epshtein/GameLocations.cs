@@ -79,10 +79,11 @@ namespace Epshtein
         //shoots an arrow into the target room
         public bool shootArrow(int targetRoom)
         {
-            if(generateConnectedRooms(playerLocation).Contains(targetRoom) && isWumpusInRoom(targetRoom) ){ 
-                return true; 
+            if (isWumpusInRoom(targetRoom))
+            {
+                return true;
             }
-            return false;
+            else { return false; }
         }
 
         //randomly generate some information about the game locations and return it to the player
@@ -91,7 +92,7 @@ namespace Epshtein
             int roll = generator.Next(1, 20);
             if(roll < 1)
             {
-                //
+                return "According to recent intel, the prosecutor is in room " + wumpusLocation;
             }
             return "";
         }

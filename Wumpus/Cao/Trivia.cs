@@ -1,4 +1,5 @@
 ﻿using _1095652_Roth_HuntTheWumpus;
+using Epshtein;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,10 @@ namespace Cao
     public partial class SubmitAnswerButton : Form
     {
         string answer;
-        int QuestionNumber = 1;
-        int CorrectNumber = 0;
-        int IncorrectNumber = 0;
-        public int CorrectThreshold;
+         int QuestionNumber  = 0;
+        public Player player { get; set; }
+        public int askNumber { get; set; } = 0;
+        public int CorrectNumber { get; set; } = 0;
 
         Random RandomGenerator = new Random();
         //.OrderBy(_=>generator.Next()).ToArray();
@@ -50,7 +51,10 @@ namespace Cao
             Answer2.Text = answers[1];
             Answer3.Text = answers[2];
             Answer4.Text = answers[3];
-            answer = Answer1.Text;
+
+            label4.Text = (QuestionNumber + 1).ToString();
+            label5.Text = CorrectNumber.ToString();
+            label6.Text = (QuestionNumber - CorrectNumber).ToString();
 
 
         }
@@ -62,37 +66,47 @@ namespace Cao
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (player.gold >= 1)
+            {
+                player.payGold(1);
+            }
+            else
+            {
+                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
+                this.Close();
+            }
             if (Answer1.Checked == true && Answer1.Text == answer)
             {
-
-                QuestionNumber++;
+;
                 CorrectNumber++;
             }
-            else
+            if (Answer2.Checked == true && Answer2.Text == answer)
             {
-                QuestionNumber++;
+
+                CorrectNumber++;
+            }
+            if (Answer3.Checked == true && Answer3.Text == answer)
+            {
+
+                CorrectNumber++;
+            }
+            if (Answer4.Checked == true && Answer4.Text == answer)
+            { 
+                CorrectNumber++;
+            }
+            QuestionNumber++;
+            
+            if (QuestionNumber == askNumber)
+            {
+                this.Close();
             }
             populate();
-            if (CorrectNumber == CorrectThreshold)
-            {
-                Form1 form = new Form1();
-                form.ShowDialog();
-
-                this.Close();
-            }
-            else
-            {
-                Death death = new Death();
-                death.ShowDialog();
-                this.Close();
-            }
-            
 
         }
 
         private void SubmitAnswerButton_Load(object sender, EventArgs e)
         {
-            label4.Text = QuestionNumber.ToString();
+            label4.Text = (QuestionNumber + 1).ToString();
             label5.Text = CorrectNumber.ToString();
             label6.Text = ( QuestionNumber - CorrectNumber ) .ToString();
         }
