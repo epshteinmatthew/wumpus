@@ -160,9 +160,9 @@
             // 
             this.buttonShoot.Location = new System.Drawing.Point(12, 318);
             this.buttonShoot.Name = "buttonShoot";
-            this.buttonShoot.Size = new System.Drawing.Size(75, 23);
+            this.buttonShoot.Size = new System.Drawing.Size(126, 23);
             this.buttonShoot.TabIndex = 25;
-            this.buttonShoot.Text = "Shoot Arrow";
+            this.buttonShoot.Text = "Launch Missile Strike";
             this.buttonShoot.UseVisualStyleBackColor = true;
             this.buttonShoot.Click += new System.EventHandler(this.buttonShoot_Click);
             // 
@@ -172,7 +172,7 @@
             this.buttonPArrow.Name = "buttonPArrow";
             this.buttonPArrow.Size = new System.Drawing.Size(96, 23);
             this.buttonPArrow.TabIndex = 26;
-            this.buttonPArrow.Text = "Purchase Arrow";
+            this.buttonPArrow.Text = "Purchase Missile";
             this.buttonPArrow.UseVisualStyleBackColor = true;
             this.buttonPArrow.Click += new System.EventHandler(this.buttonPArrow_Click);
             // 
@@ -198,9 +198,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(11, 408);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.Size = new System.Drawing.Size(46, 13);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Arrows:";
+            this.label10.Text = "Missiles:";
             // 
             // richTextBoxText
             // 
