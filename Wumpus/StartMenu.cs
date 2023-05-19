@@ -19,14 +19,17 @@ namespace Wumpus
         public StartMenu()
         {
             InitializeComponent();
+
             //makes the buttons look cleaner
             button1.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.BorderSize = 0;
             InitializeComponent();
+
             //plays audio
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
-            player.Play();
+            player.PlayLooping();
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -47,9 +50,7 @@ namespace Wumpus
         private void timer1_Tick(object sender, EventArgs e)
         {
             
-            SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
-            player.PlayLooping();
+            
             
         }
 
