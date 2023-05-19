@@ -74,10 +74,22 @@ namespace Cao
             if(!success)
             {
                 Player.arrows--;
+                MessageBox.Show("Comrade! The prosecutor has fled from our kinzhal missile strike in terror!");
+                Gamelocations.moveWumpus(1);
                 form1.SetArrows(Player.arrows);
                 return;
                
             }
+            Random r = new Random();
+            if(r.NextDouble() > 0.7)
+            {
+                MessageBox.Show("Comrade! Ukranian Air Defenses have intercepted our kinzhal missile strike on the prosecutor, and he has escaped our surveilance network!");
+                Player.arrows--; 
+                Gamelocations.moveWumpus(1);
+                form1.SetArrows(Player.arrows);
+                return;
+            }
+            MessageBox.Show("Comrade! Our kinzhal missile stike was a succsess! The prosecutor is no more!");
             Win win = new Win();
             win.ShowDialog();
             form1.Close();
@@ -107,7 +119,7 @@ namespace Cao
                 SubmitAnswerButton ask3 = new SubmitAnswerButton();
                 ask3.askNumber = 5;
                 ask3.player = Player;
-                MessageBox.Show("Comrade! The ICC's Cheif Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
+                MessageBox.Show("Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
                 ask3.ShowDialog();
                 if(ask3.CorrectNumber >= 3)
                 {
@@ -169,7 +181,7 @@ namespace Cao
         {
             if(Player.gold < 1)
             {
-                MessageBox.Show("Gazprom had a bad year. You won't be able top afford a hint, comrade!");
+                MessageBox.Show("Comrade! Gazprom had a bad year. You won't be able top afford a hint!");
                 return;
             }
             Player.payGold(1);
