@@ -24,8 +24,8 @@ namespace _1095652_Roth_HuntTheWumpus
 
         public Form1()
         {
-            control = new GameControl(this);
             InitializeComponent();
+            control = new GameControl(this);
         }
 
         //TODO: This
@@ -96,11 +96,8 @@ namespace _1095652_Roth_HuntTheWumpus
             }
             else if (buttonMove.Enabled == false)
             {
+                control.Shoot(int.Parse(button1.Text));
                 MoveButtonClicked();
-            }
-            else
-            {
-                
             }
             
         }
@@ -113,11 +110,8 @@ namespace _1095652_Roth_HuntTheWumpus
             }
             else if (buttonMove.Enabled == false)
             {
+                control.Shoot(int.Parse(button2.Text));
                 MoveButtonClicked();
-            }
-            else
-            {
-
             }
             
         }
@@ -130,11 +124,8 @@ namespace _1095652_Roth_HuntTheWumpus
             }
             else if (buttonMove.Enabled == false)
             {
+                control.Shoot(int.Parse(button3.Text));
                 MoveButtonClicked();
-            }
-            else
-            {
-
             }
             
         }
@@ -147,11 +138,8 @@ namespace _1095652_Roth_HuntTheWumpus
             }
             else if (buttonMove.Enabled == false)
             {
+                control.Shoot(int.Parse(button4.Text));
                 MoveButtonClicked();
-            }
-            else
-            {
-
             }
             
         }
@@ -164,11 +152,8 @@ namespace _1095652_Roth_HuntTheWumpus
             }
             else if (buttonMove.Enabled == false)
             {
+                control.Shoot(int.Parse(button5.Text));
                 MoveButtonClicked();
-            }
-            else
-            {
-
             }
             
         }
@@ -181,11 +166,8 @@ namespace _1095652_Roth_HuntTheWumpus
             }
             else if (buttonMove.Enabled == false)
             {
+                control.Shoot(int.Parse(button6.Text));
                 MoveButtonClicked();
-            }
-            else
-            {
-                //leave blank
             }
             
         }
@@ -205,12 +187,13 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         public void buttonPSecret_Click(object sender, EventArgs e)
         {
-            //answer questions for a secret
+            control.purchaseSecret();
 
         }
         public void buttonPArrow_Click(object sender, EventArgs e)
         {
             //answer questions for an arrow
+            control.purchaseArrow();
 
         }
         public void SetArrows(int arrows)
