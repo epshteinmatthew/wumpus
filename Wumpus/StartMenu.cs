@@ -1,4 +1,5 @@
 ﻿using _1095652_Roth_HuntTheWumpus;
+using Cao;
 using Epshtein;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,11 @@ namespace Wumpus
 {
     public partial class StartMenu : Form
     {
+
+        GameControl gc;
         public StartMenu()
         {
+            gc = new GameControl(this);
             InitializeComponent();
 
             //makes the buttons look cleaner
@@ -33,12 +37,7 @@ namespace Wumpus
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //hides this form and opens the form1
-            this.Hide();
-            Form1 form = new Form1();
-            form.ShowDialog();
-
-            this.Close();
+            gc.startGamePlay();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -61,10 +60,6 @@ namespace Wumpus
 
         private void buttonCredits_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Credits credit = new Credits();
-            credit.ShowDialog();
-
             this.Close();
         }
     }

@@ -36,8 +36,8 @@ namespace Cao
             {"What discipline did Putin receive his PhD in?", new List<string>{"Economics", "Finance", "Business", "Mechanical Engineering" } },
             {"Who is the chief of Wagner Group?", new List<string>{"Yevgeny Prigozhin", "Dimitry Utkin", "Andrei Troshev", "Konstantin Pikalov" } },
             {"How many Kinzhal missiles did Ukraine claim to have shot down?", new List<string>{"7", "6", "5", "0" } },
-            {"Which airport did Russia attack in the opening days of the invasion?", new List<string>{"Antonov Airport", "Odessa Airport", "Mikolayev Airport", "Mariupol Airport"} },
-            { }
+            {"Which airport did Russia attack in the opening days of the invasion?", new List<string>{"Antonov Airport", "Odessa Airport", "Mikolaiv Airport", "Mariupol Airport"} },
+           
         };
         //commit test
         

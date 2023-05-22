@@ -22,10 +22,10 @@ namespace _1095652_Roth_HuntTheWumpus
     {
         Cao.GameControl control;
 
-        public Form1()
+        public Form1(GameControl gameControl)
         {
             InitializeComponent();
-            control = new GameControl(this);
+            control = gameControl;
         }
 
         //TODO: This
@@ -210,32 +210,9 @@ namespace _1095652_Roth_HuntTheWumpus
             //writes out the text required in the rich textbox through the variable "text"
             richTextBoxText.Text = text;
         }
-        public void Win()
-        {
-            //hides this form and opens the winning form
-            this.Hide();
-            Win win = new Win();
-            win.ShowDialog();
-
-            this.Close();
-        }
-        public void Die()
-        {
-            //hides this form and opens the death/lose form
-            this.Hide();
-            Death dead = new Death();
-            dead.ShowDialog();
-
-            this.Close();
-        }
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            //hides this form and reopens the menu form
-            this.Hide();
-            StartMenu menu = new StartMenu();
-            menu.ShowDialog();
-
-            this.Close();
+            control.menu();
 
             //code to reset variables here:
         }

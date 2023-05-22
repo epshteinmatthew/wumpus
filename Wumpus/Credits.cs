@@ -24,11 +24,12 @@ namespace Wumpus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            StartMenu menu = new StartMenu();
-            menu.ShowDialog();
-
             this.Close();
+        }
+
+        private void Credits_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

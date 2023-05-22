@@ -20,19 +20,13 @@ namespace Cao
         public int TriviaTrigger;
         public int ShootingThing;
         public int CoinCount;
+        StartMenu start;
         private _1095652_Roth_HuntTheWumpus.Form1 form1;
-        public GameControl(_1095652_Roth_HuntTheWumpus.Form1 form)
+        public GameControl(StartMenu startMenu)
         {
-            form1 = form;
-            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
-            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
-            form1.updateRooms(AdjacentRooms, ConnectedRooms);
-            string warnings = "";
-            warnings += Gamelocations.getWarnings();
-            warnings += Gamelocations.playerLocation.ToString();
-            form1.SetText(warnings);
-            form1.SetMoney(Player.gold);
-            form1.SetArrows(Player.arrows);
+            //menu, form1, credits
+            form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
+            start = startMenu;
         }
         
         public int Score(bool wumpusDead)
@@ -62,9 +56,7 @@ namespace Cao
             //4. if false, decrement arrow from Player Object
             if (Player.arrowsValid() == false)
             {
-                Death death = new Death();
-                form1.Close();
-                death.ShowDialog();
+                death();
                 return;
             }
             bool success = Gamelocations.shootArrow(ShootTo);
@@ -88,10 +80,8 @@ namespace Cao
                 return;
             }
             MessageBox.Show("Comrade! Our kinzhal missile stike was a success! The prosecutor is no more!");
-            Win win = new Win();
-            win.ShowDialog();
-            form1.Close();
 
+            win();
             //TOTAL WUMPUS DEATH
         }
 
@@ -125,9 +115,7 @@ namespace Cao
                 }
                 else
                 {
-                    Death death = new Death();
-                    form1.Close();
-                    death.ShowDialog();
+                    death();
                 }
 
             }
@@ -139,9 +127,7 @@ namespace Cao
                 if(rand.NextDouble() <= 0.05)
                 {
                     MessageBox.Show("Comrade! We have been hit by Ukranian Air Defense! We're going doown!");
-                    Death death = new Death();
-                    form1.Close();
-                    death.ShowDialog();
+                    death();
                     return;
                 }
                 Gamelocations.vdvAirlift();
@@ -159,10 +145,7 @@ namespace Cao
                 }
                 else
                 {
-
-                    Death death = new Death();
-                    form1.Close();
-                    death.ShowDialog();
+                    death();
                 }
             }
 
@@ -204,6 +187,55 @@ namespace Cao
             return Gamelocations.wumpusLocation;
         }
         
+        //restart gameplay
+        public void startGamePlay()
+        {
+            Player = new Player();
+            Gamelocations = new GameLocations(3, 3);
+            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
+            string warnings = "";
+            warnings += Gamelocations.getWarnings();
+            warnings += Gamelocations.playerLocation.ToString();
+            form1.SetText(warnings);
+            form1.SetMoney(Player.gold);
+            form1.SetArrows(Player.arrows);
+            start.Hide();
+            form1.ShowDialog();
+        }
 
+        //exit gameplay->credits
+        public void death()
+        {
+            Death death = new Death(Player.points(false));
+            form1.Close();
+            death.ShowDialog();
+            menu();
+        }
+
+        public void win()
+        {
+            Win win = new Win(Player.points(true));
+            form1.Close();
+            win.ShowDialog();
+            menu();
+        }
+
+        //open menu
+        public void menu()
+        {
+            form1.Close();
+            start.ShowDialog();
+            startGamePlay();
+        }
+        //show credits
+        public void credits()
+        {
+            start.Close();
+            Credits credits = new Credits();
+            credits.ShowDialog();
+            menu();
+        }
     }   
 }
