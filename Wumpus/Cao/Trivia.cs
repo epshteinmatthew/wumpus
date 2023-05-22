@@ -47,8 +47,11 @@ namespace Cao
             string[] answers = questions[question].OrderBy(_ => RandomGenerator.Next()).ToArray();
             //SAVE "ANSWER" SOMEHOW: NEEDS TO BE CHECK AGAINST
             answer = questions[question][0];
+         
 
             TriviaQuestion.Text = question;
+            //prevent duplicate questions
+            questions.Remove(question);
             Answer1.Text = answers[0];
             Answer2.Text = answers[1];
             Answer3.Text = answers[2];
