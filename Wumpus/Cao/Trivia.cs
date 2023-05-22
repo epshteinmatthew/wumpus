@@ -27,7 +27,7 @@ namespace Cao
         Dictionary<string, List<string>> questions = new Dictionary<string, List<string>>()
         {
             {"When was the KGB founded?",  new List<string> {"1953", "1954", "1955", "1964" } },
-            {"Who plays Lavrentiy Beria in the movie The Death of Stalin",  new List<string> {"George Beale Russell", "Jeffery Tambor", "Steve Buscemi", "Jason Isaacs" } },
+            {"Who plays Lavrentiy Beria in the movie The Death of Stalin?",  new List<string> {"George Beale Russell", "Jeffery Tambor", "Steve Buscemi", "Jason Isaacs" } },
             {"In what bomber did Putin fly in during an inspection?", new List<string>{"Tu-160M2", "Tu-160M", "Tu-160S", "Tu-160" } },
             {"What is Putin's shoe size?", new List<string>{"9", "8", "7", "10"} },
             {"Which KGB directorate did Putin work for?", new List<string>{"2nd", "1st", "3rd", "4th" } },
@@ -35,7 +35,15 @@ namespace Cao
             {"How many countries are state parties to the Rome Statute?", new List<string>{"123", "139", "112", "90"} },
             {"What discipline did Putin receive his PhD in?", new List<string>{"Economics", "Finance", "Business", "Mechanical Engineering" } },
             {"Who is the chief of Wagner Group?", new List<string>{"Yevgeny Prigozhin", "Dimitry Utkin", "Andrei Troshev", "Konstantin Pikalov" } },
-            
+            {"How pets has Putin had/have?", new List<string>{"5", "3", "5", "7" } },
+            {"How old is Putin?", new List<string>{"70", "57", "63", "31" } },
+            {"How large is russia?", new List<string>{ "16,400,000 m^2", " 31,200,000 m^2", "5,700,000 m^2", "11,500,000 m^2" } },
+            {"How old is Putin?", new List<string>{"70", "57", "63", "31" } },
+            {"How many terms has Putin had as president of russia?", new List<string>{"4", "3", "2", "1" } },
+            {"What Martial art does Putin have a black belt in?", new List<string>{"Judo", "Karate", "Sambo", "Taekwondo" } },
+            {"In 2016 what american celebrity did Putin give Russian Citezenship to?", new List<string>{"LSteven Seagal", "Katy Perry", "Tom Cruise", "Frank Sinatra" } },
+            {"In what place was Putin born?", new List<string>{"Russia", "Ukraine", "Poland", "Georgia" } },
+
         };
         //commit test
         
