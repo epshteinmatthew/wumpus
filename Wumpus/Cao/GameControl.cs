@@ -13,8 +13,6 @@ namespace Cao
     public class GameControl
 
     {
-        //implement:
-        //move, this should attempt to move the player to some room, then check for wumpus, harzards, and warning, and handle those events accordingly. this should additionally talk to the form
         public GameLocations Gamelocations { get; set; } = new GameLocations(3,3);
         public Player Player { get; set; } = new Player();
         public int LocationUpdate;
@@ -89,7 +87,7 @@ namespace Cao
                 form1.SetArrows(Player.arrows);
                 return;
             }
-            MessageBox.Show("Comrade! Our kinzhal missile stike was a succsess! The prosecutor is no more!");
+            MessageBox.Show("Comrade! Our kinzhal missile stike was a success! The prosecutor is no more!");
             Win win = new Win();
             win.ShowDialog();
             form1.Close();
@@ -136,7 +134,7 @@ namespace Cao
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
                 //random from 1 to 10 if less than 2: trivia
-                warnings += "Comrade! the ICC is near! we must airlift you to a safer location! \n";
+                MessageBox.Show("Comrade! the ICC is near! we must airlift you to a safer location!");
                 Random rand = new Random();
                 if(rand.NextDouble() <= 0.05)
                 {
