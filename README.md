@@ -4,6 +4,13 @@ Putin is on the run from the ICC!
 I hate you NSD
 git config --global http.sslVerify false  
 
+todo:
+- fix issue with form duplication by 1) overloading all ui form contructors to take gamecontrol as an argument and 2) having game control spawn and kill all ui forms and 3) have program.cs run gamecontrol rather than the menu  
+- add score management in end screens
+- finish end screens
+- add random cavegen(want)
+- add speedrun tracker(want)
+
 **Real Talk**  
 The Russian invasion of Ukraine is both a crime and a tragedy, for which Russian President Vladimir Putin bears responsibility.  
 Thousands have died due to Putin's senseless and barbaric acts, and millions have been displaced.  
