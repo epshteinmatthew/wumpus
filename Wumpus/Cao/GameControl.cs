@@ -13,8 +13,6 @@ namespace Cao
     public class GameControl
 
     {
-        //implement:
-        //move, this should attempt to move the player to some room, then check for wumpus, harzards, and warning, and handle those events accordingly. this should additionally talk to the form
         public GameLocations Gamelocations { get; set; } = new GameLocations(3,3);
         public Player Player { get; set; } = new Player();
         public int LocationUpdate;
@@ -74,10 +72,22 @@ namespace Cao
             if(!success)
             {
                 Player.arrows--;
+                MessageBox.Show("Comrade! The prosecutor has fled from our kinzhal missile strike in terror!");
+                Gamelocations.moveWumpus(1);
                 form1.SetArrows(Player.arrows);
                 return;
                
             }
+            Random r = new Random();
+            if(r.NextDouble() > 0.7)
+            {
+                MessageBox.Show("Comrade! Ukranian Air Defenses have intercepted our kinzhal missile strike on the prosecutor, and he has escaped our surveilance network!");
+                Player.arrows--; 
+                Gamelocations.moveWumpus(1);
+                form1.SetArrows(Player.arrows);
+                return;
+            }
+            MessageBox.Show("Comrade! Our kinzhal missile stike was a success! The prosecutor is no more!");
             Win win = new Win();
             win.ShowDialog();
             form1.Close();
@@ -107,7 +117,7 @@ namespace Cao
                 SubmitAnswerButton ask3 = new SubmitAnswerButton();
                 ask3.askNumber = 5;
                 ask3.player = Player;
-                MessageBox.Show("Comrade! The ICC's Cheif Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
+                MessageBox.Show("Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
                 ask3.ShowDialog();
                 if(ask3.CorrectNumber >= 3)
                 {
@@ -124,7 +134,7 @@ namespace Cao
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
                 //random from 1 to 10 if less than 2: trivia
-                warnings += "Comrade! the ICC is near! we must airlift you to a safer location! \n";
+                MessageBox.Show("Comrade! the ICC is near! we must airlift you to a safer location!");
                 Random rand = new Random();
                 if(rand.NextDouble() <= 0.05)
                 {
@@ -169,7 +179,7 @@ namespace Cao
         {
             if(Player.gold < 1)
             {
-                MessageBox.Show("Gazprom had a bad year. You won't be able top afford a hint, comrade!");
+                MessageBox.Show("Comrade! Gazprom had a bad year. You won't be able top afford a hint!");
                 return;
             }
             Player.payGold(1);
@@ -185,10 +195,6 @@ namespace Cao
         {
             return Gamelocations.getPlayerLocation();
         }
-        public int Trivia()
-        {
-            return 0;
-        } 
         public int Coin()
         {
             return Player.gold;
