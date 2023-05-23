@@ -85,6 +85,7 @@
             this.Name = "Death";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Death";
+            this.Load += new System.EventHandler(this.Death_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -17,11 +17,9 @@ namespace Wumpus
 {
     public partial class StartMenu : Form
     {
-
-        GameControl gc;
-        public StartMenu()
+        GameControl gameControl;
+        public StartMenu(GameControl gameControl)
         {
-            gc = new GameControl(this);
             InitializeComponent();
 
             //makes the buttons look cleaner
@@ -33,11 +31,12 @@ namespace Wumpus
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
             player.PlayLooping();
-
+            this.gameControl = gameControl;
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            gc.startGamePlay();
+            //call start form1 method here
+            gameControl.startGamePlay();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -60,7 +59,7 @@ namespace Wumpus
 
         private void buttonCredits_Click(object sender, EventArgs e)
         {
-            this.Close();
+            gameControl.credits();
         }
     }
 }

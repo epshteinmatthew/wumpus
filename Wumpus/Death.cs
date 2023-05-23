@@ -17,8 +17,8 @@ namespace Wumpus
     {
         public Death(int score)
         {
-            label2.Text = score.ToString();
             InitializeComponent();
+            label2.Text = "Your score was: " + score.ToString();
         }
 
         private void buttonRetry_Click(object sender, EventArgs e)
@@ -30,6 +30,11 @@ namespace Wumpus
         {
             //closes all forms
             Environment.Exit(0);
+        }
+
+        private void Death_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

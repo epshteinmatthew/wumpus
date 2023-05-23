@@ -21,12 +21,15 @@ namespace Cao
         public int ShootingThing;
         public int CoinCount;
         StartMenu start;
+        Credits cred;
         private _1095652_Roth_HuntTheWumpus.Form1 form1;
-        public GameControl(StartMenu startMenu)
+        public GameControl()
         {
             //menu, form1, credits
+            start = new StartMenu(this);
             form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
-            start = startMenu;
+            cred = new Credits(this);
+            start.ShowDialog();
         }
         
         public int Score(bool wumpusDead)
@@ -190,6 +193,8 @@ namespace Cao
         //restart gameplay
         public void startGamePlay()
         {
+            form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
+            start.Close();
             Player = new Player();
             Gamelocations = new GameLocations(3, 3);
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
@@ -201,8 +206,7 @@ namespace Cao
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
             form1.SetArrows(Player.arrows);
-            start.Hide();
-            form1.ShowDialog();
+            form1.Show();
         }
 
         //exit gameplay->credits
@@ -226,6 +230,7 @@ namespace Cao
         public void menu()
         {
             form1.Close();
+            cred.Close();
             start.ShowDialog();
             startGamePlay();
         }
@@ -233,9 +238,7 @@ namespace Cao
         public void credits()
         {
             start.Close();
-            Credits credits = new Credits();
-            credits.ShowDialog();
-            menu();
+            cred.Show();
         }
     }   
 }

@@ -38,7 +38,6 @@ namespace Cao
             {"How pets has Putin had/have?", new List<string>{"5", "3", "5", "7" } },
             {"How old is Putin?", new List<string>{"70", "57", "63", "31" } },
             {"How large is russia?", new List<string>{ "16,400,000 m^2", " 31,200,000 m^2", "5,700,000 m^2", "11,500,000 m^2" } },
-            {"How old is Putin?", new List<string>{"70", "57", "63", "31" } },
             {"How many terms has Putin had as president of russia?", new List<string>{"4", "3", "2", "1" } },
             {"What Martial art does Putin have a black belt in?", new List<string>{"Judo", "Karate", "Sambo", "Taekwondo" } },
             {"In 2016 what american celebrity did Putin give Russian Citezenship to?", new List<string>{"LSteven Seagal", "Katy Perry", "Tom Cruise", "Frank Sinatra" } },

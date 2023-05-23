@@ -16,8 +16,8 @@ namespace Wumpus
     {
         public Win(int score)
         {
-            label2.Text = score.ToString();
             InitializeComponent();
+            label2.Text = "Your score was: " + score.ToString();
         }
 
         private void buttonRetry_Click(object sender, EventArgs e)

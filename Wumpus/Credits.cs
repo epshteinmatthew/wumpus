@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace Wumpus
 {
     public partial class Credits : Form
     {
-        public Credits()
+        GameControl gameControl;
+        public Credits(GameControl gc)
         {
+            gameControl = gc;
             InitializeComponent();
         }
 
@@ -24,7 +27,7 @@ namespace Wumpus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            gameControl.menu();
         }
 
         private void Credits_Load(object sender, EventArgs e)
