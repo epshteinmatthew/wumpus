@@ -21,8 +21,14 @@ namespace Chan_WumpusTest
         //GetAdjacentCaves will retrieve the player location and return adjacent rooms
         //GetConnectedCaves will retrieve the player location and return which caves the player can go into
 
+        /// <summary>
+        /// This method retrieves the caves adjacent to the player, and also retrieves the caves that the player can actually go into. 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="rum"></param>
         public Cave(string num, int rum)
         {
+
             this.CaveNumber = num;
             this.RoomNumber = rum;
             using (StreamReader sr = new StreamReader("CaveAdjacent.txt"))
@@ -39,8 +45,8 @@ namespace Chan_WumpusTest
 
                 }
             }
-
-
+            
+            //decides what cave system is being used at random
             Random rnd = new Random();
             int n = rnd.Next(1, 6);
             CaveNumber = "Cave" + n;
@@ -69,7 +75,7 @@ namespace Chan_WumpusTest
 
 
 
-
+            //withdraws which rooms the player can go into from a file
             using (StreamReader sr = new StreamReader(CaveFile))
             {
                 string lines;
@@ -86,6 +92,10 @@ namespace Chan_WumpusTest
             }
         }
 
+        /// <summary>
+        /// Retrieving from the cave method, this method returns what number cave system is being used to the game control
+        /// </summary>
+        /// <returns></returns>
         public string GetCaveSystem()
         {
 
@@ -94,12 +104,24 @@ namespace Chan_WumpusTest
 
         }
 
+
+        /// <summary>
+        /// This method returns the caves next to the player after retrieving the room number from game control
+        /// </summary>
+        /// <param name="room"></param>
+        /// <returns></returns>
         public int[] GetAdjacentCaves(int room)
         {
             return rooms[room - 1];
 
         }
 
+
+        /// <summary>
+        /// This method returns the caves that the player can enter based off the room number they are currently in
+        /// </summary>
+        /// <param name="room"></param>
+        /// <returns></returns>
         public int[] GetConnectedCaves(int room)
         {
             List<int> connected = new List<int>();
