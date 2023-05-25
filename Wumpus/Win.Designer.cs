@@ -80,9 +80,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Wumpus.Properties.Resources._542917680_0;
-            this.pictureBox1.Location = new System.Drawing.Point(-38, -5);
+            this.pictureBox1.Location = new System.Drawing.Point(-4, -4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(421, 342);
+            this.pictureBox1.Size = new System.Drawing.Size(438, 342);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
