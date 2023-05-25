@@ -9,7 +9,8 @@ namespace Epshtein
 {
     public class GameLocations
     {
-        public int wumpusLocation, playerLocation;
+        public int playerLocation;
+        private int wumpusLocation;
         Cave cave = new Cave("1", 1);
         //generate in constructor
         List<int> batLocations = new List<int>(), pitLocations = new List<int>();
@@ -137,6 +138,11 @@ namespace Epshtein
         {
             for (int i = 0; i < turns; i++){
                 int[] options = generateConnectedRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
+                if (options[0] == playerLocation)
+                {
+                    i--;
+                    continue;
+                }
                 wumpusLocation = options[0];
             }
 

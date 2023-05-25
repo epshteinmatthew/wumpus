@@ -28,7 +28,6 @@ namespace _1095652_Roth_HuntTheWumpus
             control = gameControl;
         }
 
-        //TODO: This
         public void updateRooms(int[] adj, int[] con)
         {
             button1.Visible = true;

@@ -123,14 +123,12 @@ namespace Cao
 
         private void SubmitAnswerButton_Load(object sender, EventArgs e)
         {
-            label4.Text = (QuestionNumber + 1).ToString();
-            label5.Text = CorrectNumber.ToString();
-            label6.Text = ( QuestionNumber - CorrectNumber ) .ToString();
+
+            populate();
         }
 
         private void SubmitAnswerButton_Activated(object sender, EventArgs e)
         {
-            populate();
         }
 
         private void label2_Click(object sender, EventArgs e)

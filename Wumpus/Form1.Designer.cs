@@ -238,6 +238,7 @@
             // 
             // buttonExit
             // 
+            this.buttonExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonExit.Location = new System.Drawing.Point(160, 431);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(96, 23);
@@ -262,6 +263,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSlateGray;
+            this.CancelButton = this.buttonExit;
             this.ClientSize = new System.Drawing.Size(292, 462);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.buttonExit);

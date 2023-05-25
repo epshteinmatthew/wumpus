@@ -35,7 +35,7 @@ namespace Cao
         public int playTrivia(int toask, string message)
         {
             SubmitAnswerButton ask3 = new SubmitAnswerButton();
-            ask3.askNumber = 3;
+            ask3.askNumber = toask;
             ask3.player = Player;
             MessageBox.Show(message);
             ask3.ShowDialog();
@@ -191,10 +191,6 @@ namespace Cao
         public int Coin()
         {
             return Player.gold;
-        }
-        public int WumpusLocation()
-        {
-            return Gamelocations.wumpusLocation;
         }
         
         //restart gameplay
