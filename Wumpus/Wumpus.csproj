@@ -85,6 +85,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Epshtein\GameLocations.cs" />
+    <Compile Include="Epshtein\LeaderboardManager.cs" />
     <Compile Include="Epshtein\Player.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
