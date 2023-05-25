@@ -44,7 +44,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(319, 220);
+            this.button2.Location = new System.Drawing.Point(315, 220);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(93, 30);
             this.button2.TabIndex = 7;
@@ -58,7 +58,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(319, 184);
+            this.button1.Location = new System.Drawing.Point(315, 184);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 30);
             this.button1.TabIndex = 6;
@@ -101,7 +101,7 @@
             this.buttonCredits.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCredits.ForeColor = System.Drawing.Color.White;
-            this.buttonCredits.Location = new System.Drawing.Point(319, 256);
+            this.buttonCredits.Location = new System.Drawing.Point(315, 256);
             this.buttonCredits.Name = "buttonCredits";
             this.buttonCredits.Size = new System.Drawing.Size(93, 30);
             this.buttonCredits.TabIndex = 8;
