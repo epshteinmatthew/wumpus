@@ -55,6 +55,7 @@ namespace Cao
             {
                 MessageBox.Show("Comrade! It seems that even your massive brain could not help us here. You'll have to subside on the missiles we have now.");
             }
+            form1.SetMoney(Player.gold);
         }
 
         public void Shoot(int ShootTo)
@@ -159,6 +160,7 @@ namespace Cao
                     MessageBox.Show("Comrade! ICC officers have arrested you, and you're heading to court soon!");
                     death();
                 }
+
             }
 
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
@@ -210,7 +212,6 @@ namespace Cao
             form1.updateRooms(AdjacentRooms, ConnectedRooms);
             string warnings = "";
             warnings += Gamelocations.getWarnings();
-            warnings += Gamelocations.playerLocation.ToString();
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
             form1.SetArrows(Player.arrows);
@@ -235,10 +236,10 @@ namespace Cao
         //open menu
         public void menu()
         {
+            start = new StartMenu(this);
             form1.Close();
             cred.Close();
-            start.ShowDialog();
-            startGamePlay();
+            start.Show();
         }
         //show credits
         public void credits()

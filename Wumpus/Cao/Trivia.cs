@@ -44,8 +44,8 @@ namespace Cao
             {"In what place was Putin born?", new List<string>{"Russia", "Ukraine", "Poland", "Georgia" } },
             {"How many Kinzhal missiles did Ukraine claim to have shot down?", new List<string>{"7", "6", "5", "0" } },
             {"Which airport did Russia attack in the opening days of the invasion?", new List<string>{"Antonov Airport", "Odessa Airport", "Mikolayev Airport", "Mariupol Airport"} },
-            {"What is the largest city in Crimea?", new List<string>{"Sevastapol", "Kerch", "Simferopol", "Yevpatoriya"} },
-            {"How " }
+            {"What is the largest city in Crimea?", new List<string>{"Sevastapol", "Kerch", "Simferopol", "Yevpatoriya"} }
+            
         };
         //commit test
         
@@ -69,6 +69,16 @@ namespace Cao
             label5.Text = CorrectNumber.ToString();
             label6.Text = (QuestionNumber - CorrectNumber).ToString();
 
+            if (player.gold >= 1)
+            {
+                player.payGold(1);
+            }
+            else
+            {
+                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
+                this.Close();
+            }
+
 
         }
 
@@ -79,15 +89,7 @@ namespace Cao
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (player.gold >= 1)
-            {
-                player.payGold(1);
-            }
-            else
-            {
-                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
-                this.Close();
-            }
+            
             if (Answer1.Checked == true && Answer1.Text == answer)
             {
 ;
