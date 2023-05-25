@@ -42,12 +42,18 @@ namespace Cao
             SubmitAnswerButton ask3 = new SubmitAnswerButton();
             ask3.askNumber = 3;
             ask3.player = Player;
+            MessageBox.Show("Comrade! The R&D department is ready to produce another kinzhal missile! Unfortunately, we have forgotten the launch codes. Answer a trivia question to help us ready the missile!");
             ask3.ShowDialog();
 
             if (ask3.CorrectNumber >= 2)
             {
+                MessageBox.Show("Comrade! Your extreme intellect has made it possible for us to produce one more kinzhal missile! Excellent work!");
                 Player.arrows++;
                 form1.SetArrows(Player.arrows);
+            }
+            else
+            {
+                MessageBox.Show("Comrade! It seems that even your massive brain could not help us here. You'll have to subside on the missiles we have now.");
             }
         }
 
@@ -63,7 +69,6 @@ namespace Cao
                 return;
             }
             bool success = Gamelocations.shootArrow(ShootTo);
-            form1.SetText((ShootTo == Gamelocations.wumpusLocation).ToString());
             if(!success)
             {
                 Player.arrows--;
@@ -114,10 +119,12 @@ namespace Cao
                 ask3.ShowDialog();
                 if(ask3.CorrectNumber >= 3)
                 {
+                    MessageBox.Show("Comrade! Your intellectual prowess has forced the Prosecutor to flee!");
                     Gamelocations.moveWumpus(ask3.CorrectNumber);
                 }
                 else
                 {
+                    MessageBox.Show("Comrade! The prosecutor's got you dead to rights! You'll be heading to court soon!");
                     death();
                 }
 
@@ -144,10 +151,12 @@ namespace Cao
                 ask3.ShowDialog();
                 if (ask3.CorrectNumber >= 2)
                 {
+                    MessageBox.Show("Comrade! You managed to escape the ICC officers!");
                     Gamelocations.resetPlayer();
                 }
                 else
                 {
+                    MessageBox.Show("Comrade! ICC officers have arrested you, and you're heading to court soon!");
                     death();
                 }
             }
@@ -156,7 +165,6 @@ namespace Cao
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
             form1.updateRooms(AdjacentRooms, ConnectedRooms);
             warnings += Gamelocations.getWarnings();
-            warnings += Gamelocations.playerLocation.ToString();
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
         }
@@ -213,7 +221,6 @@ namespace Cao
         public void death()
         {
             Death death = new Death(Player.points(false));
-            form1.Close();
             death.ShowDialog();
             menu();
         }
@@ -221,7 +228,6 @@ namespace Cao
         public void win()
         {
             Win win = new Win(Player.points(true));
-            form1.Close();
             win.ShowDialog();
             menu();
         }
