@@ -20,19 +20,16 @@ namespace Cao
         public int TriviaTrigger;
         public int ShootingThing;
         public int CoinCount;
+        StartMenu start;
+        Credits cred;
         private _1095652_Roth_HuntTheWumpus.Form1 form1;
-        public GameControl(_1095652_Roth_HuntTheWumpus.Form1 form)
+        public GameControl()
         {
-            form1 = form;
-            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
-            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
-            form1.updateRooms(AdjacentRooms, ConnectedRooms);
-            string warnings = "";
-            warnings += Gamelocations.getWarnings();
-            warnings += Gamelocations.playerLocation.ToString();
-            form1.SetText(warnings);
-            form1.SetMoney(Player.gold);
-            form1.SetArrows(Player.arrows);
+            //menu, form1, credits
+            start = new StartMenu(this);
+            form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
+            cred = new Credits(this);
+            start.ShowDialog();
         }
         
         public int Score(bool wumpusDead)
@@ -45,12 +42,18 @@ namespace Cao
             SubmitAnswerButton ask3 = new SubmitAnswerButton();
             ask3.askNumber = 3;
             ask3.player = Player;
+            MessageBox.Show("Comrade! The R&D department is ready to produce another kinzhal missile! Unfortunately, we have forgotten the launch codes. Answer a trivia question to help us ready the missile!");
             ask3.ShowDialog();
 
             if (ask3.CorrectNumber >= 2)
             {
+                MessageBox.Show("Comrade! Your extreme intellect has made it possible for us to produce one more kinzhal missile! Excellent work!");
                 Player.arrows++;
                 form1.SetArrows(Player.arrows);
+            }
+            else
+            {
+                MessageBox.Show("Comrade! It seems that even your massive brain could not help us here. You'll have to subside on the missiles we have now.");
             }
         }
 
@@ -62,13 +65,10 @@ namespace Cao
             //4. if false, decrement arrow from Player Object
             if (Player.arrowsValid() == false)
             {
-                Death death = new Death();
-                form1.Close();
-                death.ShowDialog();
+                death();
                 return;
             }
             bool success = Gamelocations.shootArrow(ShootTo);
-            form1.SetText((ShootTo == Gamelocations.wumpusLocation).ToString());
             if(!success)
             {
                 Player.arrows--;
@@ -88,10 +88,8 @@ namespace Cao
                 return;
             }
             MessageBox.Show("Comrade! Our kinzhal missile stike was a success! The prosecutor is no more!");
-            Win win = new Win();
-            win.ShowDialog();
-            form1.Close();
 
+            win();
             //TOTAL WUMPUS DEATH
         }
 
@@ -121,13 +119,13 @@ namespace Cao
                 ask3.ShowDialog();
                 if(ask3.CorrectNumber >= 3)
                 {
+                    MessageBox.Show("Comrade! Your intellectual prowess has forced the Prosecutor to flee!");
                     Gamelocations.moveWumpus(ask3.CorrectNumber);
                 }
                 else
                 {
-                    Death death = new Death();
-                    form1.Close();
-                    death.ShowDialog();
+                    MessageBox.Show("Comrade! The prosecutor's got you dead to rights! You'll be heading to court soon!");
+                    death();
                 }
 
             }
@@ -139,9 +137,7 @@ namespace Cao
                 if(rand.NextDouble() <= 0.05)
                 {
                     MessageBox.Show("Comrade! We have been hit by Ukranian Air Defense! We're going doown!");
-                    Death death = new Death();
-                    form1.Close();
-                    death.ShowDialog();
+                    death();
                     return;
                 }
                 Gamelocations.vdvAirlift();
@@ -155,14 +151,13 @@ namespace Cao
                 ask3.ShowDialog();
                 if (ask3.CorrectNumber >= 2)
                 {
+                    MessageBox.Show("Comrade! You managed to escape the ICC officers!");
                     Gamelocations.resetPlayer();
                 }
                 else
                 {
-
-                    Death death = new Death();
-                    form1.Close();
-                    death.ShowDialog();
+                    MessageBox.Show("Comrade! ICC officers have arrested you, and you're heading to court soon!");
+                    death();
                 }
             }
 
@@ -170,7 +165,6 @@ namespace Cao
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
             form1.updateRooms(AdjacentRooms, ConnectedRooms);
             warnings += Gamelocations.getWarnings();
-            warnings += Gamelocations.playerLocation.ToString();
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
         }
@@ -204,6 +198,53 @@ namespace Cao
             return Gamelocations.wumpusLocation;
         }
         
+        //restart gameplay
+        public void startGamePlay()
+        {
+            form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
+            start.Close();
+            Player = new Player();
+            Gamelocations = new GameLocations(3, 3);
+            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
+            string warnings = "";
+            warnings += Gamelocations.getWarnings();
+            warnings += Gamelocations.playerLocation.ToString();
+            form1.SetText(warnings);
+            form1.SetMoney(Player.gold);
+            form1.SetArrows(Player.arrows);
+            form1.Show();
+        }
 
+        //exit gameplay->credits
+        public void death()
+        {
+            Death death = new Death(Player.points(false));
+            death.ShowDialog();
+            menu();
+        }
+
+        public void win()
+        {
+            Win win = new Win(Player.points(true));
+            win.ShowDialog();
+            menu();
+        }
+
+        //open menu
+        public void menu()
+        {
+            form1.Close();
+            cred.Close();
+            start.ShowDialog();
+            startGamePlay();
+        }
+        //show credits
+        public void credits()
+        {
+            start.Close();
+            cred.Show();
+        }
     }   
 }

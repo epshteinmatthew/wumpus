@@ -1,4 +1,5 @@
 ﻿using _1095652_Roth_HuntTheWumpus;
+using Cao;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,20 +14,17 @@ namespace Wumpus
 {
     public partial class Win : Form
     {
-        public Win()
+        public Win(int score)
         {
             InitializeComponent();
+            label2.Text = "Your score was: " + score.ToString();
         }
 
         private void buttonRetry_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form1 form = new Form1();
-            form.ShowDialog();
-
             this.Close();
 
-            //code to reset variables here:
+            //call control
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,6 +33,16 @@ namespace Wumpus
         }
 
         private void Win_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
