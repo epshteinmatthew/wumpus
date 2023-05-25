@@ -71,6 +71,16 @@ namespace Cao
             label5.Text = CorrectNumber.ToString();
             label6.Text = (QuestionNumber - CorrectNumber).ToString();
 
+            if (player.gold >= 1)
+            {
+                player.payGold(1);
+            }
+            else
+            {
+                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
+                this.Close();
+            }
+
 
         }
 
@@ -81,15 +91,7 @@ namespace Cao
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (player.gold >= 1)
-            {
-                player.payGold(1);
-            }
-            else
-            {
-                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
-                this.Close();
-            }
+            
             if (Answer1.Checked == true && Answer1.Text == answer)
             {
 ;
