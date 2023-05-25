@@ -46,7 +46,8 @@ namespace Cao
             {"Which airport did Russia attack in the opening days of the invasion?", new List<string>{"Antonov Airport", "Odessa Airport", "Mikolayev Airport", "Mariupol Airport"} },
             {"What is the largest city in Crimea?", new List<string>{"Sevastapol", "Kerch", "Simferopol", "Yevpatoriya"} },
             {"When did the Battle of Bakhmut begin?", new List<string>{"1 August 2022", "23 February 2022", "5 May 2022", "9th December 2022" } },
-            {"How many Armata tanks showed up to the 2022 Victory Day parade?", new List<string>{"3", "2", "4", "5" } }
+            {"How many Armata tanks showed up to the 2022 Victory Day parade?", new List<string>{"3", "2", "4", "5" } },
+            {"What is the latest model of T-72?", new List<string>{"T-72B3M", "T-72BU", "T-72AV", "T-72B3"} }
         };
         //commit test
 
