@@ -45,13 +45,6 @@ namespace Wumpus
             Environment.Exit(0);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-            
-            
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 

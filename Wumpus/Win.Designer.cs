@@ -63,7 +63,7 @@
             this.label1.Size = new System.Drawing.Size(149, 37);
             this.label1.TabIndex = 4;
             this.label1.Text = "You Win!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // label2
             // 
@@ -73,7 +73,7 @@
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Score: ";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+
             // 
             // Win
             // 
@@ -87,7 +87,7 @@
             this.Name = "Win";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Win";
-            this.Load += new System.EventHandler(this.Win_Load);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

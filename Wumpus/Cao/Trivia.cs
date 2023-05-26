@@ -26,6 +26,7 @@ namespace Cao
         //.OrderBy(_=>generator.Next()).ToArray();
         Dictionary<string, List<string>> questions = new Dictionary<string, List<string>>()
         {
+            //trivia questions
             {"When was the KGB founded?",  new List<string> {"1953", "1954", "1955", "1964" } },
             {"Who plays Lavrentiy Beria in the movie The Death of Stalin?",  new List<string> {"George Beale Russell", "Jeffery Tambor", "Steve Buscemi", "Jason Isaacs" } },
             {"In what bomber did Putin fly in during an inspection?", new List<string>{"Tu-160M2", "Tu-160M", "Tu-160S", "Tu-160" } },
