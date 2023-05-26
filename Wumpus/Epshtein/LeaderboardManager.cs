@@ -35,7 +35,7 @@ namespace Wumpus.Epshtein
             if (total.Seconds > 0)
             {
                 ret += ", " + total.Seconds + " seconds";
-            }Robo
+            }
 
             return ret;
         }
