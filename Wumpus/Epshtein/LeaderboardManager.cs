@@ -9,8 +9,8 @@ namespace Wumpus.Epshtein
     {
         private readonly DateTime startTime;
         private DateTime endTime;
-        private Dictionary<string, int> scores { get; }
-        private Dictionary<string, DateTime> times { get; }
+        public Dictionary<string, int> scores {  get; private set; }
+        public Dictionary<string, DateTime> times { get; private set; }
         
         
         public LeaderboardManager()
