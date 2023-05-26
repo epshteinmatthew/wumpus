@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Wumpus.Epshtein
 {
@@ -8,14 +9,14 @@ namespace Wumpus.Epshtein
     {
         private readonly DateTime startTime;
         private DateTime endTime;
-        private Dictionary<string, int> scores;
-        private Dictionary<string, DateTime> times;
+        private Dictionary<string, int> scores { get; }
+        private Dictionary<string, DateTime> times { get; }
         
         
         public LeaderboardManager()
         {
             startTime = DateTime.Now;
-            using (StreamReader sr = new StreamReader("scores.txt"))
+            using (var sr = new StreamReader("scores.txt"))
             {
                 string line;
                 // Read and display lines from the file until the end of
@@ -25,7 +26,7 @@ namespace Wumpus.Epshtein
                     scores.Add(line.Split(',')[0], int.Parse(line.Split(',')[1]));
                 }
             }
-            using (StreamReader sr = new StreamReader("times.txt"))
+            using (var sr = new StreamReader("times.txt"))
             {
                 string line;
                 // Read and display lines from the file until the end of
@@ -68,8 +69,24 @@ namespace Wumpus.Epshtein
             scores.Add(name, score);
             times.Add(name, new DateTime() + (endTime - startTime));
             
+            scores = scores.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            times = times.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
             //write everything to file now
-            
+             using (var sw = new StreamWriter(new FileStream("times.txt", FileMode.Create)))
+             {
+                 foreach (string key in scores.Keys)
+                 {
+                     sw.WriteLine(key + "," + scores[key].ToString());
+                 }
+             }
+             
+             using (var sw = new StreamWriter(new FileStream("score.txt", FileMode.Create)))
+             {
+                 foreach (string key in times.Keys)
+                 {
+                     sw.WriteLine(key + "," + times[key].ToString());
+                 }
+             }
             
         }
         
