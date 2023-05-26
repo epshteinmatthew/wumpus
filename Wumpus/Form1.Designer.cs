@@ -47,7 +47,9 @@
             this.buttonMenu = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
@@ -277,6 +279,15 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox2.Location = new System.Drawing.Point(217, 214);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(81, 81);
+            this.pictureBox2.TabIndex = 41;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -309,6 +320,7 @@
             this.Text = "Pootin";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -333,6 +345,7 @@
         private System.Windows.Forms.TextBox textBoxMoney;
         private System.Windows.Forms.Button buttonMenu;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
