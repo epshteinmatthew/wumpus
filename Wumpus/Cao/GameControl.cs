@@ -212,14 +212,14 @@ namespace Cao
         }
 
         //exit gameplay->credits
-        public void death()
+        private void death()
         {
             Death death = new Death(Player.points(false));
             death.ShowDialog();
             menu();
         }
 
-        public void win()
+        private void win()
         {
             Win win = new Win(Player.points(true));
             win.ShowDialog();
@@ -238,6 +238,7 @@ namespace Cao
         public void credits()
         {
             start.Close();
+            cred = new Credits(this);
             cred.Show();
         }
     }   

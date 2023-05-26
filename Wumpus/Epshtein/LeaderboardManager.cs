@@ -6,7 +6,39 @@ using System.Threading.Tasks;
 
 namespace Wumpus.Epshtein
 {
-    internal class LeaderboardManager
+    public class LeaderboardManager
     {
+        private DateTime startTime;
+        public LeaderboardManager()
+        {
+            startTime = DateTime.Now;
+        }
+
+        public string endRun(int score)
+        {
+            TimeSpan total = DateTime.Now - startTime;
+            string ret = "";
+            //something something
+            if (total.Days > 0)
+            {
+                ret += total.Days + " days";
+            }
+
+            if (total.Hours > 0)
+            {
+                ret += ", " + total.Hours + " hours";
+            }
+            if (total.Minutes > 0)
+            {
+                ret += ", " + total.Minutes + " minutes";
+            }
+            if (total.Seconds > 0)
+            {
+                ret += ", " + total.Seconds + " seconds";
+            }Robo
+
+            return ret;
+        }
+        
     }
 }
