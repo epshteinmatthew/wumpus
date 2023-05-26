@@ -29,22 +29,9 @@ namespace Wumpus
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //close all forms
             Environment.Exit(0);
         }
 
-        private void Win_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
