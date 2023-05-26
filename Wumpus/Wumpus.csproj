@@ -85,6 +85,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Epshtein\GameLocations.cs" />
+    <Compile Include="Epshtein\LeaderboardManager.cs" />
     <Compile Include="Epshtein\Player.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -257,6 +258,7 @@
     <Content Include="1229.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\542917680.0.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,7 +31,17 @@ namespace Cao
             cred = new Credits(this);
             start.ShowDialog();
         }
-        
+
+        public int playTrivia(int toask, string message)
+        {
+            SubmitAnswerButton ask3 = new SubmitAnswerButton();
+            ask3.askNumber = toask;
+            ask3.player = Player;
+            MessageBox.Show(message);
+            ask3.ShowDialog();
+            return ask3.CorrectNumber;
+        }
+
         public int Score(bool wumpusDead)
         {
             return Player.points(wumpusDead);
@@ -39,13 +49,7 @@ namespace Cao
         
         public void purchaseArrow()
         {
-            SubmitAnswerButton ask3 = new SubmitAnswerButton();
-            ask3.askNumber = 3;
-            ask3.player = Player;
-            MessageBox.Show("Comrade! The R&D department is ready to produce another kinzhal missile! Unfortunately, we have forgotten the launch codes. Answer a trivia question to help us ready the missile!");
-            ask3.ShowDialog();
-
-            if (ask3.CorrectNumber >= 2)
+            if (playTrivia(2, "Comrade! The R&D department is ready to produce another kinzhal missile! Unfortunately, we have forgotten the launch codes. Answer a trivia question correctly to help us ready the missile!") >= 1)
             {
                 MessageBox.Show("Comrade! Your extreme intellect has made it possible for us to produce one more kinzhal missile! Excellent work!");
                 Player.arrows++;
@@ -76,6 +80,7 @@ namespace Cao
                 MessageBox.Show("Comrade! The prosecutor has fled from our kinzhal missile strike in terror!");
                 Gamelocations.moveWumpus(1);
                 form1.SetArrows(Player.arrows);
+                Move(Gamelocations.playerLocation);
                 return;
                
             }
@@ -86,6 +91,7 @@ namespace Cao
                 Player.arrows--; 
                 Gamelocations.moveWumpus(1);
                 form1.SetArrows(Player.arrows);
+                Move(Gamelocations.playerLocation);
                 return;
             }
             MessageBox.Show("Comrade! Our kinzhal missile stike was a success! The prosecutor is no more!");
@@ -113,15 +119,11 @@ namespace Cao
             string warnings = "";
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
-                SubmitAnswerButton ask3 = new SubmitAnswerButton();
-                ask3.askNumber = 5;
-                ask3.player = Player;
-                MessageBox.Show("Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
-                ask3.ShowDialog();
-                if(ask3.CorrectNumber >= 3)
+                int c = playTrivia(5, "Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
+                if (c >= 3)
                 {
                     MessageBox.Show("Comrade! Your intellectual prowess has forced the Prosecutor to flee!");
-                    Gamelocations.moveWumpus(ask3.CorrectNumber);
+                    Gamelocations.moveWumpus(c);
                 }
                 else
                 {
@@ -145,12 +147,7 @@ namespace Cao
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
-                SubmitAnswerButton ask3 = new SubmitAnswerButton();
-                ask3.askNumber = 3;
-                ask3.player = Player;
-                MessageBox.Show("Comrade! You've been captured by the ICC! Answer 2 out of 3 trivia questions correctly to escape!");
-                ask3.ShowDialog();
-                if (ask3.CorrectNumber >= 2)
+                if (playTrivia(3, "Comrade! You've been captured by the ICC! Answer 2 out of 3 trivia questions correctly to escape!") >= 2)
                 {
                     MessageBox.Show("Comrade! You managed to escape the ICC officers!");
                     Gamelocations.resetPlayer();
@@ -195,10 +192,6 @@ namespace Cao
         {
             return Player.gold;
         }
-        public int WumpusLocation()
-        {
-            return Gamelocations.wumpusLocation;
-        }
         
         //restart gameplay
         public void startGamePlay()
@@ -219,14 +212,14 @@ namespace Cao
         }
 
         //exit gameplay->credits
-        public void death()
+        private void death()
         {
             Death death = new Death(Player.points(false));
             death.ShowDialog();
             menu();
         }
 
-        public void win()
+        private void win()
         {
             Win win = new Win(Player.points(true));
             win.ShowDialog();
@@ -245,6 +238,7 @@ namespace Cao
         public void credits()
         {
             start.Close();
+            cred = new Credits(this);
             cred.Show();
         }
     }   

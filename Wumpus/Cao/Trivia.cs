@@ -41,15 +41,17 @@ namespace Cao
             {"How large is russia?", new List<string>{ "16,400,000 m^2", " 31,200,000 m^2", "5,700,000 m^2", "11,500,000 m^2" } },
             {"How many terms has Putin had as president of russia?", new List<string>{"4", "3", "2", "1" } },
             {"What Martial art does Putin have a black belt in?", new List<string>{"Judo", "Karate", "Sambo", "Taekwondo" } },
-            {"In 2016 what american celebrity did Putin give Russian Citezenship to?", new List<string>{"LSteven Seagal", "Katy Perry", "Tom Cruise", "Frank Sinatra" } },
+            {"In 2016 what american celebrity did Putin give Russian Citezenship to?", new List<string>{"Steven Seagal", "Katy Perry", "Tom Cruise", "Frank Sinatra" } },
             {"In what place was Putin born?", new List<string>{"Russia", "Ukraine", "Poland", "Georgia" } },
             {"How many Kinzhal missiles did Ukraine claim to have shot down?", new List<string>{"7", "6", "5", "0" } },
             {"Which airport did Russia attack in the opening days of the invasion?", new List<string>{"Antonov Airport", "Odessa Airport", "Mikolayev Airport", "Mariupol Airport"} },
-            {"What is the largest city in Crimea?", new List<string>{"Sevastapol", "Kerch", "Simferopol", "Yevpatoriya"} }
-            
+            {"What is the largest city in Crimea?", new List<string>{"Sevastapol", "Kerch", "Simferopol", "Yevpatoriya"} },
+            {"When did the Battle of Bakhmut begin?", new List<string>{"1 August 2022", "23 February 2022", "5 May 2022", "9th December 2022" } },
+            {"How many Armata tanks showed up to the 2022 Victory Day parade?", new List<string>{"3", "2", "4", "5" } },
+            {"What is the latest model of T-72?", new List<string>{"T-72B3M", "T-72BU", "T-72AV", "T-72B3"} }
         };
         //commit test
-        
+
         public void populate()
         {
             string question = questions.Keys.OrderBy(_ => RandomGenerator.Next()).ToArray()[0];
@@ -122,14 +124,12 @@ namespace Cao
 
         private void SubmitAnswerButton_Load(object sender, EventArgs e)
         {
-            label4.Text = (QuestionNumber + 1).ToString();
-            label5.Text = CorrectNumber.ToString();
-            label6.Text = ( QuestionNumber - CorrectNumber ) .ToString();
+
+            populate();
         }
 
         private void SubmitAnswerButton_Activated(object sender, EventArgs e)
         {
-            populate();
         }
 
         private void label2_Click(object sender, EventArgs e)

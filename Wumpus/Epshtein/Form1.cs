@@ -37,7 +37,6 @@ namespace Epshtein
             if(gameLocations != null)
             {
                 gameLocations.moveWumpus(2);
-                label1.Text = gameLocations.wumpusLocation.ToString();
             }
         }
 
