@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wumpus;
+using Wumpus.Epshtein;
 
 namespace _1095652_Roth_HuntTheWumpus
 {
@@ -18,8 +19,8 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            GameControl gc = new GameControl();
-            Application.Run();
+           // GameControl gc = new GameControl();
+            Application.Run(new Leaderboard());
         }
     }
 }
