@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Cao;
 
 namespace Wumpus.Epshtein
 {
     public partial class Leaderboard : Form
     {
-        private readonly DateTime startTime;
+        private  DateTime startTime;
         private DateTime endTime;
         private Dictionary<string, int> scores = new Dictionary<string, int>();
         private Dictionary<string, DateTime> times = new Dictionary<string, DateTime>();
+        private GameControl gc;
         
         private ListBox leaderboardListBox;
 
-        public Leaderboard()
+        public Leaderboard(GameControl gameControl)
         {
             InitializeComponent();
-            startTime = DateTime.Now;
+            this.gc = gameControl;
             using (var sr = new StreamReader("scores.txt"))
             {
                 string line;
@@ -69,8 +71,9 @@ namespace Wumpus.Epshtein
                     return;
             }
         }
-        public string endRun()
+        public string endRun(DateTime start)
         {
+            startTime = start;
             endTime = DateTime.Now;
             var total = endTime - startTime;
             var ret = "";
@@ -100,7 +103,7 @@ namespace Wumpus.Epshtein
             var rand = new Random();
             var gen = 0;
             var adder = 0;
-            while (scores.ContainsKey(name + gen) || times.ContainsKey(name + gen))
+            while (scores.ContainsKey(gen == 0 ? name : name + gen) || times.ContainsKey((gen == 0 ? name : name + gen)))
             {
                 gen = rand.Next(1, 10000);
             }
@@ -108,11 +111,11 @@ namespace Wumpus.Epshtein
             {
                 adder++;
             }
-            times.Add(name + gen, new DateTime() + (endTime - startTime));
-            scores.Add(name+gen, score+adder);
+            times.Add((gen == 0 ? name : name + gen), new DateTime() + (endTime - startTime));
+            scores.Add((gen == 0 ? name : name + gen), score+adder);
 
             //write everything to file now
-             using (var sw = new StreamWriter(new FileStream("times.txt", FileMode.Create)))
+             using (var sw = new StreamWriter(new FileStream("scores.txt", FileMode.Create)))
              {
                  foreach (string key in scores.Keys)
                  {
@@ -120,7 +123,7 @@ namespace Wumpus.Epshtein
                  }
              }
              
-             using (var sw = new StreamWriter(new FileStream("scores.txt", FileMode.Create)))
+             using (var sw = new StreamWriter(new FileStream("times.txt", FileMode.Create)))
              {
                  foreach (string key in times.Keys)
                  {
@@ -177,6 +180,11 @@ namespace Wumpus.Epshtein
             {
                 populateListBox(1);
             };
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            gc.showMenu();
         }
     }
 }

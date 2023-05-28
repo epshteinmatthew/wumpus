@@ -212,7 +212,7 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            control.menu();
+            control.showMenu();
 
             //code to reset variables here:
         }

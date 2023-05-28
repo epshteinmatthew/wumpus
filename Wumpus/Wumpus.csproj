@@ -91,7 +91,6 @@
     <Compile Include="Epshtein\Leaderboard.Designer.cs">
       <DependentUpon>Leaderboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Epshtein\LeaderboardManager.cs" />
     <Compile Include="Epshtein\Player.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

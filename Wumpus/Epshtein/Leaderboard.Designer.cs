@@ -43,18 +43,19 @@ namespace Wumpus.Epshtein
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxTime = new System.Windows.Forms.TextBox();
+            this.buttonBack = new System.Windows.Forms.Button();
             this.leaderboardListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // leaderboardListBox
             // 
             this.leaderboardListBox.FormattingEnabled = true;
-            this. leaderboardListBox.ItemHeight = 20;
+            this.leaderboardListBox.ItemHeight = 20;
             this.leaderboardListBox.Location = new System.Drawing.Point(58, 81);
             this.leaderboardListBox.Name = "leaderboardListBox";
             this.leaderboardListBox.Size = new System.Drawing.Size(191, 304);
             this.leaderboardListBox.TabIndex = 0;
-            this. leaderboardListBox.SelectedIndexChanged += new System.EventHandler(this.leaderboardList_SelectedIndexChanged);
+            this.leaderboardListBox.SelectedIndexChanged += new System.EventHandler(this.leaderboardList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -144,11 +145,22 @@ namespace Wumpus.Epshtein
             this.textBoxTime.Size = new System.Drawing.Size(134, 26);
             this.textBoxTime.TabIndex = 11;
             // 
+            // buttonBack
+            // 
+            this.buttonBack.Location = new System.Drawing.Point(268, 342);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(146, 43);
+            this.buttonBack.TabIndex = 12;
+            this.buttonBack.Text = "Back to Menu";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
             // Leaderboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 515);
+            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.textBoxTime);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -166,6 +178,8 @@ namespace Wumpus.Epshtein
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button buttonBack;
 
         private System.Windows.Forms.TextBox textBoxName;
 

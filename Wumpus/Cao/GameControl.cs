@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wumpus;
+using Wumpus.Epshtein;
 
 namespace Cao
 {
@@ -13,26 +14,24 @@ namespace Cao
     public class GameControl
 
     {
-        public GameLocations Gamelocations { get; set; } = new GameLocations(3,3);
-        public Player Player { get; set; } = new Player();
-        public int LocationUpdate;
-        public int ScoringThings;
-        public int TriviaTrigger;
-        public int ShootingThing;
-        public int CoinCount;
+        private GameLocations Gamelocations { get; set; } = new GameLocations(3,3);
+        private Player Player { get; set; } = new Player();
         StartMenu start;
         Credits cred;
+        private Leaderboard leaderboard;
         private _1095652_Roth_HuntTheWumpus.Form1 form1;
+        private DateTime startTime;
         public GameControl()
         {
             //menu, form1, credits
             start = new StartMenu(this);
             form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
             cred = new Credits(this);
+            leaderboard    = new Leaderboard(this);
             start.ShowDialog();
         }
 
-        public int playTrivia(int toask, string message)
+        private int playTrivia(int toask, string message)
         {
             SubmitAnswerButton ask3 = new SubmitAnswerButton();
             ask3.askNumber = toask;
@@ -208,6 +207,7 @@ namespace Cao
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
             form1.SetArrows(Player.arrows);
+            startTime = DateTime.Now;
             form1.Show();
         }
 
@@ -216,30 +216,41 @@ namespace Cao
         {
             Death death = new Death(Player.points(false));
             death.ShowDialog();
-            menu();
+            showMenu();
         }
 
         private void win()
         {
-            Win win = new Win(Player.points(true));
+            //only successful runs get a leaderboard position
+            Win win = new Win(Player.points(true), leaderboard, startTime);
             win.ShowDialog();
-            menu();
+            showMenu();
         }
 
         //open menu
-        public void menu()
+        public void showMenu()
         {
             start = new StartMenu(this);
             form1.Close();
             cred.Close();
+            leaderboard.Close();
             start.Show();
         }
         //show credits
-        public void credits()
+        public void showCredits()
         {
             start.Close();
             cred = new Credits(this);
             cred.Show();
         }
+
+        public void showLeaderboard()
+        {
+            start.Close();
+            leaderboard = new Leaderboard(this);
+            leaderboard.Show();
+        }
+        
+        
     }   
 }

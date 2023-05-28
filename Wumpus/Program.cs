@@ -19,7 +19,7 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // GameControl gc = new GameControl();
+            GameControl gc = new GameControl();
             Application.Run();
         }
     }
