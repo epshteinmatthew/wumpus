@@ -10,9 +10,10 @@ namespace Chan_WumpusTest
 {
     public class Cave
     {
-        List<int[]> rooms = new List<int[]>();
+        private readonly List<int[]> rooms = new List<int[]>();
 
-        List<int[]> connections = new List<int[]>();
+        //this can still be mutated, but only by the methods of List class
+        private readonly List<int[]> connections = new List<int[]>();
 
         int RoomNumber { get; set; }
         string CaveNumber { get; set; }
@@ -32,7 +33,7 @@ namespace Chan_WumpusTest
 
             this.CaveNumber = num;
             this.RoomNumber = rum;
-            using (StreamReader sr = new StreamReader("CaveAdjacent.txt"))
+            using (var sr = new StreamReader("CaveAdjacent.txt"))
             {
                 string line;
                 // Read and display lines from the file until the end of
@@ -48,10 +49,10 @@ namespace Chan_WumpusTest
             }
             
             //decides what cave system is being used at random
-            Random rnd = new Random();
-            int n = 6;
+            var rnd = new Random();
+            var n = 6;
             CaveNumber = "Cave" + n;
-            string CaveFile = "Cave1Connections.txt";
+            var CaveFile = "Cave1Connections.txt";
 
             switch (n)
             {
@@ -74,7 +75,7 @@ namespace Chan_WumpusTest
                     var conns = new int[30, 6];
                     var rand = new Random();
                     var seedling = new int[30];
-                    for (int i = 0; i < seedling.Length; i++)
+                    for (var i = 0; i < seedling.Length; i++)
                     {
                         seedling[i] = rand.Next(2, 4);
                     }
@@ -89,15 +90,13 @@ namespace Chan_WumpusTest
                             var ourNextConnectionLocation = rooms[i][ourNextConnection] - 1;
                             //we want to give space for other rooms to generate
                             if (seedling[ourNextConnectionLocation] == 1 && i > ourNextConnectionLocation) continue;
-                            for (int j = 0; j < rooms[ourNextConnectionLocation].Length; j++)
+                            for (var j = 0; j < rooms[ourNextConnectionLocation].Length; j++)
                             {
-                                if (rooms[ourNextConnectionLocation][j] == i + 1)
-                                {
-                                    seedling[ourNextConnectionLocation]--;
-                                    seedling[i]--;
-                                    conns[ourNextConnectionLocation, j] = 1;
-                                    conns[i, ourNextConnection] = 1;
-                                }
+                                if (rooms[ourNextConnectionLocation][j] != i + 1) continue;
+                                seedling[ourNextConnectionLocation]--;
+                                seedling[i]--;
+                                conns[ourNextConnectionLocation, j] = 1;
+                                conns[i, ourNextConnection] = 1;
                             }
                         }
                        
@@ -113,7 +112,7 @@ namespace Chan_WumpusTest
             {
                 return;
             }
-            using (StreamReader sr = new StreamReader(CaveFile))
+            using (var sr = new StreamReader(CaveFile))
             {
                 string lines;
                 // Read and display lines from the file until the end of
@@ -161,8 +160,8 @@ namespace Chan_WumpusTest
         /// <returns></returns>
         public int[] GetConnectedCaves(int room)
         {
-            List<int> connected = new List<int>();
-            for (int i = 0; i < connections[room-1].Length; i++)
+            var connected = new List<int>();
+            for (var i = 0; i < connections[room-1].Length; i++)
             {
                 if (connections[room - 1][i] == 1)
                 {
