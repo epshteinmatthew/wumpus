@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,34 +49,70 @@ namespace Chan_WumpusTest
             
             //decides what cave system is being used at random
             Random rnd = new Random();
-            int n = rnd.Next(1, 6);
+            int n = 6;
             CaveNumber = "Cave" + n;
             string CaveFile = "Cave1Connections.txt";
 
-            if (n == 1)
+            switch (n)
             {
-                CaveFile = "Cave1Connections.txt";
+                case 1:
+                    CaveFile = "Cave1Connections.txt";
+                    break;
+                case 2:
+                    CaveFile = "Cave2Connections.txt";
+                    break;
+                case 3:
+                    CaveFile = "Cave3Connections.txt";
+                    break;
+                case 4:
+                    CaveFile = "Cave4Connections.txt";
+                    break;
+                case 5:
+                    CaveFile = "Cave5Connections.txt";
+                    break;
+                case 6:
+                    var conns = new int[30, 6];
+                    var rand = new Random();
+                    var seedling = new int[30];
+                    for (int i = 0; i < seedling.Length; i++)
+                    {
+                        seedling[i] = rand.Next(2, 4);
+                    }
+                    for (var i = 0; i < conns.GetLength(0); i++)
+                    {
+                        while (seedling[i] > 0)
+                        {
+                            var ourNextConnection = rand.Next(0, 6);
+                            //reroll-the space has already been filled
+                            if(conns[i, ourNextConnection] == 1)continue;
+                            //get the room we want to access, remembering 0-indexing
+                            var ourNextConnectionLocation = rooms[i][ourNextConnection] - 1;
+                            //we want to give space for other rooms to generate
+                            if (seedling[ourNextConnectionLocation] == 1 && i > ourNextConnectionLocation) continue;
+                            for (int j = 0; j < rooms[ourNextConnectionLocation].Length; j++)
+                            {
+                                if (rooms[ourNextConnectionLocation][j] == i + 1)
+                                {
+                                    seedling[ourNextConnectionLocation]--;
+                                    seedling[i]--;
+                                    conns[ourNextConnectionLocation, j] = 1;
+                                    conns[i, ourNextConnection] = 1;
+                                }
+                            }
+                        }
+                       
+                        connections.Add(Enumerable.Range(0, conns.GetLength(1))
+                            .Select(x => conns[i, x])
+                            .ToArray());
+                    }
+                    Debug.WriteLine(connections);
+                    break;
             }
-            else if (n == 2)
-            {
-                CaveFile = "Cave2Connections.txt";
-            }
-            else if (n == 3)
-            {
-                CaveFile = "Cave3Connections.txt";
-            }
-            else if (n == 4)
-            {
-                CaveFile = "Cave4Connections.txt";
-            }
-            else if (n == 5)
-            {
-                CaveFile = "Cave5Connections.txt";
-            }
-
-
-
             //withdraws which rooms the player can go into from a file
+            if (n == 6)
+            {
+                return;
+            }
             using (StreamReader sr = new StreamReader(CaveFile))
             {
                 string lines;
