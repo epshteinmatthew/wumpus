@@ -51,7 +51,7 @@ namespace Cao
             {"What is the latest model of T-72?", new List<string>{"T-72B3M", "T-72BU", "T-72AV", "T-72B3"} },
             {"What color Formula One car did Putin drive in 2010?", new List<string>{"Yellow", "Blue", "Red", "Orange"}},
             {"Which Press Secretary told the truth about Putin's 2011 scuba dive?", new List<string>{"Dimitry Peskov", "Natalya Timakova", "Alexei Gromov", "Dimitry Medvedev" }},
-            {"Заполни ету цытату: И если бы за ____ часов до операции не был нанесён превентивный удар по позициям ", new List<string>{"шесть", "пять", "семь", "восемь"}}
+            {"Заполни эту цитату: И если бы за ____ часов до операции не был нанесён превентивный удар по позициям ", new List<string>{"шесть", "пять", "семь", "восемь"}}
             
         };
         //commit test
