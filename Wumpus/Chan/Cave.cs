@@ -28,9 +28,8 @@ namespace Chan_WumpusTest
         /// </summary>
         /// <param name="num"></param>
         /// <param name="rum"></param>
-        public Cave(string num, int rum)
+        public Cave(string num, int rum, int whichToGen)
         {
-
             this.CaveNumber = num;
             this.RoomNumber = rum;
             using (var sr = new StreamReader("CaveAdjacent.txt"))
@@ -49,12 +48,10 @@ namespace Chan_WumpusTest
             }
             
             //decides what cave system is being used at random
-            var rnd = new Random();
-            var n = 6;
-            CaveNumber = "Cave" + n;
+            CaveNumber = "Cave" + whichToGen;
             var CaveFile = "Cave1Connections.txt";
 
-            switch (n)
+            switch (whichToGen)
             {
                 case 1:
                     CaveFile = "Cave1Connections.txt";
@@ -108,7 +105,7 @@ namespace Chan_WumpusTest
                     break;
             }
             //withdraws which rooms the player can go into from a file
-            if (n == 6)
+            if (whichToGen == 6)
             {
                 return;
             }
