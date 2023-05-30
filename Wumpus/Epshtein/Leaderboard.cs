@@ -12,9 +12,8 @@ namespace Wumpus.Epshtein
         private  DateTime startTime;
         private DateTime endTime;
         private Dictionary<string, int> scores = new Dictionary<string, int>();
-        private Dictionary<string, DateTime> times = new Dictionary<string, DateTime>();
+        private Dictionary<string, TimeSpan> times = new Dictionary<string, TimeSpan>();
         private GameControl gc;
-        
         private ListBox leaderboardListBox;
 
         public Leaderboard(GameControl gameControl)
@@ -40,7 +39,7 @@ namespace Wumpus.Epshtein
                 // the file is reached.
                 while ((line = sr.ReadLine()) != null)
                 {
-                    times.Add(line.Split(',')[0], DateTime.Parse(line.Split(',')[1]));
+                    times.Add(line.Split(',')[0], TimeSpan.Parse(line.Split(',')[1]));
                 }
             }
             
@@ -76,27 +75,9 @@ namespace Wumpus.Epshtein
             startTime = start;
             endTime = DateTime.Now;
             var total = endTime - startTime;
-            var ret = "";
-            //something something
-            if (total.Days > 0)
-            {
-                ret += total.Days + " days";
-            }
-
-            if (total.Hours > 0)
-            {
-                ret += ", " + total.Hours + " hours";
-            }
-            if (total.Minutes > 0)
-            {
-                ret += ", " + total.Minutes + " minutes";
-            }
-            if (total.Seconds > 0)
-            {
-                ret += ", " + total.Seconds + " seconds";
-            }
-            return ret;
+            return total.Days + ":" + total.Hours + ":" + total.Seconds;
         }
+
 
         public void writeItemsToFile(int score, string name)
         {
@@ -111,7 +92,7 @@ namespace Wumpus.Epshtein
             {
                 adder++;
             }
-            times.Add((gen == 0 ? name : name + gen), new DateTime() + (endTime - startTime));
+            times.Add((gen == 0 ? name : name + gen), (endTime - startTime));
             scores.Add((gen == 0 ? name : name + gen), score+adder);
 
             //write everything to file now
@@ -154,7 +135,7 @@ namespace Wumpus.Epshtein
             {
                 return;
             }
-            string name = radioButtonScore.Checked ? scores.FirstOrDefault(x => x.Value == int.Parse(leaderboardListBox.SelectedItem.ToString())).Key : times.FirstOrDefault(x => x.Value == DateTime.Parse(leaderboardListBox.SelectedItem.ToString())).Key;
+            string name = radioButtonScore.Checked ? scores.FirstOrDefault(x => x.Value == int.Parse(leaderboardListBox.SelectedItem.ToString())).Key : times.FirstOrDefault(x => x.Value == TimeSpan.Parse(leaderboardListBox.SelectedItem.ToString())).Key;
 
             textBoxName.Text = name;
             textBoxScore.Text = (scores.ContainsKey(name) ? scores[name].ToString()  : " ");
