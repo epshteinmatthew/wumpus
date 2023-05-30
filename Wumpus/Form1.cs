@@ -172,12 +172,29 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         private void buttonShoot_Click(object sender, EventArgs e)
         {
-            buttonMove.Enabled = false;
+            if (buttonMove.Enabled == false)
+            {
+                buttonMove.Enabled = true;
+            }
+            else
+            {
+                buttonMove.Enabled = false;
+            }
+
+            
         }
         private void buttonMove_Click(object sender, EventArgs e)
         {
+            if (buttonShoot.Enabled == false)
+            {
+                buttonShoot.Enabled = true;
+            }
+            else
+            {
+                buttonShoot.Enabled = false;
+            }
             
-            buttonShoot.Enabled = false;
+            
         }
         private void MoveButtonClicked()
         {

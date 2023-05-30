@@ -32,7 +32,9 @@ namespace Wumpus.Epshtein
         /// </summary>
         private void InitializeComponent()
         {
+#pragma warning disable CS0168 // Variable is declared but never used
             System.Windows.Forms.ListBox leaderboardListBox;
+#pragma warning restore CS0168 // Variable is declared but never used
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();

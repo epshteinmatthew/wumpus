@@ -225,6 +225,7 @@ namespace Cao
             Win win = new Win(Player.points(true), leaderboard, startTime);
             win.ShowDialog();
             showMenu();
+            
         }
 
         //open menu
