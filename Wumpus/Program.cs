@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wumpus;
+using Wumpus.Epshtein;
 
 namespace _1095652_Roth_HuntTheWumpus
 {

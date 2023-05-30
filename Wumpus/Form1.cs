@@ -28,7 +28,6 @@ namespace _1095652_Roth_HuntTheWumpus
             control = gameControl;
         }
 
-        //TODO: This
         public void updateRooms(int[] adj, int[] con)
         {
             button1.Visible = true;
@@ -75,7 +74,8 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             //drawes the hexagon buttons
             GraphicsPath hexagon = new GraphicsPath();
-            Point[] points = { new Point(0, 50), new Point(25, 10), new Point(75, 10), new Point(100, 50), new Point(100, 50), new Point(75, 90), new Point(25, 90), new Point(0, 50) };
+
+            Point[] points = { new Point(0, 50), new Point(25, 10), new Point(75, 10), new Point(100, 50), new Point(100, 50), new Point(75, 90), new Point(25, 90)};
             hexagon.AddLines(points);
             button3.Region = new Region(hexagon);
             button2.Region = new Region(hexagon);
@@ -212,7 +212,7 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            control.menu();
+            control.showMenu();
 
             //code to reset variables here:
         }

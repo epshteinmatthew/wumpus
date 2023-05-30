@@ -27,7 +27,7 @@ namespace Wumpus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            gameControl.menu();
+            gameControl.showMenu();
         }
 
         private void Credits_Load(object sender, EventArgs e)

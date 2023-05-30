@@ -1,5 +1,6 @@
 ﻿using Chan_WumpusTest;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,17 @@ namespace Epshtein
 {
     public class GameLocations
     {
-        public int wumpusLocation, playerLocation;
-        Cave cave = new Cave("1", 1);
+        public int playerLocation;
+
+        private int wumpusLocation;
         //generate in constructor
         List<int> batLocations = new List<int>(), pitLocations = new List<int>();
         Random generator = new Random();
+
+        private Cave cave;
         public GameLocations(int amountOfBats, int amountOfPits)
         {
+            cave = new Cave("1", 1, generator.Next(1,7));
             while(batLocations.Count < amountOfBats)
             {
                 int loc = generator.Next(1,30);
@@ -137,6 +142,11 @@ namespace Epshtein
         {
             for (int i = 0; i < turns; i++){
                 int[] options = generateConnectedRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
+                if (options[0] == playerLocation)
+                {
+                    i--;
+                    continue;
+                }
                 wumpusLocation = options[0];
             }
 

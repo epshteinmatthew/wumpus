@@ -45,13 +45,6 @@ namespace Wumpus
             Environment.Exit(0);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-            
-            
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -59,8 +52,12 @@ namespace Wumpus
 
         private void buttonCredits_Click(object sender, EventArgs e)
         {
-            gameControl.credits();
+            gameControl.showCredits();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            gameControl.showLeaderboard();
+        }
     }
 }

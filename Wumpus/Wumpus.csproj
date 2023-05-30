@@ -85,6 +85,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Epshtein\GameLocations.cs" />
+    <Compile Include="Epshtein\Leaderboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Epshtein\Leaderboard.Designer.cs">
+      <DependentUpon>Leaderboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Epshtein\Player.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Epshtein\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Epshtein\Leaderboard.resx">
+      <DependentUpon>Leaderboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -257,6 +266,7 @@
     <Content Include="1229.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\542917680.0.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

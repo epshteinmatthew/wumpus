@@ -26,7 +26,7 @@ namespace Chan
         {
             string cavenumber = "cave";
             int room = 1;
-            Cave cave = new Cave(cavenumber, room);
+            Cave cave = new Cave(cavenumber, room, 6);
             labelNumber.Text = cave.GetCaveSystem();
         }
 
@@ -34,7 +34,7 @@ namespace Chan
         {
             string cavenumber = "cave";
             int room = 30; //I need to retrieve current room number from game locations
-            Cave cave = new Cave(cavenumber, room);
+            Cave cave = new Cave(cavenumber, room,6);
             labels.Text = cave.GetAdjacentCaves(room)[0].ToString() + " " + cave.GetAdjacentCaves(room)[1].ToString() + " " +
                 cave.GetAdjacentCaves(room)[2].ToString() + " " + cave.GetAdjacentCaves(room)[3].ToString() + " " +
                 cave.GetAdjacentCaves(room)[4].ToString() + " " + cave.GetAdjacentCaves(room)[5].ToString();
@@ -44,7 +44,7 @@ namespace Chan
         {
             string cavenumber = "cave";
             int room = 30; //I need to retrieve current room number from game locations
-            Cave cave = new Cave(cavenumber, room);
+            Cave cave = new Cave(cavenumber, room, 6);
             labelconnections.Text = cave.GetConnectedCaves(room)[0].ToString() + " " + cave.GetConnectedCaves(room)[1].ToString() + " " +
             cave.GetConnectedCaves(room)[2].ToString() + " " + cave.GetConnectedCaves(room)[3].ToString() + " " +
             cave.GetConnectedCaves(room)[4].ToString() + " " + cave.GetConnectedCaves(room)[5].ToString();

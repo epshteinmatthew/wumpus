@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +10,10 @@ namespace Chan_WumpusTest
 {
     public class Cave
     {
-        List<int[]> rooms = new List<int[]>();
+        private readonly List<int[]> rooms = new List<int[]>();
 
-        List<int[]> connections = new List<int[]>();
+        //this can still be mutated, but only by the methods of List class
+        private readonly List<int[]> connections = new List<int[]>();
 
         int RoomNumber { get; set; }
         string CaveNumber { get; set; }
@@ -21,11 +23,16 @@ namespace Chan_WumpusTest
         //GetAdjacentCaves will retrieve the player location and return adjacent rooms
         //GetConnectedCaves will retrieve the player location and return which caves the player can go into
 
-        public Cave(string num, int rum)
+        /// <summary>
+        /// This method retrieves the caves adjacent to the player, and also retrieves the caves that the player can actually go into. 
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="rum"></param>
+        public Cave(string num, int rum, int whichToGen)
         {
             this.CaveNumber = num;
             this.RoomNumber = rum;
-            using (StreamReader sr = new StreamReader("CaveAdjacent.txt"))
+            using (var sr = new StreamReader("CaveAdjacent.txt"))
             {
                 string line;
                 // Read and display lines from the file until the end of
@@ -39,38 +46,70 @@ namespace Chan_WumpusTest
 
                 }
             }
+            
+            //decides what cave system is being used at random
+            CaveNumber = "Cave" + whichToGen;
+            var CaveFile = "Cave1Connections.txt";
 
-
-            Random rnd = new Random();
-            int n = rnd.Next(1, 6);
-            CaveNumber = "Cave" + n;
-            string CaveFile = "Cave1Connections.txt";
-
-            if (n == 1)
+            switch (whichToGen)
             {
-                CaveFile = "Cave1Connections.txt";
+                case 1:
+                    CaveFile = "Cave1Connections.txt";
+                    break;
+                case 2:
+                    CaveFile = "Cave2Connections.txt";
+                    break;
+                case 3:
+                    CaveFile = "Cave3Connections.txt";
+                    break;
+                case 4:
+                    CaveFile = "Cave4Connections.txt";
+                    break;
+                case 5:
+                    CaveFile = "Cave5Connections.txt";
+                    break;
+                case 6:
+                    var conns = new int[30, 6];
+                    var rand = new Random();
+                    var seedling = new int[30];
+                    for (var i = 0; i < seedling.Length; i++)
+                    {
+                        seedling[i] = rand.Next(2, 4);
+                    }
+                    for (var i = 0; i < conns.GetLength(0); i++)
+                    {
+                        while (seedling[i] > 0)
+                        {
+                            var ourNextConnection = rand.Next(0, 6);
+                            //reroll-the space has already been filled
+                            if(conns[i, ourNextConnection] == 1)continue;
+                            //get the room we want to access, remembering 0-indexing
+                            var ourNextConnectionLocation = rooms[i][ourNextConnection] - 1;
+                            //we want to give space for other rooms to generate
+                            if (seedling[ourNextConnectionLocation] == 1 && i > ourNextConnectionLocation) continue;
+                            for (var j = 0; j < rooms[ourNextConnectionLocation].Length; j++)
+                            {
+                                if (rooms[ourNextConnectionLocation][j] != i + 1) continue;
+                                seedling[ourNextConnectionLocation]--;
+                                seedling[i]--;
+                                conns[ourNextConnectionLocation, j] = 1;
+                                conns[i, ourNextConnection] = 1;
+                            }
+                        }
+                       
+                        connections.Add(Enumerable.Range(0, conns.GetLength(1))
+                            .Select(x => conns[i, x])
+                            .ToArray());
+                    }
+                    Debug.WriteLine(connections);
+                    break;
             }
-            else if (n == 2)
+            //withdraws which rooms the player can go into from a file
+            if (whichToGen == 6)
             {
-                CaveFile = "Cave2Connections.txt";
+                return;
             }
-            else if (n == 3)
-            {
-                CaveFile = "Cave3Connections.txt";
-            }
-            else if (n == 4)
-            {
-                CaveFile = "Cave4Connections.txt";
-            }
-            else if (n == 5)
-            {
-                CaveFile = "Cave5Connections.txt";
-            }
-
-
-
-
-            using (StreamReader sr = new StreamReader(CaveFile))
+            using (var sr = new StreamReader(CaveFile))
             {
                 string lines;
                 // Read and display lines from the file until the end of
@@ -86,6 +125,10 @@ namespace Chan_WumpusTest
             }
         }
 
+        /// <summary>
+        /// Retrieving from the cave method, this method returns what number cave system is being used to the game control
+        /// </summary>
+        /// <returns></returns>
         public string GetCaveSystem()
         {
 
@@ -94,16 +137,28 @@ namespace Chan_WumpusTest
 
         }
 
+
+        /// <summary>
+        /// This method returns the caves next to the player after retrieving the room number from game control
+        /// </summary>
+        /// <param name="room"></param>
+        /// <returns></returns>
         public int[] GetAdjacentCaves(int room)
         {
             return rooms[room - 1];
 
         }
 
+
+        /// <summary>
+        /// This method returns the caves that the player can enter based off the room number they are currently in
+        /// </summary>
+        /// <param name="room"></param>
+        /// <returns></returns>
         public int[] GetConnectedCaves(int room)
         {
-            List<int> connected = new List<int>();
-            for (int i = 0; i < connections[room-1].Length; i++)
+            var connected = new List<int>();
+            for (var i = 0; i < connections[room-1].Length; i++)
             {
                 if (connections[room - 1][i] == 1)
                 {

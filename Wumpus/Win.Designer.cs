@@ -32,11 +32,17 @@
             this.buttonRetry = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(164, 137);
+            this.button1.Location = new System.Drawing.Point(159, 208);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(54, 21);
             this.button1.TabIndex = 6;
@@ -46,11 +52,11 @@
             // 
             // buttonRetry
             // 
-            this.buttonRetry.Location = new System.Drawing.Point(153, 106);
+            this.buttonRetry.Location = new System.Drawing.Point(142, 181);
             this.buttonRetry.Name = "buttonRetry";
-            this.buttonRetry.Size = new System.Drawing.Size(75, 21);
+            this.buttonRetry.Size = new System.Drawing.Size(86, 21);
             this.buttonRetry.TabIndex = 5;
-            this.buttonRetry.Text = "Try Again?";
+            this.buttonRetry.Text = "Back to Menu";
             this.buttonRetry.UseVisualStyleBackColor = true;
             this.buttonRetry.Click += new System.EventHandler(this.buttonRetry_Click);
             // 
@@ -63,35 +69,90 @@
             this.label1.Size = new System.Drawing.Size(149, 37);
             this.label1.TabIndex = 4;
             this.label1.Text = "You Win!";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(171, 63);
+            this.label2.Location = new System.Drawing.Point(139, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Score: ";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(-4, -4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(438, 342);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(139, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Time Spent: ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(139, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Name: ";
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(179, 118);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(66, 20);
+            this.textBoxName.TabIndex = 11;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(125, 144);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(120, 32);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Send to Leaderboard";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Win
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 238);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonRetry);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "Win";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Win";
-            this.Load += new System.EventHandler(this.Win_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Button button2;
+
+        private System.Windows.Forms.Label label3;
 
         #endregion
 
@@ -99,5 +160,6 @@
         private System.Windows.Forms.Button buttonRetry;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
