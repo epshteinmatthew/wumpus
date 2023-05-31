@@ -124,8 +124,8 @@ namespace Cao
             string warnings = "";
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
-                int c = playTrivia(5, "Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer "+ (2+difficulty )+ " out of 5 trivia questions correctly to shake him off your trail!") - difficulty;
-                if (c >= 2)
+                int c = playTrivia(5, "Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer "+ (2+difficulty )+ " out of 5 trivia questions correctly to shake him off your trail!");
+                if (c >= 2+difficulty)
                 {
                     MessageBox.Show("Comrade! Your intellectual prowess has forced the Prosecutor to flee!");
                     Gamelocations.moveWumpus(c);
@@ -153,7 +153,7 @@ namespace Cao
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
-                if (playTrivia(3, "Comrade! You've been captured by the ICC! Answer "+ (1 + difficulty) + "out of 3 trivia questions correctly to escape!")+difficulty >= 1)
+                if (playTrivia(3, "Comrade! You've been captured by the ICC! Answer "+ (1 + difficulty) + " out of 3 trivia questions correctly to escape!") >= 1 + difficulty)
                 {
                     MessageBox.Show("Comrade! You managed to escape the ICC officers!");
                     Gamelocations.resetPlayer();

@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartingCutScene));
             this.diffiultySelector = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // diffiultySelector
             // 
             this.diffiultySelector.FormattingEnabled = true;
             this.diffiultySelector.Items.AddRange(new object[] { "Easy", "Normal", "Hard" });
-            this.diffiultySelector.Location = new System.Drawing.Point(118, 745);
+            this.diffiultySelector.Location = new System.Drawing.Point(118, 592);
             this.diffiultySelector.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.diffiultySelector.Name = "diffiultySelector";
             this.diffiultySelector.Size = new System.Drawing.Size(180, 28);
@@ -47,7 +49,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(34, 790);
+            this.button1.Location = new System.Drawing.Point(34, 630);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(156, 35);
@@ -58,7 +60,7 @@
             // 
             // buttonMenu
             // 
-            this.buttonMenu.Location = new System.Drawing.Point(459, 745);
+            this.buttonMenu.Location = new System.Drawing.Point(458, 592);
             this.buttonMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(156, 35);
@@ -69,17 +71,27 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(34, 745);
+            this.label1.Location = new System.Drawing.Point(34, 592);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 33);
             this.label1.TabIndex = 3;
             this.label1.Text = "Difficulty:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(22, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(592, 499);
+            this.label2.TabIndex = 4;
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // StartingCutScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 842);
+            this.ClientSize = new System.Drawing.Size(653, 698);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.button1);
@@ -89,6 +101,8 @@
             this.Text = "StartingCutScene";
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Label label1;
 
