@@ -72,7 +72,7 @@ namespace Epshtein
                     pit = true;
                 }
             }
-            return  wump ? "I smell a prosecutor!\n" : "" + (bat ? "VDV Transport units nearby\n" : "") + (pit ? "New ICC detention center opened near your location\n" : "");
+            return (wump ? "I smell a prosecutor!\n" : "") + (bat ? "VDV Transport units nearby\n" : "") + (pit ? "New ICC detention center opened near your location\n" : "");
         }
         public int[] generateAdjacentRooms(int room)
         {
