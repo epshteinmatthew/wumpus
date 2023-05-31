@@ -15,9 +15,9 @@ namespace Epshtein
         {
         }
 
-        public int points(bool killedWumpus)
+        public int points(bool killedWumpus, int difficulty)
         {
-            return 100 - turnsTaken + gold + (5 * arrows) + (killedWumpus ? 50 : 0);
+            return 100 - turnsTaken + gold + (5 * arrows) + (killedWumpus ? 50 : 0) + (difficulty-1) * 15;
         }
 
         public bool payArrows()

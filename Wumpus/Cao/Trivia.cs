@@ -76,6 +76,11 @@ namespace Cao
             label5.Text = CorrectNumber.ToString();
             label6.Text = (QuestionNumber - CorrectNumber).ToString();
 
+            Answer1.Checked = false;
+            Answer2.Checked = false;
+            Answer3.Checked = false;
+            Answer4.Checked = false;
+
             if (player.gold >= 1)
             {
                 player.payGold(1);

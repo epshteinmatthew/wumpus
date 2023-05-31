@@ -75,7 +75,7 @@ namespace Wumpus.Epshtein
             startTime = start;
             endTime = DateTime.Now;
             var total = endTime - startTime;
-            return total.Days + ":" + total.Hours + ":" + total.Seconds;
+            return total.Days + ":" + total.Hours + ":" + total.Minutes + ":" + total.Seconds;
         }
 
 

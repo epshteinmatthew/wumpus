@@ -21,6 +21,9 @@ namespace Cao
         private Leaderboard leaderboard;
         private _1095652_Roth_HuntTheWumpus.Form1 form1;
         private DateTime startTime;
+        private int difficulty = 1;
+        private StartingCutScene cutscene;
+        private bool rightToMenu = false;
         public GameControl()
         {
             //menu, form1, credits
@@ -28,6 +31,7 @@ namespace Cao
             form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
             cred = new Credits(this);
             leaderboard    = new Leaderboard(this);
+            cutscene = new StartingCutScene(this);
             start.ShowDialog();
         }
 
@@ -43,11 +47,12 @@ namespace Cao
 
         public int Score(bool wumpusDead)
         {
-            return Player.points(wumpusDead);
+            return Player.points(wumpusDead, difficulty);
         }
         
         public void purchaseArrow()
         {
+            //this doesnt get affected by difficulty-its already quite easy
             if (playTrivia(2, "Comrade! The R&D department is ready to produce another kinzhal missile! Unfortunately, we have forgotten the launch codes. Answer a trivia question correctly to help us ready the missile!") >= 1)
             {
                 MessageBox.Show("Comrade! Your extreme intellect has made it possible for us to produce one more kinzhal missile! Excellent work!");
@@ -84,7 +89,8 @@ namespace Cao
                
             }
             Random r = new Random();
-            if(r.NextDouble() > 0.7)
+            double chanceToBeat = 0.15 * (difficulty * difficulty) + 0.15;
+            if(r.NextDouble() < chanceToBeat)
             {
                 MessageBox.Show("Comrade! Ukranian Air Defenses have intercepted our kinzhal missile strike on the prosecutor, and he has escaped our surveilance network!");
                 Player.arrows--; 
@@ -118,8 +124,8 @@ namespace Cao
             string warnings = "";
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
-                int c = playTrivia(5, "Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer 3 out of 5 trivia questions correctly to shake him off your trail!");
-                if (c >= 3)
+                int c = playTrivia(5, "Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer "+ (2+difficulty )+ " out of 5 trivia questions correctly to shake him off your trail!") - difficulty;
+                if (c >= 2)
                 {
                     MessageBox.Show("Comrade! Your intellectual prowess has forced the Prosecutor to flee!");
                     Gamelocations.moveWumpus(c);
@@ -133,10 +139,11 @@ namespace Cao
             }
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
-                //random from 1 to 10 if less than 2: trivia
+                //random from 1 to 10 if less than 2: dead
                 MessageBox.Show("Comrade! the ICC is near! we must airlift you to a safer location!");
                 Random rand = new Random();
-                if(rand.NextDouble() <= 0.05)
+                double chanceToBeat = 0.025 * (difficulty * difficulty) + 0.025;
+                if(rand.NextDouble() <= chanceToBeat)
                 {
                     MessageBox.Show("Comrade! We have been hit by Ukranian Air Defense! We're going doown!");
                     death();
@@ -146,7 +153,7 @@ namespace Cao
             }
             if (Gamelocations.isPitInRoom(Gamelocations.getPlayerLocation()))
             {
-                if (playTrivia(3, "Comrade! You've been captured by the ICC! Answer 2 out of 3 trivia questions correctly to escape!") >= 2)
+                if (playTrivia(3, "Comrade! You've been captured by the ICC! Answer "+ (1 + difficulty) + "out of 3 trivia questions correctly to escape!")+difficulty >= 1)
                 {
                     MessageBox.Show("Comrade! You managed to escape the ICC officers!");
                     Gamelocations.resetPlayer();
@@ -195,6 +202,7 @@ namespace Cao
         //restart gameplay
         public void startGamePlay()
         {
+            rightToMenu = false;
             form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
             start.Close();
             Player = new Player();
@@ -208,13 +216,16 @@ namespace Cao
             form1.SetMoney(Player.gold);
             form1.SetArrows(Player.arrows);
             startTime = DateTime.Now;
-            form1.Show();
+            cutscene = new StartingCutScene(this);
+            cutscene.ShowDialog();
+            difficulty = cutscene.SelectedMode;
+            if (!rightToMenu) form1.Show();
         }
 
         //exit gameplay->credits
         private void death()
         {
-            Death death = new Death(Player.points(false));
+            Death death = new Death(Player.points(false, difficulty));
             death.ShowDialog();
             showMenu();
         }
@@ -222,7 +233,7 @@ namespace Cao
         private void win()
         {
             //only successful runs get a leaderboard position
-            Win win = new Win(Player.points(true), leaderboard, startTime);
+            Win win = new Win(Player.points(true,difficulty), leaderboard, startTime);
             win.ShowDialog();
             showMenu();
             
@@ -231,8 +242,10 @@ namespace Cao
         //open menu
         public void showMenu()
         {
+            rightToMenu = true;
             start = new StartMenu(this);
             form1.Close();
+            cutscene.Close();
             cred.Close();
             leaderboard.Close();
             start.Show();

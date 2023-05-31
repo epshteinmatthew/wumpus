@@ -7,19 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Cao;
 
 namespace Wumpus
 {
     public partial class StartingCutScene : Form
     {
-        public StartingCutScene()
+        private GameControl gc;
+        public int SelectedMode = 1;
+        public StartingCutScene(GameControl gc)
         {
+            this.gc = gc;
             InitializeComponent();
+            //sets mode to "normal"
+            diffiultySelector.SelectedIndex = 1;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            gc.showMenu();
+        }
+
+        private void diffiultySelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SelectedMode = diffiultySelector.SelectedIndex;
         }
     }
 }
