@@ -39,20 +39,21 @@
             // diffiultySelector
             // 
             this.diffiultySelector.FormattingEnabled = true;
-            this.diffiultySelector.Items.AddRange(new object[] { "Easy", "Normal", "Hard" });
-            this.diffiultySelector.Location = new System.Drawing.Point(118, 592);
-            this.diffiultySelector.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.diffiultySelector.Items.AddRange(new object[] {
+            "Easy",
+            "Normal",
+            "Hard"});
+            this.diffiultySelector.Location = new System.Drawing.Point(70, 239);
             this.diffiultySelector.Name = "diffiultySelector";
-            this.diffiultySelector.Size = new System.Drawing.Size(180, 28);
+            this.diffiultySelector.Size = new System.Drawing.Size(121, 21);
             this.diffiultySelector.TabIndex = 0;
             this.diffiultySelector.SelectedIndexChanged += new System.EventHandler(this.diffiultySelector_SelectedIndexChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(34, 630);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(14, 264);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 35);
+            this.button1.Size = new System.Drawing.Size(104, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Continue";
             this.button1.UseVisualStyleBackColor = true;
@@ -60,10 +61,9 @@
             // 
             // buttonMenu
             // 
-            this.buttonMenu.Location = new System.Drawing.Point(458, 592);
-            this.buttonMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.buttonMenu.Location = new System.Drawing.Point(296, 239);
             this.buttonMenu.Name = "buttonMenu";
-            this.buttonMenu.Size = new System.Drawing.Size(156, 35);
+            this.buttonMenu.Size = new System.Drawing.Size(104, 23);
             this.buttonMenu.TabIndex = 2;
             this.buttonMenu.Text = "Back to Menu";
             this.buttonMenu.UseVisualStyleBackColor = true;
@@ -71,35 +71,37 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(34, 592);
+            this.label1.Location = new System.Drawing.Point(14, 239);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 33);
+            this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 3;
             this.label1.Text = "Difficulty:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(22, 18);
+            this.label2.Location = new System.Drawing.Point(15, 12);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(592, 499);
+            this.label2.Size = new System.Drawing.Size(395, 212);
             this.label2.TabIndex = 4;
             this.label2.Text = resources.GetString("label2.Text");
             // 
             // StartingCutScene
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 698);
+            this.ClientSize = new System.Drawing.Size(435, 301);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.diffiultySelector);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "StartingCutScene";
             this.Text = "StartingCutScene";
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Label label2;

@@ -24,7 +24,7 @@ namespace Epshtein
             while(batLocations.Count < amountOfBats)
             {
                 int loc = generator.Next(1,30);
-                if (!isBatInRoom(loc))
+                if (!isBatInRoom(loc) || loc == 1)
                 {
                     batLocations.Add(loc);
                 }
@@ -32,7 +32,7 @@ namespace Epshtein
             while (pitLocations.Count < amountOfPits)
             {
                 int loc = generator.Next(1, 30);
-                if (!isPitInRoom(loc))
+                if (!isPitInRoom(loc) || loc == 1)
                 {
                     pitLocations.Add(loc);
                 }
