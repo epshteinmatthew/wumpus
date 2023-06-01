@@ -190,6 +190,7 @@ namespace Wumpus.Epshtein
             this.Name = "Leaderboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Leaderboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Leaderboard_FormClosing);
             this.Load += new System.EventHandler(this.Leaderboard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

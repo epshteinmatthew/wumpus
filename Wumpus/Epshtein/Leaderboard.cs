@@ -14,7 +14,8 @@ namespace Wumpus.Epshtein
         private Dictionary<string, int> scores = new Dictionary<string, int>();
         private Dictionary<string, TimeSpan> times = new Dictionary<string, TimeSpan>();
         private GameControl gc;
-        ListBox leaderboardListBox = new ListBox();
+        private ListBox leaderboardListBox = new ListBox();
+        bool closeButtonClicked = false;
 
         public Leaderboard(GameControl gameControl)
         {
@@ -179,7 +180,16 @@ namespace Wumpus.Epshtein
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            closeButtonClicked = true;
             gc.showMenu();
+        }
+
+        private void Leaderboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closeButtonClicked)
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }
