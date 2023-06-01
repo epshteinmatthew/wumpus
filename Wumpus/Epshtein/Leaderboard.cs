@@ -14,7 +14,7 @@ namespace Wumpus.Epshtein
         private Dictionary<string, int> scores = new Dictionary<string, int>();
         private Dictionary<string, TimeSpan> times = new Dictionary<string, TimeSpan>();
         private GameControl gc;
-        private ListBox leaderboardListBox;
+        ListBox leaderboardListBox = new ListBox();
 
         public Leaderboard(GameControl gameControl)
         {
