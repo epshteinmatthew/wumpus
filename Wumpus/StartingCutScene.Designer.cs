@@ -38,12 +38,13 @@
             // 
             // diffiultySelector
             // 
+            this.diffiultySelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.diffiultySelector.FormattingEnabled = true;
             this.diffiultySelector.Items.AddRange(new object[] {
             "Easy",
             "Normal",
             "Hard"});
-            this.diffiultySelector.Location = new System.Drawing.Point(70, 239);
+            this.diffiultySelector.Location = new System.Drawing.Point(79, 385);
             this.diffiultySelector.Name = "diffiultySelector";
             this.diffiultySelector.Size = new System.Drawing.Size(121, 21);
             this.diffiultySelector.TabIndex = 0;
@@ -51,7 +52,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(14, 264);
+            this.button1.Location = new System.Drawing.Point(23, 410);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(104, 23);
             this.button1.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             // buttonMenu
             // 
-            this.buttonMenu.Location = new System.Drawing.Point(296, 239);
+            this.buttonMenu.Location = new System.Drawing.Point(305, 385);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(104, 23);
             this.buttonMenu.TabIndex = 2;
@@ -71,7 +72,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(14, 239);
+            this.label1.Location = new System.Drawing.Point(23, 385);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 21);
@@ -84,7 +85,7 @@
             this.label2.Location = new System.Drawing.Point(15, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(395, 212);
+            this.label2.Size = new System.Drawing.Size(395, 324);
             this.label2.TabIndex = 4;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -92,13 +93,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 301);
+            this.ClientSize = new System.Drawing.Size(435, 454);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonMenu);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.diffiultySelector);
             this.Name = "StartingCutScene";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StartingCutScene";
             this.ResumeLayout(false);
 
