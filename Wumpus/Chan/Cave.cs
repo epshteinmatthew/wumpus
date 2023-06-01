@@ -108,7 +108,7 @@ namespace Chan_WumpusTest
                                 ones++;
                             }
                         }
-                        if(ones > 3)
+                        if(ones != 2 && ones != 3)
                         {
                             connections.Remove(connections.Last());
                             i--;
