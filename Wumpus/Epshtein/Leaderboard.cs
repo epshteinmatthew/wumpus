@@ -20,28 +20,42 @@ namespace Wumpus.Epshtein
         {
             InitializeComponent();
             this.gc = gameControl;
-            using (var sr = new StreamReader("scores.txt"))
+            try
             {
-                string line;
-                // Read and display lines from the file until the end of
-                // the file is reached.
-                while ((line = sr.ReadLine()) != null)
+                using (var sr = new StreamReader("scores.txt"))
                 {
-                    scores.Add(line.Split(',')[0], int.Parse(line.Split(',')[1]));
+                    string line;
+                    // Read and display lines from the file until the end of
+                    // the file is reached.
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        scores.Add(line.Split(',')[0], int.Parse(line.Split(',')[1]));
+                    }
                 }
             }
-           
+            catch (Exception)
+            {
+                File.Create("scores.txt");
+            }
 
-            using (var sr = new StreamReader("times.txt"))
+            try
             {
-                string line;
-                // Read and display lines from the file until the end of
-                // the file is reached.
-                while ((line = sr.ReadLine()) != null)
+                using (var sr = new StreamReader("times.txt"))
                 {
-                    times.Add(line.Split(',')[0], TimeSpan.Parse(line.Split(',')[1]));
+                    string line;
+                    // Read and display lines from the file until the end of
+                    // the file is reached.
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        times.Add(line.Split(',')[0], TimeSpan.Parse(line.Split(',')[1]));
+                    }
                 }
             }
+            catch (Exception)
+            {
+                File.Create("times.txt");
+            }
+            
             
             
         }
