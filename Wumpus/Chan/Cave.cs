@@ -100,6 +100,20 @@ namespace Chan_WumpusTest
                         connections.Add(Enumerable.Range(0, conns.GetLength(1))
                             .Select(x => conns[i, x])
                             .ToArray());
+                        int ones = 0;
+                        foreach(var con in connections.Last())
+                        {
+                            if(con == 1)
+                            {
+                                ones++;
+                            }
+                        }
+                        if(ones > 3)
+                        {
+                            connections.Remove(connections.Last());
+                            i--;
+                            continue;
+                        }
                     }
                     Debug.WriteLine(connections);
                     break;

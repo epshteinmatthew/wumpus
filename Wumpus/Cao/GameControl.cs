@@ -206,7 +206,8 @@ namespace Cao
             form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
             start.Close();
             Player = new Player();
-            Gamelocations = new GameLocations(3, 3);
+            //bats are actually useful, so increasing difficulty generates less, while generating more pits
+            Gamelocations = new GameLocations(4 - difficulty, 2 + difficulty);
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
             form1.updateRooms(AdjacentRooms, ConnectedRooms);
