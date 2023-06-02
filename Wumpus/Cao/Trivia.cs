@@ -72,7 +72,7 @@ namespace Cao
             Answer3.Text = answers[2];
             Answer4.Text = answers[3];
 
-            label4.Text = (QuestionNumber + 1).ToString();
+            label4.Text = (QuestionNumber + 1 + "/" + askNumber).ToString();
             label5.Text = CorrectNumber.ToString();
             label6.Text = (QuestionNumber - CorrectNumber).ToString();
 
@@ -144,6 +144,11 @@ namespace Cao
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
