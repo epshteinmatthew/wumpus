@@ -287,6 +287,10 @@
     <Content Include="1229.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\gameImg_whack_em_all_2.png" />
+    <None Include="Resources\gameImg_whack_em_all2.png" />
+    <None Include="Resources\gameImg_whack_em_all1.png" />
+    <None Include="Resources\gameImg_whack_em_all.png" />
     <None Include="Resources\542917680.0.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
