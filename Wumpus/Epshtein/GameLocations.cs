@@ -54,10 +54,10 @@ namespace Epshtein
         public bool isPitInRoom(int room)  {return pitLocations.Contains(room); }
 
         //gets a string containing the warnings, to be sent to the player based on their room.
-        public string getWarnings()
+        public string getWarnings(bool isBabyMode)
         {
             bool wump = false; bool pit = false; bool bat = false;
-            foreach (int room in generateConnectedRooms(playerLocation))
+            foreach (int room in generateConnectedRooms(playerLocation, isBabyMode))
             {
                 if (isWumpusInRoom(room))
                 {
@@ -79,7 +79,7 @@ namespace Epshtein
             return cave.GetAdjacentCaves(room);
         }
 
-        public int[] generateConnectedRooms(int room) => cave.GetConnectedCaves(room);
+        public int[] generateConnectedRooms(int room, bool isBabyMode) => !isBabyMode ? cave.GetConnectedCaves(room) : cave.GetAdjacentCaves(room);
 
         //shoots an arrow into the target room
         public bool shootArrow(int targetRoom)
@@ -126,10 +126,10 @@ namespace Epshtein
             playerLocation = 1;
         }
 
-        public bool movePlayer(int targetRoom)
+        public bool movePlayer(int targetRoom, bool isBabyMode)
         {
             //attempt to move player to room passed in, return false if fails
-            if (generateConnectedRooms(playerLocation).Contains(targetRoom))
+            if (generateConnectedRooms(playerLocation, isBabyMode).Contains(targetRoom))
             {
                 playerLocation = targetRoom;
                 return true;
@@ -141,7 +141,7 @@ namespace Epshtein
         public void moveWumpus(int turns)
         {
             for (int i = 0; i < turns; i++){
-                int[] options = generateConnectedRooms(wumpusLocation).OrderBy(_=>generator.Next()).ToArray();
+                int[] options = generateConnectedRooms(wumpusLocation, false).OrderBy(_=>generator.Next()).ToArray();
                 if (options[0] == playerLocation)
                 {
                     i--;

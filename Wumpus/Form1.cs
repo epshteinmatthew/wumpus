@@ -21,7 +21,7 @@ namespace _1095652_Roth_HuntTheWumpus
     public partial class Form1 : Form
     {
         Cao.GameControl control;
-        bool closeButtonClicked = false;
+        public bool closeButtonClicked = false;
 
         public Form1(GameControl gameControl)
         {

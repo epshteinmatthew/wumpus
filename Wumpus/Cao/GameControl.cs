@@ -23,6 +23,7 @@ namespace Cao
         private _1095652_Roth_HuntTheWumpus.Form1 form1;
         private DateTime startTime;
         private int difficulty = 1;
+        private bool babyMode = true;
         private StartingCutScene cutscene;
         private bool rightToMenu = false;
         public GameControl()
@@ -113,7 +114,7 @@ namespace Cao
             //3. check for hazards in the player's room. methods should also exist to handle each hazard
             //4. check for wumpus in current player's room. method should exists to handle this as well
             //5. generate and send(send can be done later) warnings and hints for current room to ui form
-            if (Gamelocations.movePlayer(moveTo))
+            if (Gamelocations.movePlayer(moveTo, babyMode))
             {
                 Player.turnsTaken++;
                 Player.gold++;
@@ -168,9 +169,9 @@ namespace Cao
             }
 
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
-            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode);
             form1.updateRooms(AdjacentRooms, ConnectedRooms);
-            warnings += Gamelocations.getWarnings();
+            warnings += Gamelocations.getWarnings(babyMode);
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
         }
@@ -207,20 +208,21 @@ namespace Cao
             form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
             start.Close();
             Player = new Player();
+            cutscene = new StartingCutScene(this);
+            cutscene.ShowDialog();
+            difficulty = cutscene.SelectedMode;
+            babyMode = cutscene.babyMode;
             //bats are actually useful, so increasing difficulty generates less, while generating more pits
             Gamelocations = new GameLocations(4 - difficulty, 2 + difficulty);
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
-            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode);
             form1.updateRooms(AdjacentRooms, ConnectedRooms);
             string warnings = "";
-            warnings += Gamelocations.getWarnings();
+            warnings += Gamelocations.getWarnings(babyMode);
             form1.SetText(warnings);
             form1.SetMoney(Player.gold);
             form1.SetArrows(Player.arrows);
             startTime = DateTime.Now;
-            cutscene = new StartingCutScene(this);
-            cutscene.ShowDialog();
-            difficulty = cutscene.SelectedMode;
             if (!rightToMenu) form1.Show();
         }
 
@@ -228,6 +230,7 @@ namespace Cao
         private void death()
         {
             Death death = new Death(Player.points(false, difficulty));
+            form1.closeButtonClicked = true;
             death.ShowDialog();
             showMenu();
         }
@@ -236,6 +239,7 @@ namespace Cao
         {
             //only successful runs get a leaderboard position
             Win win = new Win(Player.points(true,difficulty), leaderboard, startTime);
+            form1.closeButtonClicked = true;
             win.ShowDialog();
             showMenu();
             
