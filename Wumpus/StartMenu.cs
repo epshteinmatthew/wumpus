@@ -59,5 +59,15 @@ namespace Wumpus
         {
             gameControl.showLeaderboard();
         }
+
+        private void StartMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
