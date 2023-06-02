@@ -14,34 +14,49 @@ namespace Wumpus.Epshtein
         private Dictionary<string, int> scores = new Dictionary<string, int>();
         private Dictionary<string, TimeSpan> times = new Dictionary<string, TimeSpan>();
         private GameControl gc;
-        ListBox leaderboardListBox = new ListBox();
+        private ListBox leaderboardListBox = new ListBox();
+        bool closeButtonClicked = false;
 
         public Leaderboard(GameControl gameControl)
         {
             InitializeComponent();
             this.gc = gameControl;
-            using (var sr = new StreamReader("scores.txt"))
+            try
             {
-                string line;
-                // Read and display lines from the file until the end of
-                // the file is reached.
-                while ((line = sr.ReadLine()) != null)
+                using (var sr = new StreamReader("scores.txt"))
                 {
-                    scores.Add(line.Split(',')[0], int.Parse(line.Split(',')[1]));
+                    string line;
+                    // Read and display lines from the file until the end of
+                    // the file is reached.
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        scores.Add(line.Split(',')[0], int.Parse(line.Split(',')[1]));
+                    }
                 }
             }
-           
+            catch (Exception)
+            {
+                File.Create("scores.txt");
+            }
 
-            using (var sr = new StreamReader("times.txt"))
+            try
             {
-                string line;
-                // Read and display lines from the file until the end of
-                // the file is reached.
-                while ((line = sr.ReadLine()) != null)
+                using (var sr = new StreamReader("times.txt"))
                 {
-                    times.Add(line.Split(',')[0], TimeSpan.Parse(line.Split(',')[1]));
+                    string line;
+                    // Read and display lines from the file until the end of
+                    // the file is reached.
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        times.Add(line.Split(',')[0], TimeSpan.Parse(line.Split(',')[1]));
+                    }
                 }
             }
+            catch (Exception)
+            {
+                File.Create("times.txt");
+            }
+            
             
             
         }
@@ -165,7 +180,16 @@ namespace Wumpus.Epshtein
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            closeButtonClicked = true;
             gc.showMenu();
+        }
+
+        private void Leaderboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closeButtonClicked)
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Wumpus
     public partial class StartMenu : Form
     {
         GameControl gameControl;
+        bool closeButtonClicked = false;
         public StartMenu(GameControl gameControl)
         {
             InitializeComponent();
@@ -27,14 +28,11 @@ namespace Wumpus
             button2.FlatAppearance.BorderSize = 0;
             InitializeComponent();
 
-            //plays audio
-            SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
-            player.PlayLooping();
             this.gameControl = gameControl;
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            closeButtonClicked = true;
             //call start form1 method here
             gameControl.startGamePlay();
         }
@@ -52,21 +50,22 @@ namespace Wumpus
 
         private void buttonCredits_Click(object sender, EventArgs e)
         {
+            closeButtonClicked = true;
             gameControl.showCredits();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            closeButtonClicked = true;
             gameControl.showLeaderboard();
         }
 
-        private void StartMenu_Load(object sender, EventArgs e)
+        private void StartMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-        }
-
-        private void buttonSettings_Click(object sender, EventArgs e)
-        {
+            if (!closeButtonClicked)
+            {
+                Environment.Exit(0);
+            }
 
         }
     }

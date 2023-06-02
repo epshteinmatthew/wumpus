@@ -44,18 +44,18 @@ namespace Wumpus.Epshtein
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxTime = new System.Windows.Forms.TextBox();
             this.buttonBack = new System.Windows.Forms.Button();
-            leaderboardListBox = new System.Windows.Forms.ListBox();
+            this.leaderboardListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // leaderboardListBox
             // 
-            leaderboardListBox.FormattingEnabled = true;
-            leaderboardListBox.Location = new System.Drawing.Point(39, 53);
-            leaderboardListBox.Margin = new System.Windows.Forms.Padding(2);
-            leaderboardListBox.Name = "leaderboardListBox";
-            leaderboardListBox.Size = new System.Drawing.Size(129, 199);
-            leaderboardListBox.TabIndex = 0;
-            leaderboardListBox.SelectedIndexChanged += new System.EventHandler(this.leaderboardList_SelectedIndexChanged);
+            this.leaderboardListBox.FormattingEnabled = true;
+            this.leaderboardListBox.Location = new System.Drawing.Point(39, 53);
+            this.leaderboardListBox.Margin = new System.Windows.Forms.Padding(2);
+            this.leaderboardListBox.Name = "leaderboardListBox";
+            this.leaderboardListBox.Size = new System.Drawing.Size(129, 199);
+            this.leaderboardListBox.TabIndex = 0;
+            this.leaderboardListBox.SelectedIndexChanged += new System.EventHandler(this.leaderboardList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -185,11 +185,12 @@ namespace Wumpus.Epshtein
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(leaderboardListBox);
+            this.Controls.Add(this.leaderboardListBox);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Leaderboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Leaderboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Leaderboard_FormClosing);
             this.Load += new System.EventHandler(this.Leaderboard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

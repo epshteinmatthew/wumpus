@@ -111,7 +111,7 @@ namespace Epshtein
             {
                 return "Intel reports that you are in a room";
             }
-            return "Room " + generateAdjacentRooms(playerLocation)[0] + " is adjacent to you.";
+            return "Room " + generateAdjacentRooms(playerLocation)[generator.Next(0,7)] + " is adjacent to you.";
         }
 
         public void vdvAirlift()

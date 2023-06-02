@@ -21,6 +21,7 @@ namespace _1095652_Roth_HuntTheWumpus
     public partial class Form1 : Form
     {
         Cao.GameControl control;
+        bool closeButtonClicked = false;
 
         public Form1(GameControl gameControl)
         {
@@ -229,6 +230,7 @@ namespace _1095652_Roth_HuntTheWumpus
         }
         private void buttonMenu_Click(object sender, EventArgs e)
         {
+            closeButtonClicked = true;
             control.showMenu();
 
             //code to reset variables here:
@@ -238,6 +240,15 @@ namespace _1095652_Roth_HuntTheWumpus
         {
             //closes all forms
             Environment.Exit(0);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            if (!closeButtonClicked)
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }
