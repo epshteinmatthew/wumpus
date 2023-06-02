@@ -68,5 +68,11 @@ namespace Wumpus
             }
 
         }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            closeButtonClicked = true;
+            gameControl.showSettings();
+        }
     }
 }

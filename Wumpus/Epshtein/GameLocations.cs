@@ -18,9 +18,9 @@ namespace Epshtein
         Random generator = new Random();
 
         private Cave cave;
-        public GameLocations(int amountOfBats, int amountOfPits)
+        public GameLocations(int amountOfBats, int amountOfPits, bool random)
         {
-            cave = new Cave("1", 1, generator.Next(1,7));
+            cave = random ? new Cave("1", 1, 6) : new Cave("1", 1, generator.Next(1, 6));
             while(batLocations.Count < amountOfBats)
             {
                 int loc = generator.Next(1,30);

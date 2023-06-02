@@ -15,10 +15,11 @@ namespace Cao
     public class GameControl
 
     {
-        private GameLocations Gamelocations { get; set; } = new GameLocations(3,3);
+        private GameLocations Gamelocations { get; set; }
         private Player Player { get; set; } = new Player();
         StartMenu start;
         Credits cred;
+        Settings settings;
         private Leaderboard leaderboard;
         private _1095652_Roth_HuntTheWumpus.Form1 form1;
         private DateTime startTime;
@@ -26,6 +27,7 @@ namespace Cao
         private bool babyMode = true;
         private StartingCutScene cutscene;
         private bool rightToMenu = false;
+        bool random, dark, soundOn;
         public GameControl()
         {
             //menu, form1, credits
@@ -213,7 +215,7 @@ namespace Cao
             difficulty = cutscene.SelectedMode;
             babyMode = cutscene.babyMode;
             //bats are actually useful, so increasing difficulty generates less, while generating more pits
-            Gamelocations = new GameLocations(4 - difficulty, 2 + difficulty);
+            Gamelocations = new GameLocations(4 - difficulty, 2 + difficulty, random);
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode);
             form1.updateRooms(AdjacentRooms, ConnectedRooms);
@@ -254,10 +256,16 @@ namespace Cao
             cutscene.Close();
             cred.Close();
             leaderboard.Close();
-            //plays audio
+
             SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
-            player.PlayLooping();
+            //plays audio
+            if (soundOn)
+            {
+                player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
+                player.PlayLooping();
+            }
+            else player.Stop();
+            
             start.Show();
         }
         //show credits
@@ -266,6 +274,20 @@ namespace Cao
             start.Close();
             cred = new Credits(this);
             cred.Show();
+        }
+
+        public void showSettings()
+        {
+            start.Close();
+            settings = new Settings();
+            settings.ShowDialog();
+            if (settings.doAnything)
+            {
+                random = settings.randomcave;
+                soundOn = settings.music;
+                dark = settings.darkmode;
+            }
+            showMenu();
         }
 
         public void showLeaderboard()

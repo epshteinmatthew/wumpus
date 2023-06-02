@@ -14,7 +14,6 @@ namespace Epshtein
 
         private void ConstructorButton_Click(object sender, EventArgs e)
         {
-            gameLocations = new GameLocations(2,2);
         }
 
         private void PlayerConstructorButton_Click(object sender, EventArgs e)
