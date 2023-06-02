@@ -41,6 +41,7 @@
             this.diffiultySelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.diffiultySelector.FormattingEnabled = true;
             this.diffiultySelector.Items.AddRange(new object[] {
+            "Baby",
             "Easy",
             "Normal",
             "Hard"});
