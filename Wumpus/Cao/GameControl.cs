@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,7 +33,7 @@ namespace Cao
             cred = new Credits(this);
             leaderboard    = new Leaderboard(this);
             cutscene = new StartingCutScene(this);
-            start.ShowDialog();
+            showMenu();
         }
 
         private int playTrivia(int toask, string message)
@@ -249,6 +250,10 @@ namespace Cao
             cutscene.Close();
             cred.Close();
             leaderboard.Close();
+            //plays audio
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
+            player.PlayLooping();
             start.Show();
         }
         //show credits

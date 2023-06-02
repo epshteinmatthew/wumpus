@@ -32,9 +32,7 @@ namespace Wumpus.Epshtein
         /// </summary>
         private void InitializeComponent()
         {
-#pragma warning disable CS0168 // Variable is declared but never used
             System.Windows.Forms.ListBox leaderboardListBox;
-#pragma warning restore CS0168 // Variable is declared but never used
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,7 +51,7 @@ namespace Wumpus.Epshtein
             // 
             this.leaderboardListBox.FormattingEnabled = true;
             this.leaderboardListBox.Location = new System.Drawing.Point(39, 53);
-            this.leaderboardListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.leaderboardListBox.Margin = new System.Windows.Forms.Padding(2);
             this.leaderboardListBox.Name = "leaderboardListBox";
             this.leaderboardListBox.Size = new System.Drawing.Size(129, 199);
             this.leaderboardListBox.TabIndex = 0;
@@ -91,7 +89,7 @@ namespace Wumpus.Epshtein
             // 
             this.textBoxName.Enabled = false;
             this.textBoxName.Location = new System.Drawing.Point(245, 53);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.ReadOnly = true;
             this.textBoxName.Size = new System.Drawing.Size(91, 20);
@@ -101,7 +99,7 @@ namespace Wumpus.Epshtein
             // 
             this.textBoxScore.Enabled = false;
             this.textBoxScore.Location = new System.Drawing.Point(245, 81);
-            this.textBoxScore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxScore.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxScore.Name = "textBoxScore";
             this.textBoxScore.ReadOnly = true;
             this.textBoxScore.Size = new System.Drawing.Size(91, 20);
@@ -110,7 +108,7 @@ namespace Wumpus.Epshtein
             // radioButtonTime
             // 
             this.radioButtonTime.Location = new System.Drawing.Point(39, 299);
-            this.radioButtonTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonTime.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonTime.Name = "radioButtonTime";
             this.radioButtonTime.Size = new System.Drawing.Size(143, 22);
             this.radioButtonTime.TabIndex = 7;
@@ -122,7 +120,7 @@ namespace Wumpus.Epshtein
             // radioButtonScore
             // 
             this.radioButtonScore.Location = new System.Drawing.Point(39, 274);
-            this.radioButtonScore.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.radioButtonScore.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonScore.Name = "radioButtonScore";
             this.radioButtonScore.Size = new System.Drawing.Size(158, 21);
             this.radioButtonScore.TabIndex = 8;
@@ -154,7 +152,7 @@ namespace Wumpus.Epshtein
             // 
             this.textBoxTime.Enabled = false;
             this.textBoxTime.Location = new System.Drawing.Point(245, 112);
-            this.textBoxTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxTime.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTime.Name = "textBoxTime";
             this.textBoxTime.ReadOnly = true;
             this.textBoxTime.Size = new System.Drawing.Size(91, 20);
@@ -163,7 +161,7 @@ namespace Wumpus.Epshtein
             // buttonBack
             // 
             this.buttonBack.Location = new System.Drawing.Point(179, 222);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(97, 28);
             this.buttonBack.TabIndex = 12;
@@ -188,9 +186,11 @@ namespace Wumpus.Epshtein
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.leaderboardListBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Leaderboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Leaderboard";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Leaderboard_FormClosing);
             this.Load += new System.EventHandler(this.Leaderboard_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

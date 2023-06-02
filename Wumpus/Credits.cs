@@ -14,6 +14,7 @@ namespace Wumpus
     public partial class Credits : Form
     {
         GameControl gameControl;
+        bool closeButtonClicked;
         public Credits(GameControl gc)
         {
             gameControl = gc;
@@ -33,6 +34,14 @@ namespace Wumpus
         private void Credits_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Credits_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closeButtonClicked)
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }

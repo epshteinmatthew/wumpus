@@ -164,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 266);
+            this.ClientSize = new System.Drawing.Size(533, 266);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -178,6 +178,7 @@
             this.Controls.Add(this.Answer1);
             this.Controls.Add(this.TriviaQuestion);
             this.Name = "SubmitAnswerButton";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MoCA-Ru Test";
             this.Activated += new System.EventHandler(this.SubmitAnswerButton_Activated);
             this.Load += new System.EventHandler(this.SubmitAnswerButton_Load);

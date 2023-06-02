@@ -151,6 +151,7 @@
             this.Name = "Credits";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Credits";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Credits_FormClosing);
             this.Load += new System.EventHandler(this.Credits_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
