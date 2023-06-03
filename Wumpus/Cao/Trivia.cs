@@ -17,7 +17,7 @@ namespace Cao
     public partial class SubmitAnswerButton : Form
     {
         string answer;
-         int QuestionNumber  = 0;
+         int QuestionNumber  = 1;
         public Player player { get; set; }
         public int askNumber { get; set; } = 0;
         public int CorrectNumber { get; set; } = 0;
@@ -90,7 +90,7 @@ namespace Cao
             Answer3.Text = answers[2];
             Answer4.Text = answers[3];
 
-            label4.Text = (QuestionNumber + 1 + "/" + askNumber).ToString();
+            label4.Text = (QuestionNumber + "/" + askNumber).ToString();
             label5.Text = CorrectNumber.ToString();
             label6.Text = (QuestionNumber - CorrectNumber).ToString();
 
