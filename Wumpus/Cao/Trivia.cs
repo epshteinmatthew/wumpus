@@ -51,8 +51,15 @@ namespace Cao
             {"What is the latest model of T-72?", new List<string>{"T-72B3M", "T-72BU", "T-72AV", "T-72B3"} },
             {"What color Formula One car did Putin drive in 2010?", new List<string>{"Yellow", "Blue", "Red", "Orange"}},
             {"Which Press Secretary told the truth about Putin's 2011 scuba dive?", new List<string>{"Dimitry Peskov", "Natalya Timakova", "Alexei Gromov", "Dimitry Medvedev" }},
-            {"Заполни эту цитату: И если бы за ____ часов до операции не был нанесён превентивный удар по позициям ", new List<string>{"шесть", "пять", "семь", "восемь"}}
-            
+            {"Заполни эту цитату: И если бы за ____ часов до операции не был нанесён превентивный удар по позициям ", new List<string>{"шесть", "пять", "семь", "восемь"}},
+            {"What was Yevgeny Prigorizhin's profession before he joined Wagner Group?", new List<String>{"Children's Book Author", "Chef", "Judo Instructor", "Used Car Salesman"} },
+            {"Which endangered bird did Putin attempt to lead on a migration route?", new List<String>{"Siberian White Cranes", "Artic Terns", "Ospreys", "Northern Gannets" } },
+            {"When was Putin named Time Magazine's <<Person of the Year>>?", new List<string> {"2007", "1999", "2010", "2018"} },
+            {"How many children does putin have?", new List<string>{"2","0","1","3"} },
+            {"How many languages does Putin speak?" , new List<string>{"3","1","4","5"} },
+            {"In the 2012 Russian Presidential Election, how many federal subjects(regions) were won by the runner-up, Gennady Zyuganov?", new List<string>{"0","5","8","3"} },
+            {"How many official residences has Putin lived in during his tenure as president and prime minister?", new List<string>{"6","10", "29", "4"} },
+            {"Which football club is Putin as supporter of?", new List<string> { "FC Zenit Saint Petersburg", "FC Dynamo Moscow", "PFC CSKA Moscow", "FC Lokomotiv Saint Petersburg" } }
         };
         //commit test
 
@@ -67,6 +74,17 @@ namespace Cao
             TriviaQuestion.Text = question;
             //prevent duplicate questions
             questions.Remove(question);
+
+
+            if (player.gold >= 1)
+            {
+                player.payGold(1);
+            }
+            else
+            {
+                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
+                this.Close();
+            }
             Answer1.Text = answers[0];
             Answer2.Text = answers[1];
             Answer3.Text = answers[2];
@@ -81,15 +99,6 @@ namespace Cao
             Answer3.Checked = false;
             Answer4.Checked = false;
 
-            if (player.gold >= 1)
-            {
-                player.payGold(1);
-            }
-            else
-            {
-                MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
-                this.Close();
-            }
 
 
         }
@@ -133,7 +142,6 @@ namespace Cao
 
         private void SubmitAnswerButton_Load(object sender, EventArgs e)
         {
-
             populate();
         }
 

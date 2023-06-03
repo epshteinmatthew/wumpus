@@ -80,7 +80,9 @@ namespace Cao
             //4. if false, decrement arrow from Player Object
             if (Player.arrowsValid() == false)
             {
-                death();
+                MessageBox.Show("Comrade! You've exhausted your entire supply of kinzhal missiles! The prosecutor has now learned of your exact location due to your dry-fire! Brace yourself, he'll be here to arrest you in no time!");
+                Gamelocations.teleportWumpusToPlayer();
+                Move(Gamelocations.playerLocation);
                 return;
             }
             bool success = Gamelocations.shootArrow(ShootTo);
