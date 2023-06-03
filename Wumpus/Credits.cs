@@ -28,6 +28,7 @@ namespace Wumpus
 
         private void button1_Click(object sender, EventArgs e)
         {
+            closeButtonClicked = true;
             gameControl.showMenu();
         }
 
@@ -42,6 +43,11 @@ namespace Wumpus
             {
                 Environment.Exit(0);
             }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

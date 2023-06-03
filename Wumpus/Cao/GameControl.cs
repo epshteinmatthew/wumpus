@@ -28,6 +28,8 @@ namespace Cao
         private StartingCutScene cutscene;
         private bool rightToMenu = false;
         bool random, dark, soundOn;
+
+        Random generator = new Random();
         public GameControl()
         {
             //menu, form1, credits
@@ -116,7 +118,8 @@ namespace Cao
             //3. check for hazards in the player's room. methods should also exist to handle each hazard
             //4. check for wumpus in current player's room. method should exists to handle this as well
             //5. generate and send(send can be done later) warnings and hints for current room to ui form
-            if (Gamelocations.movePlayer(moveTo, babyMode))
+            bool diffMove = moveTo != Gamelocations.playerLocation;
+            if (diffMove && Gamelocations.movePlayer(moveTo, babyMode))
             {
                 Player.turnsTaken++;
                 Player.gold++;
@@ -124,22 +127,15 @@ namespace Cao
             }
 
 
-            string warnings = "";
-            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
-            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode);
-            form1.updateRooms(AdjacentRooms, ConnectedRooms);
-            warnings += Gamelocations.getWarnings(babyMode);
-            form1.SetText(warnings);
-            form1.SetMoney(Player.gold);
+            
             //step 2 here
-            Random generator = new Random();
-            if (Player.turnsTaken % 5 == 0 && difficulty > 1 && generator.NextDouble() > 0.3)
+            if (Player.turnsTaken % 5 == 0 && difficulty > 1 && generator.NextDouble() > 0.3 && diffMove)
             {
                 //time for dat minigame
                 PressMinigame press = new PressMinigame();
                 MessageBox.Show("Comrade! It appears that independent news outlets have been rambling on about your location! You must squash them before the ICC finds out! Turn off as many printing presses as you can in 15 seconds!");
                 press.ShowDialog();
-                if (press.amountHit > generator.Next(5, 8))
+                if (press.amountOn < 4)
                 {
                     MessageBox.Show("Good work Comrade! The Prosecutor will have no clue where you are now!");
                     return;
@@ -190,8 +186,15 @@ namespace Cao
                 }
 
             }
+            string warnings = "";
+            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
+            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode);
+            form1.updateRooms(AdjacentRooms, ConnectedRooms);
+            warnings += Gamelocations.getWarnings(babyMode);
+            form1.SetText(warnings);
+            form1.SetMoney(Player.gold);
 
-            
+
         }
 
         public void purchaseSecret()

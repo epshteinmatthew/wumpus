@@ -12,7 +12,7 @@ namespace Wumpus.Epshtein
 {
     public partial class PressMinigame : Form
     {
-        public int amountHit = 0;
+        public int amountOn = 0;
         bool genForNow = false;
         public PressMinigame()
         {
@@ -41,11 +41,16 @@ namespace Wumpus.Epshtein
             }
             button.ForeColor = Color.Black;
             button.Text = "Printing Press: \nOff";
-            amountHit++;
+            amountOn--;
             Button nextUp = getRandomButton();
+            if (genForNow)
+            {
+                genForNow = false;
+                return;
+            }
             nextUp.ForeColor = Color.Red;
             nextUp.Text = "Printing Press: \nOn";
-            genForNow = true;
+            amountOn++;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -108,22 +113,27 @@ namespace Wumpus.Epshtein
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             Random generat = new Random();
-            if (genForNow)
-            {
-                genForNow = false;
-                return;
-            }
-            else if(generat.NextDouble() > 0.5)
+             if(generat.NextDouble() > 0.5)
             {
                 Button nextUp = getRandomButton();
                 nextUp.ForeColor = Color.Red;
                 nextUp.Text = "Printing Press: \nOn";
+                amountOn++;
+                genForNow = true;
             }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            if(amountOn > 3)
+            {
+                this.Close();
+            }
         }
     }
 }
