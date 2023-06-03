@@ -44,6 +44,11 @@ namespace Epshtein
         //is the wumpus in the room passed in?
         public bool isWumpusInRoom(int room) { return wumpusLocation == room; }
 
+        public void teleportWumpusToPlayer()
+        {
+            wumpusLocation = playerLocation;
+        }
+
         //where's the player?
         public int getPlayerLocation() { return playerLocation; }
 

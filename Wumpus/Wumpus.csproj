@@ -92,6 +92,12 @@
       <DependentUpon>Leaderboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Epshtein\Player.cs" />
+    <Compile Include="Epshtein\PressMinigame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Epshtein\PressMinigame.Designer.cs">
+      <DependentUpon>PressMinigame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Epshtein\Leaderboard.resx">
       <DependentUpon>Leaderboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Epshtein\PressMinigame.resx">
+      <DependentUpon>PressMinigame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
