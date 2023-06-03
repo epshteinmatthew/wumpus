@@ -132,7 +132,7 @@ namespace Cao
             }
             QuestionNumber++;
             
-            if (QuestionNumber == askNumber)
+            if (QuestionNumber > askNumber)
             {
                 this.Close();
             }
