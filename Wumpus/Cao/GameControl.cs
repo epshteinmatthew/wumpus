@@ -243,6 +243,22 @@ namespace Cao
             form1.SetMoney(Player.gold);
             form1.SetArrows(Player.arrows);
             startTime = DateTime.Now;
+            SoundPlayer player = new SoundPlayer();
+            //plays audio
+            if (soundOn)
+            {
+                if (difficulty == 2)
+                {
+                    player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1230.wav";
+                    player.PlayLooping();
+                }
+                else
+                {
+                    player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
+                    player.PlayLooping();
+                }
+            }
+            else player.Stop();
             if (!rightToMenu) form1.Show();
         }
 
@@ -276,15 +292,6 @@ namespace Cao
             cutscene.Close();
             cred.Close();
             leaderboard.Close();
-
-            SoundPlayer player = new SoundPlayer();
-            //plays audio
-            if (soundOn)
-            {
-                player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\1229.wav";
-                player.PlayLooping();
-            }
-            else player.Stop();
             
             start.Show();
         }
