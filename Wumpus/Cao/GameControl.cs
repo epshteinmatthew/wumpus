@@ -55,6 +55,7 @@ namespace Cao
             ask3.player = Player;
             MessageBox.Show(message);
             ask3.ShowDialog();
+            form1.SetMoney(Player.gold);
             return ask3.CorrectNumber;
         }
 

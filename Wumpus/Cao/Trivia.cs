@@ -67,7 +67,6 @@ namespace Cao
         {
             string question = questions.Keys.OrderBy(_ => RandomGenerator.Next()).ToArray()[0];
             string[] answers = questions[question].OrderBy(_ => RandomGenerator.Next()).ToArray();
-            //SAVE "ANSWER" SOMEHOW: NEEDS TO BE CHECK AGAINST
             answer = questions[question][0];
          
 
@@ -76,11 +75,8 @@ namespace Cao
             questions.Remove(question);
 
 
-            if (player.gold >= 1)
-            {
-                player.payGold(1);
-            }
-            else
+            
+            if(!player.payGold(1))
             {
                 MessageBox.Show("Comrade, you've ran out of oil money and won't be able to answer any more questions!");
                 this.Close();
@@ -92,7 +88,7 @@ namespace Cao
 
             label4.Text = (QuestionNumber + "/" + askNumber).ToString();
             label5.Text = CorrectNumber.ToString();
-            label6.Text = (QuestionNumber - CorrectNumber).ToString();
+            label6.Text = ((QuestionNumber - CorrectNumber) - 1).ToString();
 
             Answer1.Checked = false;
             Answer2.Checked = false;

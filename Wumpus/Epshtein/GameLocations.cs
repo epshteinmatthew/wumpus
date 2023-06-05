@@ -11,7 +11,7 @@ namespace Epshtein
     public class GameLocations
     {
         public int playerLocation;
-        private int wumpusLocation;
+        private int wumpusLocation = 1;
         private Cave cave;
         private List<int> batLocations = new List<int>(), pitLocations = new List<int>();
 
@@ -20,7 +20,7 @@ namespace Epshtein
         //generates pits, bats, wumpus
         public GameLocations(int amountOfBats, int amountOfPits, bool random)
         {
-            cave = random ? new Cave("1", 1, 6) : new Cave("1", 1, generator.Next(1, 6));
+            cave = random ? new Cave(6) : new Cave(generator.Next(1, 6));
             while(batLocations.Count < amountOfBats)
             {
                 int loc = generator.Next(1,30);
@@ -38,7 +38,10 @@ namespace Epshtein
                     pitLocations.Add(loc);
                 }
             }
-            wumpusLocation = generator.Next(1,30);
+            while (wumpusLocation == 1)
+            {
+                wumpusLocation = generator.Next(1, 30);
+            }
             playerLocation = 1;
         }
 
