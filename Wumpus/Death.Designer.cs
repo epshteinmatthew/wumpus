@@ -32,13 +32,15 @@
             this.buttonRetry = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(159, 169);
+            this.button1.Location = new System.Drawing.Point(238, 260);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 21);
+            this.button1.Size = new System.Drawing.Size(81, 32);
             this.button1.TabIndex = 9;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
@@ -46,9 +48,10 @@
             // 
             // buttonRetry
             // 
-            this.buttonRetry.Location = new System.Drawing.Point(148, 135);
+            this.buttonRetry.Location = new System.Drawing.Point(222, 208);
+            this.buttonRetry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonRetry.Name = "buttonRetry";
-            this.buttonRetry.Size = new System.Drawing.Size(75, 21);
+            this.buttonRetry.Size = new System.Drawing.Size(112, 32);
             this.buttonRetry.TabIndex = 8;
             this.buttonRetry.Text = "Try Again?";
             this.buttonRetry.UseVisualStyleBackColor = true;
@@ -58,30 +61,45 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(110, 65);
+            this.label1.Location = new System.Drawing.Point(165, 100);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 37);
+            this.label1.Size = new System.Drawing.Size(241, 55);
             this.label1.TabIndex = 7;
             this.label1.Text = "You Lose!";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(145, 102);
+            this.label2.Location = new System.Drawing.Point(218, 157);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(59, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Score: ";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(222, 311);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 32);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "To Credits";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Death
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 238);
+            this.ClientSize = new System.Drawing.Size(574, 366);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonRetry);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Death";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Death";
@@ -97,5 +115,6 @@
         private System.Windows.Forms.Button buttonRetry;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
     }
 }

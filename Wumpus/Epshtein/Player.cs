@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +30,8 @@ namespace Epshtein
         /// <returns>Whether or not the player has enough gold to pay</returns>
         public bool PayArrow()
         {
-            if (arrowsValid())  arrows--; 
-            return arrowsValid();
+            if (arrowsValid()) { arrows--; return true; }
+            else { return false; }
         }
 
         public bool arrowsValid() { return arrows > 0; }

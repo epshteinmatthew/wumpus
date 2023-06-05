@@ -17,18 +17,20 @@ namespace Wumpus
     {
         private Leaderboard leaderboard;
         private int score;
-        public Win(int score, Leaderboard leaderboard, DateTime startTime)
+        private GameControl gameControl;
+        public Win(int score, Leaderboard leaderboard, DateTime startTime, GameControl gameControl)
         {
             InitializeComponent();
             label2.Text = "Your score was: " + score.ToString();
             label3.Text = "Your time was: " + leaderboard.endRun(startTime);
             this.leaderboard = leaderboard;
             this.score = score;
+            this.gameControl = gameControl;
         }
 
         private void buttonRetry_Click(object sender, EventArgs e)
         {
-            this.Close();
+            gameControl.showMenu();
 
             //call control
         }
@@ -49,6 +51,16 @@ namespace Wumpus
             leaderboard.writeItemsToFile(score, textBoxName.Text);
             MessageBox.Show("Leaderboard entry added! Navigate to the main menu to see where you placed!");
             button2.Enabled = false;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            gameControl.showCredits();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
         }
     }

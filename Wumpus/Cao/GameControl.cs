@@ -36,7 +36,7 @@ namespace Cao
             //menu, form1, credits
             start = new StartMenu(this);
             form1 = new _1095652_Roth_HuntTheWumpus.Form1(this);
-            cred = new Credits(this);
+            cred = new Credits();
             leaderboard    = new Leaderboard(this);
             cutscene = new StartingCutScene(this);
             showMenu();
@@ -265,21 +265,18 @@ namespace Cao
         //exit gameplay->menu
         private void death()
         {
-            Death death = new Death(Player.CalculatePoints(false, difficulty));
+            Death death = new Death(Player.CalculatePoints(false, difficulty), this);
             form1.closeButtonClicked = true;
             death.ShowDialog();
-            showMenu();
         }
 
         //exit gameplay(but with "you win" as the message)->menu
         private void win()
         {
             //only successful runs get a leaderboard position
-            Win win = new Win(Player.CalculatePoints(true,difficulty), leaderboard, startTime);
+            Win win = new Win(Player.CalculatePoints(true,difficulty), leaderboard, startTime, this);
             form1.closeButtonClicked = true;
             win.ShowDialog();
-            showMenu();
-            
         }
 
         //"Show X" methods
@@ -297,9 +294,11 @@ namespace Cao
         }
         public void showCredits()
         {
+            form1.Close();
             start.Close();
-            cred = new Credits(this);
-            cred.Show();
+            cred = new Credits();
+            cred.ShowDialog();
+            showMenu();
         }
         public void showSettings()
         {

@@ -15,15 +15,17 @@ namespace Wumpus
 {
     public partial class Death : Form
     {
-        public Death(int score)
+        private GameControl gameControl;
+        public Death(int score, GameControl gameControl)
         {
             InitializeComponent();
             label2.Text = "Your score was: " + score.ToString();
+            this.gameControl = gameControl;
         }
 
         private void buttonRetry_Click(object sender, EventArgs e)
         {
-            this.Close();
+            gameControl.showMenu();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,6 +37,11 @@ namespace Wumpus
         private void Death_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            gameControl.showCredits();
         }
     }
 }

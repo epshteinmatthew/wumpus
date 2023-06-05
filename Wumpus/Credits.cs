@@ -13,11 +13,9 @@ namespace Wumpus
 {
     public partial class Credits : Form
     {
-        GameControl gameControl;
         bool closeButtonClicked;
-        public Credits(GameControl gc)
+        public Credits()
         {
-            gameControl = gc;
             InitializeComponent();
         }
 
@@ -29,7 +27,7 @@ namespace Wumpus
         private void button1_Click(object sender, EventArgs e)
         {
             closeButtonClicked = true;
-            gameControl.showMenu();
+            this.Close();
         }
 
         private void Credits_Load(object sender, EventArgs e)
