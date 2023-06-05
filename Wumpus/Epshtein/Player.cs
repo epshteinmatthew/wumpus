@@ -29,7 +29,7 @@ namespace Epshtein
         /// <returns>Whether or not the player has enough gold to pay</returns>
         public bool PayArrow()
         {
-            arrows--;
+            if (arrowsValid())  arrows--; 
             return arrowsValid();
         }
 
