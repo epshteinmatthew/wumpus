@@ -23,3 +23,6 @@ Some estimates list the number of children stolen to be as high as 307,000. This
 Some returned children have attested to harsh punishments and restrictive living conditions while in while Russia.  
 Putin and his co-conspirators must be put to justice. The Russian invasion of Ukraine must end.  
 **Слава Україні!**
+
+*PM's Note*  
+I didnt put comments on constructor because i am lazy :)
