@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonRetry = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -37,7 +36,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(238, 260);
+            this.button1.Location = new System.Drawing.Point(231, 260);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 32);
@@ -45,17 +44,6 @@
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonRetry
-            // 
-            this.buttonRetry.Location = new System.Drawing.Point(222, 208);
-            this.buttonRetry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.buttonRetry.Name = "buttonRetry";
-            this.buttonRetry.Size = new System.Drawing.Size(112, 32);
-            this.buttonRetry.TabIndex = 8;
-            this.buttonRetry.Text = "Try Again?";
-            this.buttonRetry.UseVisualStyleBackColor = true;
-            this.buttonRetry.Click += new System.EventHandler(this.buttonRetry_Click);
             // 
             // label1
             // 
@@ -80,14 +68,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(222, 311);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button2.Location = new System.Drawing.Point(222, 206);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 32);
+            this.button2.Size = new System.Drawing.Size(102, 46);
             this.button2.TabIndex = 11;
-            this.button2.Text = "To Credits";
+            this.button2.Text = "Next";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // Death
             // 
@@ -97,7 +84,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonRetry);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Death";
@@ -112,7 +98,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonRetry;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;

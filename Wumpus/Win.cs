@@ -63,5 +63,10 @@ namespace Wumpus
         {
 
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            gameControl.showEnd(true);
+        }
     }
 }

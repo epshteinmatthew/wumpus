@@ -78,6 +78,12 @@
     <Compile Include="Death.Designer.cs">
       <DependentUpon>Death.cs</DependentUpon>
     </Compile>
+    <Compile Include="EndScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndScreen.Designer.cs">
+      <DependentUpon>EndScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Epshtein\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Death.resx">
       <DependentUpon>Death.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndScreen.resx">
+      <DependentUpon>EndScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Epshtein\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

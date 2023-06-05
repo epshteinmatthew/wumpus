@@ -318,6 +318,12 @@ namespace Cao
             leaderboard = new Leaderboard(this);
             leaderboard.Show();
         }
+
+        public void showEnd(bool won)
+        {
+            EndScreen end = new EndScreen(this,won );
+            end.ShowDialog();
+        }
         
         
     }   
