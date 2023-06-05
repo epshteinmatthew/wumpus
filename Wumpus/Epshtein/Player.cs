@@ -33,7 +33,7 @@ namespace Epshtein
             return arrowsValid();
         }
 
-        public bool arrowsValid() { return arrows < 0; }
+        public bool arrowsValid() { return arrows > 0; }
 
         /// <summary>
         /// Tries to spend gold. Amount to spend determined by params

@@ -15,23 +15,15 @@ namespace Chan_WumpusTest
         //this can still be mutated, but only by the methods of List class
         private readonly List<int[]> connections = new List<int[]>();
 
-        int RoomNumber { get; set; }
-        string CaveNumber { get; set; }
+        string CaveString { get; set; }
 
         //This is the Cave Class
         //GetCaveSystem will choose one of the five caves and return which cave number
         //GetAdjacentCaves will retrieve the player location and return adjacent rooms
         //GetConnectedCaves will retrieve the player location and return which caves the player can go into
 
-        /// <summary>
-        /// This method retrieves the caves adjacent to the player, and also retrieves the caves that the player can actually go into. 
-        /// </summary>
-        /// <param name="num"></param>
-        /// <param name="rum"></param>
-        public Cave(string num, int rum, int whichToGen)
+        public Cave(int caveNumber)
         {
-            this.CaveNumber = num;
-            this.RoomNumber = rum;
             using (var sr = new StreamReader("CaveAdjacent.txt"))
             {
                 string line;
@@ -47,11 +39,11 @@ namespace Chan_WumpusTest
                 }
             }
             
-            //decides what cave system is being used at random
-            CaveNumber = "Cave" + whichToGen;
+            //decides what cave system is used based on params passed in the constructor
+            this.CaveString = "Cave" + caveNumber;
             var CaveFile = "Cave1Connections.txt";
 
-            switch (whichToGen)
+            switch (caveNumber)
             {
                 case 1:
                     CaveFile = "Cave1Connections.txt";
@@ -119,7 +111,7 @@ namespace Chan_WumpusTest
                     break;
             }
             //withdraws which rooms the player can go into from a file
-            if (whichToGen == 6)
+            if (caveNumber == 6)
             {
                 return;
             }
@@ -142,11 +134,11 @@ namespace Chan_WumpusTest
         /// <summary>
         /// Retrieving from the cave method, this method returns what number cave system is being used to the game control
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A formatted string containing the cavenumber</returns>
         public string GetCaveSystem()
         {
 
-            return CaveNumber;
+            return CaveString;
 
 
         }

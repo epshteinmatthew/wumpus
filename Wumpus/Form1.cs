@@ -29,7 +29,12 @@ namespace _1095652_Roth_HuntTheWumpus
             control = gameControl;
         }
 
-        public void updateRooms(int[] adj, int[] con)
+        /// <summary>
+        /// Updates room buttons based on connected and adjacent room arrays taken from params
+        /// </summary>
+        /// <param name="adj">Rooms adjacent to the user</param>
+        /// <param name="con">Rooms connected to the user</param>
+        public void UpdateRoomButtons(int[] adj, int[] con)
         {
             button1.Visible = true;
             button2.Visible = true;
@@ -73,7 +78,7 @@ namespace _1095652_Roth_HuntTheWumpus
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //drawes the hexagon buttons
+            //draws the hexagon buttons
             GraphicsPath hexagon = new GraphicsPath();
 
             Point[] points = { new Point(0, 50), new Point(25, 10), new Point(75, 10), new Point(100, 50), new Point(100, 50), new Point(75, 90), new Point(25, 90)};
@@ -86,118 +91,60 @@ namespace _1095652_Roth_HuntTheWumpus
             button6.Region = new Region(hexagon);
             button5.Region = new Region(hexagon);
         }
+
+        /// <summary>
+        /// Handles a click of the Hexagon-shaped buttons. The specific button which is clicked is taken from params
+        /// </summary>
+        /// <param name="button">The button clicked by the user</param>
+        public void HexagonButtonClickHandler(Button button)
+        {
+            if (!buttonShoot.Enabled)
+            {
+                control.Move(int.Parse(button.Text));
+                ReenableButtons();
+            }
+            else if (!buttonMove.Enabled)
+            {
+                control.Shoot(int.Parse(button.Text));
+                ReenableButtons();
+            }
+        }
+
         public void button1_Click(object sender, EventArgs e)
         {
-            if (buttonShoot.Enabled == false)
-            {
-                control.Move(int.Parse(button1.Text));
-                MoveButtonClicked();
-
-            }
-            else if (buttonMove.Enabled == false)
-            {
-                control.Shoot(int.Parse(button1.Text));
-                MoveButtonClicked();
-            }
+            HexagonButtonClickHandler(sender as Button);
             
         }
         public void button2_Click(object sender, EventArgs e)
         {
-            if (buttonShoot.Enabled == false)
-            {
-                control.Move(int.Parse(button2.Text));
-                MoveButtonClicked();
-            }
-            else if (buttonMove.Enabled == false)
-            {
-                control.Shoot(int.Parse(button2.Text));
-                MoveButtonClicked();
-            }
-            
+            HexagonButtonClickHandler(sender as Button);
+
         }
         public void button3_Click(object sender, EventArgs e)
         {
-            if (buttonShoot.Enabled == false)
-            {
-                control.Move(int.Parse(button3.Text));
-                MoveButtonClicked();
-            }
-            else if (buttonMove.Enabled == false)
-            {
-                control.Shoot(int.Parse(button3.Text));
-                MoveButtonClicked();
-            }
-            
+            HexagonButtonClickHandler(sender as Button);
         }
         public void button4_Click(object sender, EventArgs e)
         {
-            if (buttonShoot.Enabled == false)
-            {
-                control.Move(int.Parse(button4.Text));
-                MoveButtonClicked();
-            }
-            else if (buttonMove.Enabled == false)
-            {
-                control.Shoot(int.Parse(button4.Text));
-                MoveButtonClicked();
-            }
-            
+            HexagonButtonClickHandler(sender as Button);
         }
         public void button5_Click(object sender, EventArgs e)
         {
-            if (buttonShoot.Enabled == false)
-            {
-                control.Move(int.Parse(button5.Text));
-                MoveButtonClicked();
-            }
-            else if (buttonMove.Enabled == false)
-            {
-                control.Shoot(int.Parse(button5.Text));
-                MoveButtonClicked();
-            }
-            
+            HexagonButtonClickHandler(sender as Button);
         }
         public void button6_Click(object sender, EventArgs e)
         {
-            if (buttonShoot.Enabled == false)
-            {
-                control.Move(int.Parse(button6.Text));
-                MoveButtonClicked();
-            }
-            else if (buttonMove.Enabled == false)
-            {
-                control.Shoot(int.Parse(button6.Text));
-                MoveButtonClicked();
-            }
-            
+            HexagonButtonClickHandler(sender as Button);
         }
         private void buttonShoot_Click(object sender, EventArgs e)
         {
-            if (buttonMove.Enabled == false)
-            {
-                buttonMove.Enabled = true;
-            }
-            else
-            {
-                buttonMove.Enabled = false;
-            }
-
-            
+            buttonMove.Enabled = !buttonMove.Enabled;
         }
         private void buttonMove_Click(object sender, EventArgs e)
         {
-            if (buttonShoot.Enabled == false)
-            {
-                buttonShoot.Enabled = true;
-            }
-            else
-            {
-                buttonShoot.Enabled = false;
-            }
-            
-            
+            buttonShoot.Enabled = !buttonShoot.Enabled;
         }
-        private void MoveButtonClicked()
+        private void ReenableButtons()
         {
             buttonMove.Enabled = true;
             buttonShoot.Enabled = true;

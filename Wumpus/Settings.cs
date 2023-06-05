@@ -13,7 +13,6 @@ namespace Wumpus
     public partial class Settings : Form
     {
         public bool music = true;
-        public bool darkmode = false;
         public bool randomcave = false;
         public bool doAnything = true;
         public Settings()
@@ -49,7 +48,6 @@ namespace Wumpus
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            darkmode = checkBox4.Checked;
         }
     }
 }

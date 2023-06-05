@@ -27,7 +27,7 @@ namespace Cao
         private bool babyMode = true;
         private StartingCutScene cutscene;
         private bool rightToMenu = false;
-        bool random, dark;
+        bool random;
         bool soundOn = true;
 
         Random generator = new Random();
@@ -42,6 +42,12 @@ namespace Cao
             showMenu();
         }
 
+        /// <summary>
+        /// Plays trivia. Amount of questions asked and message sent to user beforehand passed in via params
+        /// </summary>
+        /// <param name="toask">Amount of questions asked to the user</param>
+        /// <param name="message">Message shown to the user before starting trivia</param>
+        /// <returns></returns>
         private int playTrivia(int toask, string message)
         {
             SubmitAnswerButton ask3 = new SubmitAnswerButton();
@@ -52,11 +58,10 @@ namespace Cao
             return ask3.CorrectNumber;
         }
 
-        public int Score(bool wumpusDead)
-        {
-            return Player.CalculatePoints(wumpusDead, difficulty);
-        }
         
+        /// <summary>
+        /// Attempts to purchase an arrow. Alerts the user if it fails.
+        /// </summary>
         public void purchaseArrow()
         {
             //this doesnt get affected by difficulty-its already quite easy
@@ -73,7 +78,11 @@ namespace Cao
             form1.SetMoney(Player.gold);
         }
 
-        public void Shoot(int ShootTo)
+        /// <summary>
+        /// Attempts to shoot an arrow(called "kinzhal missile" ingame) into the target room. Shows the user a message detailing the results of the action
+        /// </summary>
+        /// <param name="target">Room in which user wants to shoot an orrow to</param>
+        public void Shoot(int target)
         {
             //1. verify that player has enough arrows. Player has a method for this
             //2. call gameLocations's shootarrow method to the target rom and tore the return value in a variable
@@ -86,7 +95,7 @@ namespace Cao
                 Move(Gamelocations.playerLocation);
                 return;
             }
-            if(!Gamelocations.isWumpusInRoom(ShootTo))
+            if(!Gamelocations.isWumpusInRoom(target))
             {
                 MessageBox.Show("Comrade! The prosecutor has fled from our kinzhal missile strike in terror!");
                 Gamelocations.moveWumpus(1);
@@ -95,6 +104,7 @@ namespace Cao
                 return;
                
             }
+            //air defenses may intercept your missile, and the likelyhood that they do increases with each difficulty up
             double chanceToBeat = 0.15 * (difficulty * difficulty) + 0.15;
             if(generator.NextDouble() < chanceToBeat)
             {
@@ -120,17 +130,15 @@ namespace Cao
             bool diffMove = moveTo != Gamelocations.playerLocation;
             if (diffMove && Gamelocations.movePlayer(moveTo, babyMode))
             {
+                //only add to turns taken and gold if you moved somewhere new and the move was succsessful
                 Player.turnsTaken++;
                 Player.gold++;
-                
-            }
-
-
-            
+                form1.SetMoney(Player.gold);
+            }       
             //step 2 here
             if (Player.turnsTaken % 5 == 0 && difficulty > 1 && generator.NextDouble() > 0.3 && diffMove)
             {
-                //time for dat minigame
+                //play the press minigame every 5 or 10 turns (on the highest difficulty)
                 PressMinigame press = new PressMinigame();
                 MessageBox.Show("Comrade! It appears that independent news outlets have been rambling on about your location! You must squash them before the ICC finds out! Turn off as many printing presses as you can in 15 seconds!");
                 press.ShowDialog();
@@ -142,6 +150,7 @@ namespace Cao
                 MessageBox.Show("Comrade! You weren't able to stop enough presses, and now the Prosecutor knows your exact location! Brace youself, he'll be here to arrest you in no time!");
                 Gamelocations.teleportWumpusToPlayer();
             }
+            //play trivias depending on what the player encounters
             if (Gamelocations.isWumpusInRoom(Gamelocations.getPlayerLocation()))
             {
                 int c = playTrivia(5, "Comrade! The ICC's Chief Prosecutor Karim Khan knows your exact location! Answer "+ (2+difficulty )+ " out of 5 trivia questions correctly to shake him off your trail!");
@@ -159,7 +168,7 @@ namespace Cao
             }
             if (Gamelocations.isBatInRoom(Gamelocations.getPlayerLocation()))
             {
-                //random from 1 to 10 if less than 2: dead
+                //generate a number your random number must beat based on the difficulty
                 MessageBox.Show("Comrade! the ICC is near! we must airlift you to a safer location!");
                 double chanceToBeat = 0.025 * (difficulty * difficulty) + 0.025;
                 if(generator.NextDouble() <= chanceToBeat)
@@ -184,17 +193,19 @@ namespace Cao
                 }
 
             }
-            string warnings = "";
-            int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
-            int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode);
-            form1.updateRooms(AdjacentRooms, ConnectedRooms);
-            warnings += Gamelocations.getWarnings(babyMode);
-            form1.SetText(warnings);
-            form1.SetMoney(Player.gold);
+            //warnings and such must be generated one all encounters are done, otherwise you will get outdated info
+            form1.UpdateRoomButtons(
+                              Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation()),
+                              Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode)
+            );
+            form1.SetText(Gamelocations.getWarnings(babyMode));
 
 
         }
 
+        /// <summary>
+        /// Attempts to purchase a hint/secret
+        /// </summary>
         public void purchaseSecret()
         {
             if(Player.gold < 1)
@@ -206,21 +217,10 @@ namespace Cao
             form1.SetText(Gamelocations.getSecret());
             form1.SetMoney(Player.gold);
         }
-
-        public bool Arrows()
-        {
-            return Player.arrowsValid();
-        }
-        public int GameLocation(int MoveTo)
-        {
-            return Gamelocations.getPlayerLocation();
-        }
-        public int Coin()
-        {
-            return Player.gold;
-        }
         
-        //restart gameplay
+        /// <summary>
+        /// Starts Gameplay with selected settings. Calling this method will regenerate the player, cave, gamelocations, and form1
+        /// </summary>
         public void startGamePlay()
         {
             rightToMenu = false;
@@ -235,7 +235,7 @@ namespace Cao
             Gamelocations = new GameLocations(4 - difficulty, 2 + difficulty, random);
             int[] AdjacentRooms = Gamelocations.generateAdjacentRooms(Gamelocations.getPlayerLocation());
             int[] ConnectedRooms = Gamelocations.generateConnectedRooms(Gamelocations.getPlayerLocation(), babyMode);
-            form1.updateRooms(AdjacentRooms, ConnectedRooms);
+            form1.UpdateRoomButtons(AdjacentRooms, ConnectedRooms);
             string warnings = "";
             warnings += Gamelocations.getWarnings(babyMode);
             form1.SetText(warnings);
@@ -245,7 +245,7 @@ namespace Cao
             if (!rightToMenu) form1.Show();
         }
 
-        //exit gameplay->credits
+        //exit gameplay->menu
         private void death()
         {
             Death death = new Death(Player.CalculatePoints(false, difficulty));
@@ -254,6 +254,7 @@ namespace Cao
             showMenu();
         }
 
+        //exit gameplay(but with "you win" as the message)->menu
         private void win()
         {
             //only successful runs get a leaderboard position
@@ -264,7 +265,8 @@ namespace Cao
             
         }
 
-        //open menu
+        //"Show X" methods
+        //Main thing of note here is the closing of all other forms and the reinstantiation of the requisite forms for opening
         public void showMenu()
         {
             rightToMenu = true;
@@ -285,14 +287,12 @@ namespace Cao
             
             start.Show();
         }
-        //show credits
         public void showCredits()
         {
             start.Close();
             cred = new Credits(this);
             cred.Show();
         }
-
         public void showSettings()
         {
             start.Close();
@@ -302,11 +302,9 @@ namespace Cao
             {
                 random = settings.randomcave;
                 soundOn = settings.music;
-                dark = settings.darkmode;
             }
             showMenu();
         }
-
         public void showLeaderboard()
         {
             start.Close();
