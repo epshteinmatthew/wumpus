@@ -9,8 +9,7 @@ namespace Wumpus.Epshtein
 {
     public partial class Leaderboard : Form
     {
-        private  DateTime startTime;
-        private DateTime endTime;
+        private TimeSpan runTime;
         private Dictionary<string, int> scores = new Dictionary<string, int>();
         private Dictionary<string, TimeSpan> times = new Dictionary<string, TimeSpan>();
         private GameControl gc;
@@ -26,7 +25,7 @@ namespace Wumpus.Epshtein
                 using (var sr = new StreamReader("scores.txt"))
                 {
                     string line;
-                    // Read and display lines from the file until the end of
+                    // Read lines from the file until the end of
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
@@ -34,7 +33,7 @@ namespace Wumpus.Epshtein
                     }
                 }
             }
-            catch (Exception)
+            catch
             {
                 File.Create("scores.txt");
             }
@@ -44,7 +43,7 @@ namespace Wumpus.Epshtein
                 using (var sr = new StreamReader("times.txt"))
                 {
                     string line;
-                    // Read and display lines from the file until the end of
+                    // Read lines from the file until the end of
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
@@ -52,7 +51,7 @@ namespace Wumpus.Epshtein
                     }
                 }
             }
-            catch (Exception)
+            catch 
             {
                 File.Create("times.txt");
             }
@@ -61,20 +60,22 @@ namespace Wumpus.Epshtein
             
         }
 
-        private void populateListBox(int type)
+        /// <summary>
+        /// Populates leaderboard list box with data about runs. Times are ordered lowest -> highest, and Scores are ordered highest -> lowest.
+        /// </summary>
+        private void populateListBox()
         {
-            //todo: this does not clear for some unknown reason!! fix!!
             leaderboardListBox.Items.Clear();
-            switch (type)
+            switch (radioButtonScore.Checked)
             {
-                case 0:
+                case true:
                     //score.
                     foreach (var item in scores.Values.OrderByDescending(x => x))
                     {
                         leaderboardListBox.Items.Add(item.ToString());
                     }
                     return; 
-                case 1:
+                case false:
                     //time
                     foreach (var item in times.Values.OrderBy(x => x))
                     {
@@ -85,15 +86,23 @@ namespace Wumpus.Epshtein
                     return;
             }
         }
+
+        /// <summary>
+        /// Ends the run and saves the time spent to a variable
+        /// </summary>
+        /// <param name="start">The time when the run started</param>
+        /// <returns>A formatted string conatining the run time</returns>
         public string endRun(DateTime start)
         {
-            startTime = start;
-            endTime = DateTime.Now;
-            var total = endTime - startTime;
-            return total.Days + ":" + total.Hours + ":" + total.Minutes + ":" + total.Seconds;
+            runTime = DateTime.Now - start;
+            return runTime.Days + ":" + runTime.Hours + ":" + runTime.Minutes + ":" + runTime.Seconds;
         }
 
-
+        /// <summary>
+        /// Writes data about the run to the disk, such as time, score, and name
+        /// </summary>
+        /// <param name="score">Points scored during the run</param>
+        /// <param name="name">Name of person who completed the run</param>
         public void writeItemsToFile(int score, string name)
         {
             var rand = new Random();
@@ -107,7 +116,7 @@ namespace Wumpus.Epshtein
             {
                 adder++;
             }
-            times.Add((gen == 0 ? name : name + gen), (endTime - startTime));
+            times.Add((gen == 0 ? name : name + gen), (runTime));
             scores.Add((gen == 0 ? name : name + gen), score+adder);
 
             //write everything to file now
@@ -139,9 +148,8 @@ namespace Wumpus.Epshtein
 
         private void Leaderboard_Load(object sender, EventArgs e)
         {
-            
             radioButtonScore.Checked = true;
-            populateListBox(0);
+            populateListBox();
         }
 
         private void leaderboardList_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,19 +171,12 @@ namespace Wumpus.Epshtein
 
         private void radioButtonScore_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonScore.Checked)
-            {
-                populateListBox(0);
-            };
+                populateListBox();
         }
 
         private void radioButtonTime_CheckedChanged_1(object sender, EventArgs e)
         {
-           
-            if (radioButtonTime.Checked)
-            {
-                populateListBox(1);
-            };
+                populateListBox();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)

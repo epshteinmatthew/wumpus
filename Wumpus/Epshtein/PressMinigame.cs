@@ -12,6 +12,7 @@ namespace Wumpus.Epshtein
 {
     public partial class PressMinigame : Form
     {
+        //the amount of "printing presses" on at any time
         public int amountOn = 0;
         bool genForNow = false;
         public PressMinigame()
@@ -19,6 +20,10 @@ namespace Wumpus.Epshtein
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Tries to get a random button out of the 9 in the form
+        /// </summary>
+        /// <returns>A random button if it exists, otherwise button1</returns>
         private Button getRandomButton()
         {
             Random generator = new Random();
@@ -33,6 +38,10 @@ namespace Wumpus.Epshtein
             }
         }
 
+        /// <summary>
+        /// Handles a button click, decides what to do next based on program state
+        /// </summary>
+        /// <param name="button">The button which was hit</param>
         public void buttonHitHandler(Button button)
         {
             if(button.ForeColor == Color.Black)
@@ -116,6 +125,7 @@ namespace Wumpus.Epshtein
              if(generat.NextDouble() > 0.5)
             {
                 Button nextUp = getRandomButton();
+                if (nextUp.ForeColor == Color.Red) return;
                 nextUp.ForeColor = Color.Red;
                 nextUp.Text = "Printing Press: \nOn";
                 amountOn++;
@@ -132,6 +142,11 @@ namespace Wumpus.Epshtein
         {
             if(amountOn > 3)
             {
+                //stops all timers, prevents improper disposal
+                //https://stackoverflow.com/questions/29626/cannot-access-a-disposed-object-how-to-fix
+                timer3.Stop();
+                timer2.Stop();
+                timer1.Stop();
                 this.Close();
             }
         }

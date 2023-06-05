@@ -11,20 +11,21 @@ namespace Epshtein
     public class GameLocations
     {
         public int playerLocation;
-
         private int wumpusLocation;
-        //generate in constructor
-        List<int> batLocations = new List<int>(), pitLocations = new List<int>();
-        Random generator = new Random();
-
         private Cave cave;
+        private List<int> batLocations = new List<int>(), pitLocations = new List<int>();
+
+        private Random generator = new Random();
+
+        //generates pits, bats, wumpus
         public GameLocations(int amountOfBats, int amountOfPits, bool random)
         {
             cave = random ? new Cave("1", 1, 6) : new Cave("1", 1, generator.Next(1, 6));
             while(batLocations.Count < amountOfBats)
             {
                 int loc = generator.Next(1,30);
-                if (!isBatInRoom(loc) || loc == 1)
+                //bats are generated first, so we dont need to check for conflicts with the pits here
+                if (!isBatInRoom(loc) || loc != 1)
                 {
                     batLocations.Add(loc);
                 }
@@ -32,7 +33,7 @@ namespace Epshtein
             while (pitLocations.Count < amountOfPits)
             {
                 int loc = generator.Next(1, 30);
-                if (!isPitInRoom(loc) || loc == 1)
+                if (!isPitInRoom(loc) && loc != 1 && !isBatInRoom(loc))
                 {
                     pitLocations.Add(loc);
                 }
@@ -84,17 +85,13 @@ namespace Epshtein
             return cave.GetAdjacentCaves(room);
         }
 
+        /// <summary>
+        /// A function to generate conncted rooms based on passed in params
+        /// </summary>
+        /// <param name="room">The room you are trying to find connections of</param>
+        /// <param name="isBabyMode">whether "baby mode" is on/off. "baby mode" just means that all adjacent rooms are treated as connected</param>
+        /// <returns>An integer array of all rooms connected to the room passed in</returns>
         public int[] generateConnectedRooms(int room, bool isBabyMode) => !isBabyMode ? cave.GetConnectedCaves(room) : cave.GetAdjacentCaves(room);
-
-        //shoots an arrow into the target room
-        public bool shootArrow(int targetRoom)
-        {
-            if (isWumpusInRoom(targetRoom))
-            {
-                return true;
-            }
-            else { return false; }
-        }
 
         //randomly generate some information about the game locations and return it to the player
         public string getSecret()
@@ -119,21 +116,26 @@ namespace Epshtein
             return "Room " + generateAdjacentRooms(playerLocation)[generator.Next(0,7)] + " is adjacent to you.";
         }
 
+        //sends the player to a random location on the map
         public void vdvAirlift()
         {
-            //comrade! the ICC is near! we must airlift you to a safer location!
-            playerLocation = generator.Next(1, 30);
+            playerLocation = generator.Next(1, 31);
         }
 
-        //resets the player's location to the entry tile
+        //resets the player's location to the entry tile(room 1)
 	    public void resetPlayer()
         {
             playerLocation = 1;
         }
 
+        /// <summary>
+        /// Attempts to move the player to the target room 
+        /// </summary>
+        /// <param name="targetRoom">The room to move the player to</param>
+        /// <param name="isBabyMode">Whether "baby mode" is on/off. See line 94</param>
+        /// <returns></returns>
         public bool movePlayer(int targetRoom, bool isBabyMode)
         {
-            //attempt to move player to room passed in, return false if fails
             if (generateConnectedRooms(playerLocation, isBabyMode).Contains(targetRoom))
             {
                 playerLocation = targetRoom;
@@ -142,7 +144,7 @@ namespace Epshtein
             return false;
         }
 
-        //move the wumpus a certain number of times. each time = move to 1 adjacent room. 
+        //move the wumpus a certain number of times. each time = move to 1 connected room. 
         public void moveWumpus(int turns)
         {
             for (int i = 0; i < turns; i++){
@@ -155,12 +157,6 @@ namespace Epshtein
                 wumpusLocation = options[0];
             }
 
-        }
-
-        //timer
-        public void keeptime(int time)
-        {
-            
         }
     }
 }

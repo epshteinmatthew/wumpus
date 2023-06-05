@@ -27,7 +27,8 @@ namespace Cao
         private bool babyMode = true;
         private StartingCutScene cutscene;
         private bool rightToMenu = false;
-        bool random, dark, soundOn;
+        bool random, dark;
+        bool soundOn = true;
 
         Random generator = new Random();
         public GameControl()
@@ -53,7 +54,7 @@ namespace Cao
 
         public int Score(bool wumpusDead)
         {
-            return Player.points(wumpusDead, difficulty);
+            return Player.CalculatePoints(wumpusDead, difficulty);
         }
         
         public void purchaseArrow()
@@ -78,17 +79,15 @@ namespace Cao
             //2. call gameLocations's shootarrow method to the target rom and tore the return value in a variable
             //3. if true, kill wumpus and trigger end of game
             //4. if false, decrement arrow from Player Object
-            if (Player.arrowsValid() == false)
+            if (Player.PayArrow() == false)
             {
                 MessageBox.Show("Comrade! You've exhausted your entire supply of kinzhal missiles! The prosecutor has now learned of your exact location due to your dry-fire! Brace yourself, he'll be here to arrest you in no time!");
                 Gamelocations.teleportWumpusToPlayer();
                 Move(Gamelocations.playerLocation);
                 return;
             }
-            bool success = Gamelocations.shootArrow(ShootTo);
-            if(!success)
+            if(!Gamelocations.isWumpusInRoom(ShootTo))
             {
-                Player.arrows--;
                 MessageBox.Show("Comrade! The prosecutor has fled from our kinzhal missile strike in terror!");
                 Gamelocations.moveWumpus(1);
                 form1.SetArrows(Player.arrows);
@@ -96,12 +95,10 @@ namespace Cao
                 return;
                
             }
-            Random r = new Random();
             double chanceToBeat = 0.15 * (difficulty * difficulty) + 0.15;
-            if(r.NextDouble() < chanceToBeat)
+            if(generator.NextDouble() < chanceToBeat)
             {
                 MessageBox.Show("Comrade! Ukranian Air Defenses have intercepted our kinzhal missile strike on the prosecutor, and he has escaped our surveilance network!");
-                Player.arrows--; 
                 Gamelocations.moveWumpus(1);
                 form1.SetArrows(Player.arrows);
                 Move(Gamelocations.playerLocation);
@@ -164,9 +161,8 @@ namespace Cao
             {
                 //random from 1 to 10 if less than 2: dead
                 MessageBox.Show("Comrade! the ICC is near! we must airlift you to a safer location!");
-                Random rand = new Random();
                 double chanceToBeat = 0.025 * (difficulty * difficulty) + 0.025;
-                if(rand.NextDouble() <= chanceToBeat)
+                if(generator.NextDouble() <= chanceToBeat)
                 {
                     MessageBox.Show("Comrade! We have been hit by Ukranian Air Defense! We're going doown!");
                     death();
@@ -252,7 +248,7 @@ namespace Cao
         //exit gameplay->credits
         private void death()
         {
-            Death death = new Death(Player.points(false, difficulty));
+            Death death = new Death(Player.CalculatePoints(false, difficulty));
             form1.closeButtonClicked = true;
             death.ShowDialog();
             showMenu();
@@ -261,7 +257,7 @@ namespace Cao
         private void win()
         {
             //only successful runs get a leaderboard position
-            Win win = new Win(Player.points(true,difficulty), leaderboard, startTime);
+            Win win = new Win(Player.CalculatePoints(true,difficulty), leaderboard, startTime);
             form1.closeButtonClicked = true;
             win.ShowDialog();
             showMenu();
